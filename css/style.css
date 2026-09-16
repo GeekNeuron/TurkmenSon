@@ -1,5 +1,70 @@
 /* =========================================================
-   TurkmenSon — design tokens
+   Local Vazirmatn font (bundled — no external font request).
+   Files live in /fonts, license: SIL OFL 1.1 (fonts/OFL.txt)
+   ========================================================= */
+@font-face{
+  font-family:'Vazirmatn';
+  src:url('../fonts/Vazirmatn-Regular.woff2') format('woff2');
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'Vazirmatn';
+  src:url('../fonts/Vazirmatn-Medium.woff2') format('woff2');
+  font-weight:500; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'Vazirmatn';
+  src:url('../fonts/Vazirmatn-SemiBold.woff2') format('woff2');
+  font-weight:600; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'Vazirmatn';
+  src:url('../fonts/Vazirmatn-Bold.woff2') format('woff2');
+  font-weight:700; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'Vazirmatn';
+  src:url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');
+  font-weight:800; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'Vazirmatn';
+  src:url('../fonts/Vazirmatn-Black.woff2') format('woff2');
+  font-weight:900; font-style:normal; font-display:swap;
+}
+
+/* =========================================================
+   Font-size setting (scales the whole app)
+   ========================================================= */
+html[data-font-size="small"]{ font-size:14px; }
+html[data-font-size="medium"]{ font-size:16px; }
+html[data-font-size="large"]{ font-size:18.5px; }
+
+/* =========================================================
+   High-contrast setting
+   ========================================================= */
+html[data-contrast="true"]{
+  --line:#8a7a63;
+  --ink-soft:var(--ink);
+  --shadow-lift: 0 0 0 2px var(--ink);
+}
+html[data-contrast="true"][data-theme="dark"]{
+  --line:#9a8a70;
+  --bg:#0d0905;
+  --surface:#000000;
+}
+html[data-contrast="true"] .item-card,
+html[data-contrast="true"] .stat-card,
+html[data-contrast="true"] .explore-card,
+html[data-contrast="true"] .fact-row,
+html[data-contrast="true"] .alpha-chip,
+html[data-contrast="true"] .search-box,
+html[data-contrast="true"] .dropdown-trigger{
+  border-width:2px;
+}
+html[data-contrast="true"] .hero{ box-shadow:none; border:2px solid var(--ink); }
+
+
    Palette drawn from Turkmen carpet wool (madder red), desert
    sand, and oxidised silver/turquoise jewellery — not a generic
    SaaS palette.
@@ -166,6 +231,7 @@ input:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 
 .search-box{
   margin-inline-start:auto;
+  position:relative;
   display:flex; align-items:center; gap:8px;
   background:var(--surface); border:1px solid var(--line);
   border-radius:999px; padding:8px 14px; width:min(280px,32vw);
@@ -374,4 +440,132 @@ input:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 
 @media (min-width:901px){
   .overlay{ display:none; }
+}
+
+/* =========================================================
+   Global search results dropdown
+   ========================================================= */
+.global-results{
+  position:absolute; top:calc(100% + 8px); inset-inline:0;
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-m);
+  box-shadow:var(--shadow-lift); padding:8px; z-index:60;
+  max-height:340px; overflow-y:auto;
+  animation: pop-in var(--dur-2) var(--ease);
+}
+.global-results-title{ font-size:.72rem; color:var(--ink-soft); font-weight:700; padding:6px 10px; }
+.global-result-item{
+  display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:var(--radius-s);
+  cursor:pointer; transition:background var(--dur-1) var(--ease);
+}
+.global-result-item:hover{ background:var(--surface-2); }
+.global-result-item .icon{ color:var(--accent); flex:none; }
+.gr-text{ display:flex; flex-direction:column; min-width:0; }
+.gr-title{ font-size:.86rem; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.gr-section{ font-size:.72rem; color:var(--ink-soft); }
+
+/* =========================================================
+   Settings panel
+   ========================================================= */
+.settings-overlay{
+  position:fixed; inset:0; background:rgba(20,14,9,.5); backdrop-filter:blur(3px);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity var(--dur-2) var(--ease);
+  z-index:80; padding:20px;
+}
+.settings-overlay.open{ opacity:1; pointer-events:auto; }
+.settings-panel{
+  background:var(--surface); border-radius:var(--radius-l); width:min(380px,100%);
+  box-shadow:var(--shadow-lift); padding:22px;
+  transform:scale(.94) translateY(10px); transition:transform var(--dur-2) var(--ease);
+}
+.settings-overlay.open .settings-panel{ transform:scale(1) translateY(0); }
+.settings-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; }
+.settings-header h3{ font-size:1.05rem; font-weight:800; }
+.settings-body{ display:flex; flex-direction:column; gap:18px; }
+.settings-row{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
+.settings-row-label{ display:flex; align-items:center; gap:9px; font-size:.9rem; font-weight:600; color:var(--ink-soft); }
+.settings-row-label .icon{ color:var(--primary); }
+
+.segmented{
+  display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden;
+}
+.segmented button{
+  padding:8px 14px; font-size:.85rem; font-weight:700; color:var(--ink-soft);
+  transition:background var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+  border-inline-end:1px solid var(--line);
+}
+.segmented button:last-child{ border-inline-end:none; }
+.segmented button.active{ background:var(--primary); color:#fff; }
+
+.toggle-switch{
+  width:46px; height:26px; border-radius:999px; background:var(--surface-2); border:1px solid var(--line);
+  position:relative; flex:none; transition:background var(--dur-2) var(--ease);
+}
+.toggle-knob{
+  position:absolute; top:2px; inset-inline-start:2px; width:20px; height:20px; border-radius:50%;
+  background:var(--ink-soft); transition:transform var(--dur-2) var(--ease), background var(--dur-2) var(--ease);
+}
+.toggle-switch.on{ background:var(--primary); }
+.toggle-switch.on .toggle-knob{ background:#fff; transform:translateX(20px); }
+[dir="rtl"] .toggle-switch.on .toggle-knob{ transform:translateX(-20px); }
+
+/* =========================================================
+   Dictionary table
+   ========================================================= */
+.dict-note{
+  display:flex; gap:12px; align-items:flex-start; background:var(--surface-2); border-radius:var(--radius-m);
+  padding:14px 16px; margin-bottom:8px;
+}
+.dict-note .icon{ color:var(--accent); flex:none; margin-top:2px; }
+.dict-note p{ font-size:.84rem; color:var(--ink-soft); line-height:1.85; }
+.dict-cat-heading{ margin-top:26px; }
+.dict-table{ display:flex; flex-direction:column; gap:6px; }
+.dict-row{
+  display:grid; grid-template-columns: 1.1fr 1fr 1.3fr; gap:10px; align-items:center;
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-s);
+  padding:10px 14px; transition:border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+}
+.dict-row:hover{ border-color:var(--secondary); transform:translateY(-1px); }
+.dict-tk{ font-weight:800; color:var(--primary); direction:ltr; text-align:start; }
+.dict-fascript{ direction:rtl; text-align:center; color:var(--accent); font-weight:600; }
+.dict-fa{ direction:rtl; text-align:start; color:var(--ink-soft); font-size:.9rem; }
+[dir="ltr"] .dict-fa, [dir="ltr"] .dict-fascript{ text-align:end; }
+
+@media (max-width:560px){
+  .dict-row{ grid-template-columns: 1fr 1fr; grid-template-areas:"tk fascript" "fa fa"; row-gap:4px; }
+  .dict-tk{ grid-area:tk; }
+  .dict-fascript{ grid-area:fascript; }
+  .dict-fa{ grid-area:fa; text-align:start !important; }
+}
+
+/* =========================================================
+   Extended (Apertium-derived) dictionary
+   ========================================================= */
+.dict-divider{ height:1px; background:var(--line); margin:36px 0 6px; }
+.dict-extended-head{ margin-top:4px; }
+.dict-extended-intro{ font-size:.83rem; color:var(--ink-soft); line-height:1.9; max-width:78ch; margin-top:6px; }
+.dict-ext-table{
+  display:flex; flex-direction:column; gap:5px; margin-top:14px;
+  max-height:560px; overflow-y:auto; border:1px solid var(--line); border-radius:var(--radius-m); padding:8px;
+}
+.dict-ext-row{
+  display:grid; grid-template-columns: .9fr .9fr 1.2fr .7fr; gap:10px; align-items:center;
+  padding:8px 10px; border-radius:var(--radius-s); font-size:.85rem;
+}
+.dict-ext-row:not(.dict-ext-head):hover{ background:var(--surface-2); }
+.dict-ext-head{
+  font-size:.72rem; font-weight:800; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.03em;
+  position:sticky; top:-8px; background:var(--surface); padding-block:6px; border-bottom:1px solid var(--line); z-index:2;
+}
+.dict-ext-tk{ font-weight:800; color:var(--primary); direction:ltr; text-align:start; }
+.dict-ext-pos{ font-size:.72rem; color:var(--accent); font-style:italic; direction:ltr; }
+.dict-ext-note{ font-size:.78rem; color:var(--ink-soft); margin-top:10px; text-align:center; }
+
+@media (max-width:640px){
+  .dict-ext-row{ grid-template-columns: 1fr 1fr; grid-template-areas:"tk tur" "en pos"; row-gap:3px; }
+  .dict-ext-row.dict-ext-head{ display:none; }
+  .dict-ext-row span:nth-child(1){ grid-area:tk; }
+  .dict-ext-row span:nth-child(2){ grid-area:tur; }
+  .dict-ext-row span:nth-child(3){ grid-area:en; font-size:.8rem; }
+  .dict-ext-row span:nth-child(4){ grid-area:pos; }
 }
