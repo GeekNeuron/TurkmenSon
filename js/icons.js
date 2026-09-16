@@ -58,7 +58,21 @@ const ICONS = {
 
   external: `<svg viewBox="0 0 24 24" fill="none"><path d="M9 6H6C4.9 6 4 6.9 4 8V18C4 19.1 4.9 20 6 20H16C17.1 20 18 19.1 18 18V15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 4H20V11M20 4L11 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
 
-  info: `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.3" stroke="currentColor" stroke-width="1.6"/><path d="M12 11V16.5M12 8V8.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`
+  info: `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.3" stroke="currentColor" stroke-width="1.6"/><path d="M12 11V16.5M12 8V8.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+
+  landmark: `<svg viewBox="0 0 24 24" fill="none"><path d="M4 20H20M5 20V10.5M9 20V10.5M15 20V10.5M19 20V10.5M3 10.5L12 4L21 10.5H3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+
+  music: `<svg viewBox="0 0 24 24" fill="none"><path d="M9 17.5C9 18.9 7.8 20 6.5 20C5.2 20 4 18.9 4 17.5C4 16.1 5.2 15 6.5 15C7.2 15 7.7 15.2 8.1 15.5M9 17.5V6.5L18 4.5V15.5M9 17.5C9 16.4 9.6 15.6 10.5 15.3M18 15.5C18 16.9 16.8 18 15.5 18C14.2 18 13 16.9 13 15.5C13 14.1 14.2 13 15.5 13C16.2 13 16.7 13.2 17.1 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+
+  flame: `<svg viewBox="0 0 24 24" fill="none"><path d="M12 3C12 6 9 7.5 9 11C9 13.2 10.5 14.5 12 14.5C13.5 14.5 15 13.2 15 11C15 9.8 14.3 9 14.3 9C14.3 9 14.6 11 13 12C13.6 10 12 8.5 12 3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 15C7 18.3 9.2 20.5 12 20.5C14.8 20.5 17 18.3 17 15C17 13.7 16.6 12.7 16.1 11.9C16.4 13 15.9 14.5 15 15C15.3 13 14 11.8 14 11.8C14.4 13.6 12.6 14.3 12.6 16C12.6 17 13.3 17.4 13.3 17.4C12.2 17.6 11 16.7 11 15.2C11 14.2 11.6 13.6 11.4 12.5C10 13.5 9.5 15 9.8 16.2C8.7 15.3 8.3 13.6 9 12C7.8 12.9 7 14 7 15Z" fill="currentColor" opacity=".18"/></svg>`,
+
+  gear: `<svg viewBox="0 0 24 24" fill="none"><path d="M12 15.3C13.8 15.3 15.3 13.8 15.3 12C15.3 10.2 13.8 8.7 12 8.7C10.2 8.7 8.7 10.2 8.7 12C8.7 13.8 10.2 15.3 12 15.3Z" stroke="currentColor" stroke-width="1.5"/><path d="M19.4 13.5C19.5 13 19.6 12.5 19.6 12C19.6 11.5 19.5 11 19.4 10.5L21.1 9.2C21.3 9 21.3 8.8 21.2 8.6L19.6 5.9C19.5 5.7 19.3 5.6 19 5.7L17 6.5C16.6 6.2 16.1 5.9 15.6 5.7L15.3 3.6C15.3 3.4 15.1 3.2 14.8 3.2H9.6C9.4 3.2 9.2 3.4 9.1 3.6L8.8 5.7C8.3 5.9 7.9 6.2 7.4 6.5L5.4 5.7C5.2 5.6 4.9 5.7 4.8 5.9L3.2 8.6C3.1 8.8 3.1 9 3.3 9.2L5 10.5C5 11 4.9 11.5 4.9 12C4.9 12.5 5 13 5 13.5L3.3 14.8C3.1 15 3.1 15.2 3.2 15.4L4.8 18.1C4.9 18.3 5.2 18.4 5.4 18.3L7.4 17.5C7.9 17.8 8.3 18.1 8.8 18.3L9.1 20.4C9.2 20.6 9.4 20.8 9.6 20.8H14.8C15.1 20.8 15.3 20.6 15.3 20.4L15.6 18.3C16.1 18.1 16.6 17.8 17 17.5L19 18.3C19.3 18.4 19.5 18.3 19.6 18.1L21.2 15.4C21.3 15.2 21.3 15 21.1 14.8L19.4 13.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>`,
+
+  translate: `<svg viewBox="0 0 24 24" fill="none"><path d="M4 6H12M8 4V6M9.5 6C9.2 9 7.5 11.3 5 12.8M6.5 9C7.3 10.5 8.6 11.6 10 12.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 20L16.5 12L20 20M14 17.5H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+
+  contrast: `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.3" stroke="currentColor" stroke-width="1.6"/><path d="M12 3.7V20.3C16 20.3 19 16.6 19 12C19 7.4 16 3.7 12 3.7Z" fill="currentColor"/></svg>`,
+
+  textSize: `<svg viewBox="0 0 24 24" fill="none"><path d="M4 18L8 6L12 18M5.3 14H10.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 18V9.5H19M16.5 9.5V18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`
 };
 
 function iconMarkup(name){

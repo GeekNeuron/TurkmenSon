@@ -9,7 +9,9 @@
   const state = {
     lang: localStorage.getItem('ts-lang') || 'fa',
     theme: localStorage.getItem('ts-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-    route: (location.hash || '#dashboard').replace('#',''),
+    fontSize: localStorage.getItem('ts-font-size') || 'medium',
+    contrast: localStorage.getItem('ts-contrast') === 'true',
+    route: 'dashboard',
     query: ''
   };
 
@@ -32,7 +34,17 @@
     langDropdown: document.getElementById('langDropdown'),
     searchInput: document.getElementById('searchInput'),
     searchClear: document.getElementById('searchClear'),
-    backTop: document.getElementById('backTop')
+    globalResults: document.getElementById('globalResults'),
+    backTop: document.getElementById('backTop'),
+    settingsBtn: document.getElementById('settingsBtn'),
+    settingsOverlay: document.getElementById('settingsOverlay'),
+    settingsPanel: document.getElementById('settingsPanel'),
+    settingsCloseBtn: document.getElementById('settingsCloseBtn'),
+    settingsTitle: document.getElementById('settingsTitle'),
+    fontSizeLabel: document.getElementById('fontSizeLabel'),
+    contrastLabel: document.getElementById('contrastLabel'),
+    fontSizeControl: document.getElementById('fontSizeControl'),
+    contrastToggle: document.getElementById('contrastToggle')
   };
 
   const validRoutes = NAV_ITEMS.map(n => n.id);
@@ -49,6 +61,44 @@
   el.themeBtn.addEventListener('click', ()=>{
     state.theme = state.theme === 'dark' ? 'light' : 'dark';
     applyTheme();
+  });
+
+  /* ---------------------------------------------------------
+     Display settings: font size + high contrast
+     --------------------------------------------------------- */
+  function applyFontSize(){
+    el.html.setAttribute('data-font-size', state.fontSize);
+    localStorage.setItem('ts-font-size', state.fontSize);
+    [...el.fontSizeControl.children].forEach(btn=>{
+      btn.classList.toggle('active', btn.dataset.size === state.fontSize);
+    });
+  }
+  function applyContrast(){
+    el.html.setAttribute('data-contrast', state.contrast ? 'true' : 'false');
+    localStorage.setItem('ts-contrast', state.contrast ? 'true' : 'false');
+    el.contrastToggle.setAttribute('aria-checked', state.contrast ? 'true' : 'false');
+    el.contrastToggle.classList.toggle('on', state.contrast);
+  }
+  el.fontSizeControl.addEventListener('click', (e)=>{
+    const btn = e.target.closest('button[data-size]');
+    if(!btn) return;
+    state.fontSize = btn.dataset.size;
+    applyFontSize();
+  });
+  el.contrastToggle.addEventListener('click', ()=>{
+    state.contrast = !state.contrast;
+    applyContrast();
+  });
+  function openSettings(){
+    el.settingsOverlay.classList.add('open');
+  }
+  function closeSettings(){
+    el.settingsOverlay.classList.remove('open');
+  }
+  el.settingsBtn.addEventListener('click', openSettings);
+  el.settingsCloseBtn.addEventListener('click', closeSettings);
+  el.settingsOverlay.addEventListener('click', (e)=>{
+    if(e.target === el.settingsOverlay) closeSettings();
   });
 
   /* ---------------------------------------------------------
@@ -69,8 +119,20 @@
     localStorage.setItem('ts-lang', lang);
     applyLangAttrs();
     buildNav();
+    applySettingsLabels();
     render();
     closeLangMenu();
+  }
+
+  function applySettingsLabels(){
+    const d = DATA[state.lang];
+    el.settingsTitle.textContent = d.ui.settingsTitle;
+    el.fontSizeLabel.textContent = d.ui.fontSizeLabel;
+    el.contrastLabel.textContent = d.ui.contrastLabel;
+    const [sBtn, mBtn, lBtn] = el.fontSizeControl.children;
+    sBtn.setAttribute('aria-label', d.ui.fontSmall);
+    mBtn.setAttribute('aria-label', d.ui.fontMedium);
+    lBtn.setAttribute('aria-label', d.ui.fontLarge);
   }
 
   function openLangMenu(){
@@ -100,8 +162,11 @@
   });
   document.addEventListener('click', (e)=>{
     if(!el.langDropdown.contains(e.target)) closeLangMenu();
+    if(!document.getElementById('searchBox').contains(e.target)) hideGlobalResults();
   });
-  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLangMenu(); });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape'){ closeLangMenu(); closeSettings(); hideGlobalResults(); }
+  });
 
   /* ---------------------------------------------------------
      Mobile sidebar
@@ -143,28 +208,103 @@
     });
   }
 
+  function navigateTo(route, query){
+    if(location.hash.replace('#','') === route){
+      state.route = route;
+      state.query = query || '';
+      el.searchInput.value = state.query;
+      el.searchClear.hidden = state.query.length === 0;
+      render();
+    } else {
+      state.query = query || '';
+      location.hash = route;
+    }
+  }
+
   window.addEventListener('hashchange', ()=>{
     const r = location.hash.replace('#','');
     state.route = validRoutes.includes(r) ? r : 'dashboard';
-    state.query = '';
-    if(el.searchInput) el.searchInput.value = '';
+    localStorage.setItem('ts-last-route', state.route);
+    if(!state.query) el.searchInput.value = '';
     render();
-    el.content.scrollIntoView({behavior:'instant', block:'start'});
+    if (typeof el.content.scrollIntoView === 'function') {
+      el.content.scrollIntoView({behavior:'instant', block:'start'});
+    }
     window.scrollTo({top:0});
   });
 
   /* ---------------------------------------------------------
-     Search (filters cards within the current section)
+     Search — filters the current section AND surfaces matches
+     from every other section in a dropdown.
      --------------------------------------------------------- */
+  function buildSearchIndex(d){
+    const idx = [];
+    const pushAll = (sectionId, arr, textFn) => {
+      arr.forEach(it => idx.push({ section: sectionId, label: d.nav[sectionId], title: textFn(it), icon: it.icon || NAV_ITEMS.find(n=>n.id===sectionId).icon }));
+    };
+    pushAll('history', d.history.eras, it => it.title);
+    pushAll('warpeace', d.warpeace.events, it => it.title);
+    pushAll('places', d.places.items, it => it.title);
+    pushAll('clothing', d.clothing.men, it => it.name);
+    pushAll('clothing', d.clothing.women, it => it.name);
+    pushAll('cuisine', d.cuisine.dishes, it => it.name);
+    pushAll('arts', d.arts.items, it => it.title);
+    pushAll('people', d.people.items, it => it.name);
+    pushAll('poets', d.poets.items, it => it.name);
+    pushAll('books', d.books.items, it => it.title);
+    pushAll('influences', d.influences.items, it => it.title);
+    DICTIONARY.categories.forEach(cat=>{
+      cat.words.forEach(w=>{
+        idx.push({ section:'dictionary', label: d.nav.dictionary, title: w.tk + ' — ' + w.fa, icon:'translate' });
+      });
+    });
+    DICTIONARY_EXTENDED.forEach(row=>{
+      idx.push({ section:'dictionary', label: d.nav.dictionary, title: row[0] + ' — ' + (row[2] || row[1]), icon:'translate' });
+    });
+    return idx;
+  }
+
+  function hideGlobalResults(){
+    el.globalResults.hidden = true;
+    el.globalResults.innerHTML = '';
+  }
+
+  function renderGlobalResults(){
+    const q = state.query.toLowerCase();
+    if(!q){ hideGlobalResults(); return; }
+    const d = DATA[state.lang];
+    const idx = buildSearchIndex(d);
+    const results = idx.filter(it => it.section !== state.route && it.title.toLowerCase().includes(q)).slice(0, 8);
+    if(!results.length){ hideGlobalResults(); return; }
+    el.globalResults.innerHTML = `<div class="global-results-title">${d.ui.globalResultsTitle}</div>` +
+      results.map(r => `
+        <div class="global-result-item" data-route="${r.section}">
+          <span class="icon" data-icon="${r.icon}"></span>
+          <span class="gr-text"><span class="gr-title">${r.title}</span><span class="gr-section">${r.label}</span></span>
+        </div>`).join('');
+    paintIcons(el.globalResults);
+    el.globalResults.hidden = false;
+    el.globalResults.querySelectorAll('.global-result-item').forEach(node=>{
+      node.addEventListener('click', ()=>{
+        const route = node.dataset.route;
+        hideGlobalResults();
+        navigateTo(route, state.query);
+      });
+    });
+  }
+
   el.searchInput.addEventListener('input', ()=>{
     state.query = el.searchInput.value.trim().toLowerCase();
     el.searchClear.hidden = state.query.length === 0;
     render();
+    renderGlobalResults();
   });
+  el.searchInput.addEventListener('focus', renderGlobalResults);
   el.searchClear.addEventListener('click', ()=>{
     el.searchInput.value = '';
     state.query = '';
     el.searchClear.hidden = true;
+    hideGlobalResults();
     render();
   });
 
@@ -251,6 +391,13 @@
     `;
   }
 
+  function sectionHead(d, key, iconName){
+    return `<div class="section-head reveal">
+      <h2><span class="icon" data-icon="${iconName}"></span>${d.nav[key]}</h2>
+      <p>${d[key].intro}</p>
+    </div>`;
+  }
+
   function renderTimelineSection(d, key, iconName){
     const items = d[key].eras || d[key].events;
     const filtered = items.filter(it => matches(it.title) || matches(it.text) || matches(it.year));
@@ -265,11 +412,16 @@
     return sectionHead(d, key, iconName) + `<div class="timeline">${rows}</div>`;
   }
 
-  function sectionHead(d, key, iconName){
-    return `<div class="section-head reveal">
-      <h2><span class="icon" data-icon="${iconName}"></span>${d.nav[key]}</h2>
-      <p>${d[key].intro}</p>
-    </div>`;
+  function renderCardListSection(d, key, iconName){
+    const items = d[key].items.filter(it => matches(it.title) || matches(it.text));
+    if(!items.length) return sectionHead(d, key, iconName) + emptyState(d.ui.noResults);
+    const cards = items.map(it => `
+      <div class="item-card reveal">
+        <div class="icon-wrap"><span class="icon" data-icon="${it.icon}"></span></div>
+        <h3>${it.title}</h3>
+        <p>${it.text}</p>
+      </div>`).join('');
+    return sectionHead(d, key, iconName) + `<div class="card-grid">${cards}</div>`;
   }
 
   function renderClothing(d){
@@ -326,6 +478,75 @@
       (alpha.length ? `<h3 class="subheading"><span class="icon" data-icon="letters"></span>${d.ui.alphabetTitle}</h3><div class="alpha-grid">${alphaChips}</div>` : '');
   }
 
+  function renderDictionary(d){
+    const q = state.query;
+    const matchWord = (w) => !q || w.tk.toLowerCase().includes(q) || w.fa.toLowerCase().includes(q) || w.faScript.includes(q);
+    const note = DICTIONARY.note[state.lang];
+
+    const blocks = DICTIONARY.categories.map(cat=>{
+      const words = cat.words.filter(matchWord);
+      if(!words.length) return '';
+      const label = state.lang === 'fa' ? cat.fa : cat.tk;
+      const rows = words.map(w => `
+        <div class="dict-row reveal">
+          <span class="dict-tk">${w.tk}</span>
+          <span class="dict-fascript">${w.faScript}</span>
+          <span class="dict-fa">${w.fa}</span>
+        </div>`).join('');
+      return `<h3 class="subheading dict-cat-heading">${label}</h3><div class="dict-table">${rows}</div>`;
+    }).filter(Boolean);
+
+    const curatedHtml = blocks.length
+      ? blocks.join('')
+      : (q ? '' : emptyState(d.ui.noResults));
+
+    // Extended (Apertium-derived) dictionary — only searched, never fully listed,
+    // to keep the page light with 3000+ entries.
+    let extendedHtml = `
+      <div class="dict-extended-head reveal">
+        <h3 class="subheading"><span class="icon" data-icon="link"></span>${d.ui.extendedDictTitle}</h3>
+        <p class="dict-extended-intro">${d.ui.extendedDictIntro}</p>
+      </div>`;
+
+    if(!q){
+      extendedHtml += `<div class="empty-state reveal"><span class="icon" data-icon="search"></span><p>${d.ui.extendedDictPrompt}</p></div>`;
+    } else {
+      const results = DICTIONARY_EXTENDED.filter(row =>
+        row[0].toLowerCase().includes(q) || row[1].toLowerCase().includes(q) || row[2].toLowerCase().includes(q)
+      );
+      if(!results.length){
+        extendedHtml += `<div class="empty-state reveal"><span class="icon" data-icon="search"></span><p>${d.ui.extendedDictNoResults}</p></div>`;
+      } else {
+        const shown = results.slice(0, 80);
+        extendedHtml += `
+          <div class="dict-ext-table">
+            <div class="dict-ext-row dict-ext-head">
+              <span>${d.ui.colTk}</span><span>${d.ui.colTur}</span><span>${d.ui.colEn}</span><span>${d.ui.colPos}</span>
+            </div>
+            ${shown.map(row => `
+              <div class="dict-ext-row reveal">
+                <span class="dict-ext-tk">${row[0]}</span>
+                <span>${row[1]}</span>
+                <span>${row[2] || '—'}</span>
+                <span class="dict-ext-pos">${row[3] || '—'}</span>
+              </div>`).join('')}
+          </div>
+          ${results.length > 80 ? `<p class="dict-ext-note">${d.ui.extendedDictTooMany}</p>` : ''}
+        `;
+      }
+    }
+
+    if(!blocks.length && q && !DICTIONARY_EXTENDED.some(row => row[0].toLowerCase().includes(q) || row[1].toLowerCase().includes(q) || row[2].toLowerCase().includes(q))){
+      return sectionHead(d, 'dictionary', 'translate') + emptyState(d.ui.noResults);
+    }
+
+    return sectionHead(d, 'dictionary', 'translate') +
+      (q ? '' : `<div class="dict-note reveal"><span class="icon" data-icon="info"></span><p>${note}</p></div>`) +
+      curatedHtml +
+      `<div class="dict-divider"></div>` +
+      extendedHtml;
+  }
+
   function renderPeopleLike(d, key, iconName){
     const items = d[key].items.filter(it => matches(it.name) || matches(it.text) || matches(it.era) || matches(it.years));
     if(!items.length) return sectionHead(d, key, iconName) + emptyState(d.ui.noResults);
@@ -338,16 +559,16 @@
     return sectionHead(d, key, iconName) + `<div class="card-grid">${cards}</div>`;
   }
 
-  function renderInfluences(d){
-    const items = d.influences.items.filter(it => matches(it.title) || matches(it.text));
-    if(!items.length) return sectionHead(d, 'influences', 'link') + emptyState(d.ui.noResults);
+  function renderBooks(d){
+    const items = d.books.items.filter(it => matches(it.title) || matches(it.text) || matches(it.author));
+    if(!items.length) return sectionHead(d, 'books', 'book') + emptyState(d.ui.noResults);
     const cards = items.map(it => `
       <div class="item-card reveal">
         <div class="icon-wrap"><span class="icon" data-icon="${it.icon}"></span></div>
-        <h3>${it.title}</h3>
+        <div><span class="badge">${it.author}${it.era ? ' · ' + it.era : ''}</span><h3>${it.title}</h3></div>
         <p>${it.text}</p>
       </div>`).join('');
-    return sectionHead(d, 'influences', 'link') + `<div class="card-grid">${cards}</div>`;
+    return sectionHead(d, 'books', 'book') + `<div class="card-grid">${cards}</div>`;
   }
 
   /* ---------------------------------------------------------
@@ -367,12 +588,16 @@
       case 'dashboard':  html = renderDashboard(d); break;
       case 'history':    html = renderTimelineSection(d, 'history', 'scroll'); break;
       case 'warpeace':   html = renderTimelineSection(d, 'warpeace', 'swords'); break;
+      case 'places':     html = renderCardListSection(d, 'places', 'landmark'); break;
       case 'clothing':   html = renderClothing(d); break;
       case 'cuisine':    html = renderCuisine(d); break;
+      case 'arts':       html = renderCardListSection(d, 'arts', 'music'); break;
       case 'language':   html = renderLanguage(d); break;
+      case 'dictionary': html = renderDictionary(d); break;
       case 'people':     html = renderPeopleLike(d, 'people', 'users'); break;
       case 'poets':      html = renderPeopleLike(d, 'poets', 'feather'); break;
-      case 'influences': html = renderInfluences(d); break;
+      case 'books':      html = renderBooks(d); break;
+      case 'influences': html = renderCardListSection(d, 'influences', 'link'); break;
       default:           html = renderDashboard(d);
     }
     el.content.innerHTML = html;
@@ -397,12 +622,25 @@
      Boot
      --------------------------------------------------------- */
   function boot(){
-    if(!validRoutes.includes(state.route)) state.route = 'dashboard';
+    let initialRoute = location.hash.replace('#','');
+    if(!validRoutes.includes(initialRoute)){
+      const remembered = localStorage.getItem('ts-last-route');
+      initialRoute = validRoutes.includes(remembered) ? remembered : 'dashboard';
+    }
+    state.route = initialRoute;
+
     applyTheme();
     applyLangAttrs();
+    applyFontSize();
+    applyContrast();
     buildNav();
+    applySettingsLabels();
     render();
     paintIcons(document);
+
+    if(location.hash.replace('#','') !== initialRoute){
+      location.hash = initialRoute;
+    }
   }
 
   boot();
