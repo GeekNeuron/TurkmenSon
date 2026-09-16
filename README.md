@@ -1,8 +1,8 @@
 # TurkmenSon
 
-پروژه **TurkmenSon** یک وب‌سایت/داشبورد متن‌باز و دوزبانه (فارسی و ترکمنی) دربارهٔ فرهنگ، تاریخ، پوشاک، غذا، زبان، چهره‌های ماندگار، شاعران و میراث مردم ترکمن است. پروژه با **HTML + CSS + جاوااسکریپت خالص** ساخته شده؛ بدون نیاز به build step، فریم‌ورک یا وابستگی npm — یعنی مستقیم روی GitHub Pages یا هر هاست استاتیک دیگری اجرا می‌شود.
+**TurkmenSon** یک وب‌سایت/داشبورد متن‌باز و دوزبانه (فارسی و ترکمنی) دربارهٔ فرهنگ، تاریخ، پوشاک، غذا، زبان، چهره‌های ماندگار، شاعران و میراث مردم ترکمن است. پروژه با **HTML + CSS + جاوااسکریپت خالص** ساخته شده؛ بدون نیاز به build step، فریم‌ورک یا وابستگی npm.
 
-TurkmenSon is a free, open, bilingual (Persian / Turkmen) reference site covering Turkmen history, traditional dress, cuisine, language, notable figures, poets, and cultural influences. It is plain HTML/CSS/JS — no build step, no framework, no npm dependency — so it runs as-is on GitHub Pages or any static host.
+TurkmenSon is a free, open, bilingual (Persian / Turkmen) reference site covering Turkmen history, traditional dress, cuisine, language, notable figures, poets, and cultural influences. It is plain HTML/CSS/JS — no build step, no framework, no npm dependency.
 
 ---
 
@@ -15,53 +15,27 @@ TurkmenSon is a free, open, bilingual (Persian / Turkmen) reference site coverin
 - 🖱️ حذف کامل هایلایت لمسی/کلیک پیش‌فرض مرورگر (`tap-highlight-color: transparent`) و جایگزینی با استایل فوکوس اختصاصی
 - 🎞️ انیمیشن‌های ورودی نرم (reveal on scroll) با `IntersectionObserver` و انتقال‌های ملایم روی هاور/کلیک
 - 🖼️ **همهٔ آیکون‌ها SVG دستی و بدون کتابخانهٔ خارجی** (`js/icons.js`)
-- 🔎 جست‌وجوی زندهٔ سبک در داخل هر بخش
-- 🗂️ ۹ بخش محتوایی: داشبورد، تاریخ، جنگ و صلح، پوشاک، غذاها، زبان، چهره‌های ماندگار، شاعران و فرزانگان، تأثیرات و میراث
+- 🔤 **فونت وزیرمتن به‌صورت کامل داخل پروژه** (پوشهٔ `fonts/`) — بدون هیچ درخواست شبکه‌ای به Google Fonts یا هر CDN دیگر
+- 🔎 **جست‌وجوی سراسری**: تایپ در نوار بالا هم بخش جاری را فیلتر می‌کند، هم نتایج مرتبط از سایر بخش‌ها (و واژه‌نامه) را در یک منوی کشویی نشان می‌دهد
+- ⚙️ **پنل تنظیمات نمایش**: سه اندازهٔ قلم (کوچک/متوسط/بزرگ) و حالت پرکنتراست، هر دو ذخیره‌شونده؛ آخرین بخش بازدیدشده هم به‌صورت خودکار به خاطر سپرده می‌شود
+- 📖 **واژه‌نامهٔ ترکمنی**: ۱۵۱ واژهٔ پرکاربرد با تلفظ تقریبی فارسی (`js/dictionary.js`)، به‌علاوه یک **واژه‌نامهٔ گستردهٔ جست‌وجوپذیر با بیش از ۳٬۲۰۰ مدخل** (ترکمنی–ترکی–انگلیسی) برگرفته از دیتاست آزاد Apertium (`js/dictionary-extended.js`, مجوز GPLv3)
+- 🗂️ **۱۳ بخش محتوایی**: داشبورد، تاریخ، جنگ و صلح، اماکن تاریخی و طبیعی، پوشاک، غذاها، هنر/موسیقی/آیین‌ها، زبان، واژه‌نامه، چهره‌های ماندگار، شاعران و فرزانگان، کتاب‌های نامی، تأثیرات و میراث
 
 ---
 
-## 📁 ساختار پروژه | Project structure
+## 🎨 دربارهٔ طراحی | Design notes
 
-```
-turkmenson/
-├── index.html          # اسکلت اصلی صفحه (App Shell)
-├── css/
-│   └── style.css       # توکن‌های طراحی، تم روشن/تاریک، تمام کامپوننت‌ها
-├── js/
-│   ├── icons.js         # مجموعه آیکون‌های SVG دست‌ساز
-│   ├── data.js          # محتوای دوزبانهٔ تمام بخش‌ها
-│   └── app.js            # روتینگ، تم، زبان، رندر، تعامل‌ها
-└── README.md
-```
+پالت رنگی از رنگ‌های واقعی صنایع‌دستی ترکمنی الهام گرفته شده: قرمز ریشه‌ی روناسِ قالی (`--primary`)، اُخرِ صحرا (`--secondary`) و فیروزه‌ای تیره‌شدهٔ نقره (`--accent`) روی زمینه‌ای کِرِم‌رنگِ پشم خام؛ به‌جای پالت رایج «کِرِم + نارنجی‌سوخته»ی رابط‌های تولیدشده با هوش مصنوعی. الگوی هندسی «گل» قالی ترکمن در هدر و آیکون‌ها بازتاب یافته است.
 
-هیچ وابستگی بیرونی‌ای جز فونت **Vazirmatn** (از Google Fonts، برای فارسی و لاتین ترکمنی) بارگذاری نمی‌شود.
-
-No external dependency other than the **Vazirmatn** web font (loaded from Google Fonts, used for both Persian and Latin-script Turkmen text).
+The palette is drawn from real Turkmen material culture — madder-root carpet red, desert ochre, and oxidised-silver teal on raw-wool cream — rather than the generic cream/burnt-orange look common in AI-generated UIs. The carpet "gul" motif recurs in the hero pattern and decorative dividers.
 
 ---
 
-## 🚀 اجرا روی GitHub Pages | Deploy to GitHub Pages
+## 🔤 فونت | Font
 
-1. یک ریپازیتوری جدید در گیت‌هاب بسازید (مثلاً `turkmenson`).
-2. محتوای این پوشه را در ریشهٔ ریپازیتوری push کنید:
-   ```bash
-   git init
-   git add .
-   git commit -m "TurkmenSon: initial release"
-   git branch -M main
-   git remote add origin https://github.com/<username>/turkmenson.git
-   git push -u origin main
-   ```
-3. در گیت‌هاب به مسیر **Settings → Pages** بروید.
-4. زیر «Build and deployment»، گزینهٔ **Deploy from a branch** را انتخاب کنید، شاخهٔ `main` و پوشهٔ `/ (root)` را تنظیم کنید و ذخیره کنید.
-5. پس از چند دقیقه، سایت روی آدرسی مانند `https://<username>.github.io/turkmenson/` در دسترس خواهد بود.
+فونت **وزیرمتن** (Vazirmatn) به‌صورت فایل‌های `woff2` در پوشهٔ `fonts/` قرار داده شده و مستقیماً از خود پروژه بارگذاری می‌شود (نه از اینترنت). این فونت هم برای متن فارسی و هم برای حروف لاتین ترکمنی استفاده می‌شود تا هماهنگی بصری دو زبان حفظ شود. مجوز فونت (SIL Open Font License 1.1) در فایل `fonts/OFL.txt` قرار دارد؛ یعنی استفاده، توزیع مجدد و حتی تغییر آن آزاد است.
 
-برای اجرای محلی، کافی است `index.html` را با یک سرور استاتیک ساده باز کنید (به‌دلیل واکشی فونت آنلاین، اتصال اینترنت لازم است):
-```bash
-npx serve .
-# یا
-python3 -m http.server 8080
-```
+The Vazirmatn font ships as local `woff2` files under `fonts/` and loads with zero external network requests. It is used for both Persian and Latin-script Turkmen text for visual consistency. License: SIL Open Font License 1.1 (`fonts/OFL.txt`) — free to use, bundle, and modify.
 
 ---
 
@@ -76,31 +50,20 @@ python3 -m http.server 8080
 
 ---
 
-## 🎨 دربارهٔ طراحی | Design notes
-
-پالت رنگی از رنگ‌های واقعی صنایع‌دستی ترکمنی الهام گرفته شده: قرمز ریشه‌ی روناسِ قالی (`--primary`)، اُخرِ صحرا (`--secondary`) و فیروزه‌ای تیره‌شدهٔ نقره (`--accent`) روی زمینه‌ای کِرِم‌رنگِ پشم خام؛ به‌جای پالت رایج «کِرِم + نارنجی‌سوخته»ی رابط‌های تولیدشده با هوش مصنوعی. الگوی هندسی «گل» قالی ترکمن در هدر و آیکون‌ها بازتاب یافته است.
-
-The palette is drawn from real Turkmen material culture — madder-root carpet red, desert ochre, and oxidised-silver teal on raw-wool cream — rather than the generic cream/burnt-orange look common in AI-generated UIs. The carpet "gul" motif recurs in the hero pattern and decorative dividers.
-
----
-
 ## ⚠️ یادداشت دربارهٔ محتوا و ترجمه | Content & translation notes
 
 - محتوای این پروژه **خلاصه‌ای آموزشی** بر پایهٔ منابع عمومی (دانشنامه‌ای و پژوهشی در دسترس) است، نه یک منبع دانشگاهی قطعی. پیش از استناد پژوهشی، به منابع تخصصی و بومی مراجعه کنید.
 - متن ترکمنی توسط مدل هوش مصنوعی (با تلاش برای دقت زبانی) نوشته شده و **پیش از انتشار رسمی، بازبینی یک گویشور بومی ترکمن اکیداً توصیه می‌شود**.
-- دربارهٔ رویدادهای حساس تاریخی و سیاسی (مانند دوران استعمار روسیه یا سیاست‌های شوروی)، سعی شده لحنی بی‌طرف و واقع‌گرایانه حفظ شود؛ در صورت مشاهدهٔ هرگونه نادقتی، خوشحال می‌شویم اصلاح شود (Issue/PR باز کنید).
+- **واژه‌نامه** (`js/dictionary.js`) یک دیتاست اختصاصی است که برای این پروژه گردآوری شده؛ نویسه‌گردانی فارسیِ هر واژه صرفاً یک راهنمای تلفظِ تقریبی است، نه رسم‌الخط رسمی — چون خط فارسی صداهایی مثل ä، ö، ü و ň را دقیق ندارد. پیش از استفادهٔ آموزشی جدی، تلفظ‌ها را با یک گویشور بومی بسنجید.
+- **واژه‌نامهٔ گسترده** (`js/dictionary-extended.js`، بیش از ۳٬۲۰۰ واژه) برگرفته از دیتاست آزاد و متن‌باز [apertium-tuk-tur](https://github.com/apertium/apertium-tuk-tur) است — بخشی از پروژهٔ دانشگاهی Apertium برای ترجمهٔ ماشینی زبان‌های ترکی. این داده تحت مجوز **GPLv3** منتشر شده و متن کامل مجوز در `licenses/apertium-tuk-tur-GPLv3-COPYING.txt` قرار دارد؛ محتوای زبانی (خود واژه‌ها و ترجمه‌هایشان) بدون تغییر از منبع اصلی گرفته شده، فقط نشانه‌گذاری XML آن به قالب ساده‌تر تبدیل شده است. **در صورت استفاده یا توزیع مجدد این بخش از پروژه، رعایت شرایط GPLv3 (ازجمله حفظ اعلان مجوز) الزامی است.**
+- کتاب «روح‌نامه» اثر صفرمراد نیازوف در بخش «کتاب‌های نامی» فقط با یک **معرفی دایره‌المعارفی و مستند** (نویسنده، سال انتشار، جایگاه سیاسی-فرهنگی، و جنجال‌های شناخته‌شدهٔ آن) آمده است، نه بازتولید متن کتاب — چون اثری با کپی‌رایت فعال است. لینک‌های اشتراک‌گذاری غیرمجاز کتاب (نظیر Anna's Archive یا Library Genesis) در این پروژه استفاده یا ارجاع داده نشده‌اند.
+- دربارهٔ رویدادهای حساس تاریخی و سیاسی (مانند دوران استعمار روسیه یا سیاست‌های شوروی)، سعی شده لحنی بی‌طرف و واقع‌گرایانه حفظ شود؛ در صورت مشاهدهٔ هرگونه نادقتی، خوشحال می‌شویم اصلاح شود.
 - The Turkmen (Latin-script) text was produced with AI assistance; native-speaker review is strongly recommended before any official publication.
-
----
-
-## 🔍 دربارهٔ الهام‌گیری | On open-source inspiration
-
-پیش از ساخت، چند پروژهٔ متن‌باز مرتبط با «داشبورد میراث فرهنگی» و «سایت‌های دوزبانه» بررسی شد (برای نمونه رویکرد سبک i18n مبتنی بر دیتای جاوااسکریپت در سایت‌های Jekyll دوزبانه، و ابزارهای متن‌باز حوزهٔ GLAM/میراث فرهنگی مانند پروژه‌های Europeana). بیشتر این پروژه‌ها یا بر پایهٔ فریم‌ورک‌های سنگین (Jekyll، Symfony، پایگاه‌داده) بودند یا حوزهٔ کاربردشان متفاوت بود (آرشیو موزه‌ای/کاتالوگ داده)، بنابراین به‌جای وندور کردن یک ریپازیتوری کامل، همان ایدهٔ سبک «یک آبجکت دیتای جاوااسکریپت به‌ازای هر زبان + رندر پویا» به‌صورت اختصاصی برای TurkmenSon بازنویسی شد تا وابستگی به صفر برسد و روی GitHub Pages بدون هیچ مرحلهٔ ساخت اجرا شود.
 
 ---
 
 ## 📄 مجوز | License
 
-می‌توانید یک فایل `LICENSE` (برای نمونه MIT) به دلخواه خودتان به ریشهٔ ریپازیتوری اضافه کنید؛ این پروژه به‌عنوان نمونهٔ اولیه بدون مجوز خاصی تحویل داده شده تا خودتان مجوز نهایی را بر پایهٔ نیاز پروژه انتخاب کنید.
+می‌توانید یک فایل `LICENSE` (برای نمونه MIT) به دلخواه خودتان به ریشهٔ پروژه اضافه کنید؛ این پروژه به‌عنوان نمونهٔ اولیه بدون مجوز خاصی تحویل داده شده تا خودتان مجوز نهایی را بر پایهٔ نیاز پروژه انتخاب کنید. فونت باندل‌شده در `fonts/` مجوز جداگانهٔ خودش (SIL OFL 1.1) را دارد.
 
-You may add a `LICENSE` file of your choice (MIT is a common pick for a project like this); none is bundled so you can decide based on your own needs.
+You may add a `LICENSE` file of your choice (MIT is a common pick for a project like this); none is bundled for the code itself so you can decide based on your own needs. The bundled font keeps its own SIL OFL 1.1 license.

@@ -7,9 +7,6 @@
 <meta name="description" content="TurkmenSon: دانشنامه تصویری تاریخ، پوشاک، غذا، زبان و مشاهیر فرهنگ ترکمن — به دو زبان فارسی و ترکمنی.">
 <meta name="theme-color" content="#F4EDE1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%239C2B2E'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23F4EDE1' stroke-width='2.2' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='17' r='2.4' fill='%23C08A28'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -61,6 +58,7 @@
         <button class="clear-btn" id="searchClear" aria-label="پاک‌کردن جست‌وجو" hidden>
           <span class="icon" data-icon="close"></span>
         </button>
+        <div class="global-results" id="globalResults" hidden></div>
       </div>
 
       <div class="controls">
@@ -80,6 +78,10 @@
           <span class="icon" data-icon="sun" data-role="sun"></span>
           <span class="icon" data-icon="moon" data-role="moon"></span>
         </button>
+
+        <button class="icon-btn" id="settingsBtn" aria-label="تنظیمات نمایش">
+          <span class="icon" data-icon="gear"></span>
+        </button>
       </div>
     </header>
 
@@ -88,6 +90,33 @@
     <button class="fab-top" id="backTop" aria-label="بازگشت به بالا" hidden>
       <span class="icon" data-icon="arrowUp"></span>
     </button>
+  </div>
+</div>
+
+<div class="settings-overlay" id="settingsOverlay">
+  <div class="settings-panel" id="settingsPanel" role="dialog" aria-modal="true">
+    <div class="settings-header">
+      <h3 id="settingsTitle">تنظیمات نمایش</h3>
+      <button class="icon-btn" id="settingsCloseBtn" aria-label="بستن">
+        <span class="icon" data-icon="close"></span>
+      </button>
+    </div>
+    <div class="settings-body">
+      <div class="settings-row">
+        <span class="settings-row-label"><span class="icon" data-icon="textSize"></span><span id="fontSizeLabel">اندازهٔ قلم</span></span>
+        <div class="segmented" id="fontSizeControl">
+          <button data-size="small">−</button>
+          <button data-size="medium">A</button>
+          <button data-size="large">+</button>
+        </div>
+      </div>
+      <div class="settings-row">
+        <span class="settings-row-label"><span class="icon" data-icon="contrast"></span><span id="contrastLabel">حالت پرکنتراست</span></span>
+        <button class="toggle-switch" id="contrastToggle" role="switch" aria-checked="false">
+          <span class="toggle-knob"></span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -109,6 +138,8 @@
 
 <script src="js/icons.js"></script>
 <script src="js/data.js"></script>
+<script src="js/dictionary.js"></script>
+<script src="js/dictionary-extended.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
