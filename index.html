@@ -6,10 +6,15 @@
 <title>TurkmenSon — دروازه‌ای به فرهنگ ترکمن</title>
 <meta name="description" content="TurkmenSon: دانشنامه تصویری تاریخ، پوشاک، غذا، زبان و مشاهیر فرهنگ ترکمن — به دو زبان فارسی و ترکمنی.">
 <meta name="theme-color" content="#F4EDE1">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%239C2B2E'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23F4EDE1' stroke-width='2.2' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='17' r='2.4' fill='%23C08A28'/%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<div class="reading-progress" id="readingProgress"></div>
 
 <div class="app" id="app">
 
@@ -48,6 +53,7 @@
       </button>
 
       <div class="page-heading">
+        <nav class="breadcrumb" id="breadcrumb" aria-label="مسیر"></nav>
         <h1 id="pageTitle">TurkmenSon</h1>
         <p id="pageSubtitle"></p>
       </div>
@@ -116,6 +122,12 @@
           <span class="toggle-knob"></span>
         </button>
       </div>
+      <div class="settings-row">
+        <span class="settings-row-label"><span class="icon" data-icon="book"></span><span id="readerModeLabel">حالت مطالعه</span></span>
+        <button class="toggle-switch" id="readerModeToggle" role="switch" aria-checked="false">
+          <span class="toggle-knob"></span>
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -139,7 +151,6 @@
 <script src="js/icons.js"></script>
 <script src="js/data.js"></script>
 <script src="js/dictionary.js"></script>
-<script src="js/dictionary-extended.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
