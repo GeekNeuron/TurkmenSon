@@ -11,6 +11,8 @@ const NAV_ITEMS = [
   { id:'history',     icon:'scroll'    },
   { id:'warpeace',    icon:'swords'    },
   { id:'places',      icon:'landmark'  },
+  { id:'tribes',      icon:'grid'      },
+  { id:'genealogy',   icon:'tree'      },
   { id:'clothing',    icon:'shirt'     },
   { id:'cuisine',     icon:'bowl'      },
   { id:'arts',        icon:'music'     },
@@ -19,7 +21,9 @@ const NAV_ITEMS = [
   { id:'people',      icon:'users'     },
   { id:'poets',       icon:'feather'   },
   { id:'books',       icon:'book'      },
-  { id:'influences',  icon:'link'      }
+  { id:'influences',  icon:'link'      },
+  { id:'quiz',        icon:'trophy'    },
+  { id:'sources',     icon:'external'  }
 ];
 
 const DATA = {
@@ -30,15 +34,17 @@ fa: {
   dir:'rtl',
   tagline:'دروازه‌ای به فرهنگ ترکمن',
   nav:{
-    dashboard:'داشبورد', history:'تاریخ', warpeace:'جنگ و صلح', places:'اماکن تاریخی و طبیعی', clothing:'پوشاک',
+    dashboard:'داشبورد', history:'تاریخ', warpeace:'جنگ و صلح', places:'اماکن تاریخی و طبیعی', tribes:'ایل‌ها و نقش گل قالی', genealogy:'شجره‌نامهٔ اوغوزخان', clothing:'پوشاک',
     cuisine:'غذاها', arts:'هنر، موسیقی و آیین‌ها', language:'زبان', dictionary:'واژه‌نامه',
-    people:'چهره‌های ماندگار', poets:'شاعران و فرزانگان', books:'کتاب‌های نامی', influences:'تأثیرات و میراث'
+    people:'چهره‌های ماندگار', poets:'شاعران و فرزانگان', books:'کتاب‌های نامی', influences:'تأثیرات و میراث',
+    quiz:'آزمون فرهنگی', sources:'منابع و مآخذ'
   },
   subtitle:{
     dashboard:'نمای کلی پروژه', history:'از مرغیانه تا استقلال', warpeace:'سنت رزم و سیاست بی‌طرفی',
-    places:'از شهرهای جاده ابریشم تا دروازه دوزخ', clothing:'از تلپک تا چیرپی', cuisine:'سفره‌ای از صحرا تا شهر',
+    places:'از شهرهای جاده ابریشم تا دروازه دوزخ', tribes:'هر ایل، امضای هندسی خودش را دارد', genealogy:'شش پسر، بیست‌وچهار نوه، یک نیای مشترک', clothing:'از تلپک تا چیرپی', cuisine:'سفره‌ای از صحرا تا شهر',
     arts:'از صدای دوتار تا رسم نوروز', language:'زبانی از خانواده اوغوزی', dictionary:'واژه‌های ترکمنی با تلفظ فارسی',
-    people:'از افسانه تا تاریخ', poets:'صدای فرهنگ ترکمن', books:'از دده‌قورقود تا رمان معاصر', influences:'میراثی فراتر از مرزها'
+    people:'از افسانه تا تاریخ', poets:'صدای فرهنگ ترکمن', books:'از دده‌قورقود تا رمان معاصر', influences:'میراثی فراتر از مرزها',
+    quiz:'چقدر فرهنگ ترکمن را می‌شناسید؟', sources:'شفافیت دربارهٔ منابع این پروژه'
   },
   ui:{
     searchPlaceholder:'جست‌وجو در همهٔ بخش‌ها…',
@@ -52,13 +58,22 @@ fa: {
     settingsTitle:'تنظیمات نمایش', fontSizeLabel:'اندازهٔ قلم', contrastLabel:'حالت پرکنتراست',
     fontSmall:'کوچک', fontMedium:'متوسط', fontLarge:'بزرگ',
     contrastOn:'روشن', contrastOff:'خاموش', settingsClose:'بستن',
+    readerModeLabel:'حالت مطالعه',
     dictNote:'راهنمای تلفظ', dictSearchPlaceholder:'جست‌وجوی واژه (ترکمنی یا فارسی)…',
     globalResultsTitle:'در سایر بخش‌ها', noGlobalResults:'موردی در بخش‌های دیگر یافت نشد.',
-    extendedDictTitle:'واژه‌نامهٔ گستردهٔ ترکمنی', extendedDictIntro:'بیش از ۳٬۲۰۰ واژهٔ ترکمنی همراه با معادل ترکی‌استانبولی و (در بیشتر موارد) انگلیسی، برگرفته از دیتاست آزاد و متن‌باز Apertium — پروژه‌ای دانشگاهی برای ترجمهٔ ماشینی زبان‌های ترکی. این داده تحت مجوز GPLv3 منتشر شده؛ جزئیات در فایل مجوز پروژه آمده است.',
-    extendedDictPrompt:'برای جست‌وجو در بیش از ۳٬۲۰۰ واژه، عبارتی در نوار جست‌وجوی بالای صفحه تایپ کنید.',
-    extendedDictNoResults:'واژه‌ای مطابق جست‌وجوی شما یافت نشد.',
-    extendedDictTooMany:'نتیجه محدود به ۸۰ مورد اول شد؛ برای نتیجهٔ دقیق‌تر عبارت را کامل‌تر بنویسید.',
-    colTk:'ترکمنی', colTur:'ترکی استانبولی', colEn:'انگلیسی', colPos:'نوع دستوری'
+    viewByTopic:'بر اساس موضوع', viewByAlphabet:'بر اساس الفبا',
+    downloadCsv:'دانلود CSV', downloadJson:'دانلود JSON',
+    dictTotalWords:'واژه', jumpToLetter:'پرش به حرف',
+    randomBtn:'موردی تصادفی', copyLink:'کپی لینک', linkCopied:'لینک کپی شد!',
+    reportIssue:'گزارش خطا در این محتوا', resultsCount:'نتیجه', breadcrumbHome:'داشبورد',
+    speakWord:'شنیدن تلفظ (مصنوعی)', speakNotSupported:'مرورگر شما از خواندن متن پشتیبانی نمی‌کند.',
+    quoteOfDayLabel:'نقل امروز', quoteOfDayTopics:'موضوع‌محور، از دل بخش‌های همین سایت',
+    quizIntro:'پانزده سؤال چهارگزینه‌ای دربارهٔ تاریخ، زبان، پوشاک، غذا و مشاهیر ترکمن. امتیاز شما در همین مرورگر ذخیره می‌شود.',
+    quizStart:'شروع آزمون', quizNext:'سؤال بعدی', quizFinish:'پایان آزمون', quizRestart:'دوباره تلاش کن',
+    quizScoreLabel:'امتیاز شما', quizBestLabel:'بهترین امتیاز', quizOutOf:'از',
+    quizCorrect:'درست بود!', quizWrong:'پاسخ درست:', quizQuestionLabel:'سؤال',
+    tribesIntro:'هر ایل بزرگ ترکمن، برای قرن‌ها، نقش هندسی مخصوص به خود -«گل»- را روی قالی‌هایش بافته؛ نقشی که هم زیور بوده هم شناسنامهٔ قبیله‌ای.',
+    sourcesIntro:'شفافیت دربارهٔ منابع این پروژه: محتوا خلاصه‌ای آموزشی از منابع عمومی متعدد است، نه پژوهش اصیل. در ادامه انواع منابعی که در تدوین این محتوا استفاده شده فهرست شده است.'
   },
 
   dashboard:{
@@ -80,6 +95,8 @@ fa: {
     history:'سفری از تمدن برنزی مرغیانه تا تشکیل ترکمنستان مستقل.',
     warpeace:'از میدان‌های نبرد سلجوقی تا سیاست بی‌طرفی امروز.',
     places:'مرو باستان، کهنه‌گرگانج، نیسا، عشق‌آباد و دروازه دوزخ.',
+    tribes:'تکه، یموت، ارساری، ساریق و سالور؛ هر کدام با نقش گل خودشان.',
+    genealogy:'درخت نسب اوغوزخان؛ ریشهٔ مشترک ۲۴ ایل ترک-ترکمن.',
     clothing:'کلاه تلپک، ردای چیرپی و زیورهای نقره‌ای عقیق‌نشان.',
     cuisine:'پلو ترکمنی، چکدیرمه، گوتاپ و چای سبز صحرایی.',
     arts:'دوتار و بخشی، رقص کوشتدپدی، نوروز و آداب عروسی.',
@@ -88,7 +105,9 @@ fa: {
     people:'از اوغوزخان افسانه‌ای تا چهره‌های تاریخی مستند.',
     poets:'شاعرانی که زبان و هویت ترکمنی را صورت‌بندی کردند.',
     books:'از حماسهٔ دده‌قورقود تا نخستین رمان ترکمنی.',
-    influences:'جاده ابریشم، میراث اوغوزی مشترک و بازتاب جهانی.'
+    influences:'جاده ابریشم، میراث اوغوزی مشترک و بازتاب جهانی.',
+    quiz:'پانزده سؤال برای سنجیدن دانش فرهنگی‌تان.',
+    sources:'انواع منابعی که در تدوین این پروژه استفاده شده.'
   },
 
   history:{
@@ -289,6 +308,74 @@ fa: {
       { icon:'flag', title:'پرچم و نشان ملی', text:'پرچم ترکمنستان نواری عمودی سبز در کنار پارچه‌ای قرمز مزین به پنج نقش «گل» قالی -نمایندهٔ پنج ایل بزرگ- در کنار هلال ماه و پنج ستاره را در خود دارد؛ نشان ملی نیز تصویر اسب آخال‌تکه را در میان خوشه‌های گندم و پنبه، نمادی از هویت کشاورزی-عشایری این سرزمین، به نمایش می‌گذارد.' },
       { icon:'flag', title:'بی‌طرفی به‌مثابه هویت دیپلماتیک', text:'در دوران استقلال، ترکمنستان به‌جای پیوستن به بلوک‌های نظامی، بی‌طرفی دائمی را برگزید؛ انتخابی که امروز جزئی از هویت بین‌المللی این کشور شمرده می‌شود.' }
     ]
+  },
+
+  tribes:{
+    intro:'قالی ترکمنی هرگز فقط دکور نبود؛ قالی، خانه بود. قلب هر قالی، «گل» است -مدالیونی چندضلعی که در ردیف‌های منظم روی زمینه‌ای سرخ‌رنگ تکرار می‌شود- و هر ایل بزرگ، گل خودش را داشت؛ چشمی ورزیده می‌توانست از آن‌سوی اتاق، ایل بافندهٔ قالی را تشخیص دهد.',
+    items:[
+      { icon:'grid', name:'تکه (Teke)', region:'حوالی عشق‌آباد، مرو و دشت آخال', text:'پرشمارترین ایل ترکمن؛ گل تکه، مدالیونی هشت‌ضلعی با طرح‌های صلیب‌مانند در دل آن، روی زمینه‌ای سرخ تیرهٔ روناسی است. قالی‌های تکه، اغلب زیر نام تجاری «بخارا» در بازارهای جهانی شناخته می‌شوند -هرچند خودِ بخارا فقط بازار عرضهٔ آن‌ها بوده، نه محل بافت.' },
+      { icon:'grid', name:'یموت (Yomut)', region:'سواحل خزر و ترکمن‌صحرای ایران', text:'ایلی که در نزدیکی مرزهای ایران سکونت دارد؛ گل‌های یموت گاه از نقش‌مایهٔ گل‌ افشان (پالمت) ایرانی وام گرفته شده و طیف رنگی متنوع‌تری نسبت به تکه دارد.' },
+      { icon:'grid', name:'ارساری (Ersari)', region:'حاشیهٔ رود آمودریا، افغانستان و ازبکستان امروزی', text:'ایلی که امروز بیشتر در افغانستان و ازبکستان پراکنده است؛ قالی‌های ارساری معمولاً بافتی درشت‌تر و گل‌هایی بزرگ‌تر دارند و در بازار جهانی اغلب با عنوان «افغان» عرضه می‌شوند.' },
+      { icon:'grid', name:'ساریق (Saryk)', region:'تاریخاً حوالی مرو', text:'ایلی که تاریخاً در واحهٔ مرو ساکن بود؛ برخلاف بیشتر قالی‌های ترکمنی که با گره نامتقارن بافته می‌شوند، برخی قالی‌های ساریق و یموت با گرهٔ متقارن (ترکی) بافته شده‌اند.' },
+      { icon:'grid', name:'سالور (Salyr/Salor)', region:'تاریخاً نیرومندترین ایل، پیش از افول', text:'روزگاری قدرتمندترین و کهن‌ترین ایل ترکمن به شمار می‌رفت؛ اما پس از افول سیاسی این ایل، گل سالور به‌عنوان نوعی «اعتبار وام‌گرفته» توسط ایل‌های دیگر نیز بافته شد -نمونه‌ای گویا از اینکه در قالی ترکمنی، می‌توان تاریخ را به‌معنای واقعی کلمه خواند.' },
+      { icon:'flag', name:'پنج گل روی پرچم ملی', region:'نماد ملی ترکمنستان', text:'پرچم و نشان ملی ترکمنستان پنج نقش گل قالی را در کنار هم نمایش می‌دهند که به ایل‌های بزرگ ترکمن اشاره دارند؛ انتخابی نمادین که قالی را از هنر خانگی زنان کوچ‌نشین به نماد رسمی یک ملت ارتقا داد.' }
+    ]
+  },
+
+  genealogy:{
+    intro:'به‌روایت حماسهٔ اوغوز و کتاب «شجرهٔ ترکمن» ابوالغازی بهادرخان، تمام قبایل باستانی اوغوز -نیای مشترک بسیاری از ترکمن‌ها، ترکان آناتولی، آذربایجانی‌ها و دیگر ترک‌زبانان- به یک نیای واحد می‌رسند: اوغوزخان. او شش پسر داشت و هر پسر چهار پسر؛ این بیست‌وچهار نوه، نیای بیست‌وچهار ایل کهن اوغوز شدند. این شجره‌نامه روایتی حماسی-اسطوره‌ای است، نه سند تاریخی دقیق، اما قرن‌ها هویت قبیله‌ای ترک‌زبانان آسیای میانه، ایران و آناتولی را صورت‌بندی کرده است.',
+    root:'اوغوز خان',
+    rootNote:'نیای افسانه‌ای قبایل اوغوز',
+    wings:[
+      {
+        name:'بوزوق («تیرها»)', meaning:'شاخهٔ ارشد؛ نمادش تیر است',
+        sons:[
+          { name:'گون خان (خورشید)', tribes:['قایی','بایات','آلکا-اوی','قره-اوی'] },
+          { name:'آی خان (ماه)', tribes:['یازیر','دوگر','دودورقا','یاپارلی'] },
+          { name:'ییلدیز خان (ستاره)', tribes:['آفشار','قیزیق','بیگدیلی','قارقین'] }
+        ]
+      },
+      {
+        name:'اوچوق («سه تیر»)', meaning:'شاخهٔ جوان‌تر؛ نمادش کمان است',
+        sons:[
+          { name:'گؤک خان (آسمان)', tribes:['بایندیر','پچنک','چاولدور','چپنی'] },
+          { name:'داغ خان (کوه)', tribes:['سالور','ایمور','آلایونتلی','یوره‌گیر'] },
+          { name:'دنیز خان (دریا)', tribes:['ایگدیر','بوگدوز','ییوا','قینیق'] }
+        ]
+      }
+    ],
+    note:'نکته: نام‌نویسی این قبایل در منابع مختلف (ابوالغازی بهادرخان، رشیدالدین فضل‌الله، محمود کاشغری) اندکی متفاوت است؛ آنچه در بالا آمده، روایت رایج‌تر است. توجه کنید که «سالور» (سالور/سالیر) در این شجره همان ایل تاریخی ترکمن است که در بخش «ایل‌ها و نقش گل قالی» معرفی شد؛ و «قینیق» ایلی است که خاندان سلجوقی از آن برخاست.'
+  },
+
+  quiz:{
+    questions:[
+      { q:'شاعر ملی ترکمن، مختومقلی فراغی، در چه سده‌ای می‌زیست؟', options:['سدهٔ ۱۲ میلادی','سدهٔ ۱۸ میلادی','سدهٔ ۱۴ میلادی','سدهٔ ۲۰ میلادی'], correct:1, explain:'مختومقلی فراغی حدود سال‌های ۱۷۲۴ تا ۱۸۰۷، یعنی عمدتاً در سدهٔ ۱۸ میلادی، می‌زیست.' },
+      { q:'الفبای رسمی ترکمنستان از چه سالی به خط لاتین بازگشت؟', options:['۱۹۹۱','۱۹۹۳','۲۰۰۱','۱۹۲۴'], correct:1, explain:'ترکمنستان از سال ۱۹۹۳، دو سال پس از استقلال، به الفبای لاتین بازگشت.' },
+      { q:'نام کدام نژاد اسب اصیل، از دیرباز با فرهنگ ترکمن گره خورده است؟', options:['عرب','آخال‌تکه','فریزی','کوارتر هورس'], correct:1, explain:'آخال‌تکه، پرورش‌یافته در صحراهای ترکمن، یکی از کهن‌ترین نژادهای اسب اصیل جهان است.' },
+      { q:'کدام یک از این اماکن، در فهرست میراث جهانی یونسکو نیست؟', options:['مرو باستان','کهنه‌گرگانج','نیسا','دروازه دوزخ (داروازه)'], correct:3, explain:'دروازه دوزخ یک جاذبهٔ طبیعی شگفت‌انگیز است اما در فهرست میراث جهانی یونسکو ثبت نشده؛ برخلاف مرو، کهنه‌گرگانج و نیسا.' },
+      { q:'کلاه سنتی «تلپک» از پوست کدام حیوان ساخته می‌شود؟', options:['بز','شتر','گوسفند قره‌قل','خرگوش'], correct:2, explain:'تلپک از پوست گوسفند قره‌قل ساخته می‌شود و برداشتن آن از سر کسی در ملأ عام بی‌احترامی بزرگی است.' },
+      { q:'«چکدیرمه» چه نوع غذایی است؟', options:['نان محشو سرخ‌شده','خورشت گوشت و برنج در دیگ چدنی','نوعی شیرینی','نوعی پنیر'], correct:1, explain:'چکدیرمه خورشتی از گوشت و برنج است که لایه‌لایه در دیگ چدنی «قازان» پخته می‌شود.' },
+      { q:'ردای مراسمی زنان متأهل ترکمن که روی سر و شانه انداخته می‌شود، چه نام دارد؟', options:['چیرپی','بالاق','دولاق','کؤینک'], correct:0, explain:'چیرپی ردایی بلند با آستین‌های تزئینی است که هرگز پوشیده نمی‌شوند و در پشت آویزان می‌مانند.' },
+      { q:'ترکمنی به کدام شاخهٔ زبان‌های ترکی تعلق دارد؟', options:['اوغوزی (غربی)','قارلوقی','قپچاقی','سیبری'], correct:0, explain:'ترکمنی از شاخهٔ اوغوزی غربی است؛ همان شاخه‌ای که ترکی استانبولی و آذربایجانی نیز به آن تعلق دارند.' },
+      { q:'ساز دوسیمهٔ محبوب ترکمن‌ها که نوازندگانش «بخشی» نام دارند، چیست؟', options:['تار','دوتار','کمانچه','سنتور'], correct:1, explain:'دوتار از چوب توت ساخته می‌شود و هنر ساخت و نواختن آن در سال ۲۰۲۱ در فهرست یونسکو ثبت شد.' },
+      { q:'ترکمنستان از چه سالی وضعیت «بی‌طرفی دائمی» را از سازمان ملل دریافت کرد؟', options:['۱۹۹۱','۱۹۹۵','۲۰۰۱','۱۹۸۱'], correct:1, explain:'مجمع عمومی سازمان ملل در سال ۱۹۹۵ بی‌طرفی دائمی ترکمنستان را به رسمیت شناخت.' },
+      { q:'کدام یک، نام یکی از پنج ایل بزرگ تاریخی ترکمن نیست؟', options:['تکه','یموت','ارساری','هزاره'], correct:3, explain:'هزاره قومی جدا (عمدتاً در افغانستان) است؛ پنج ایل بزرگ ترکمن عبارت‌اند از تکه، یموت، ارساری، سالور و ساریق.' },
+      { q:'نویسندهٔ «شجرهٔ ترکمن» که تاریخ کهن قبایل ترک را ثبت کرد، چه کسی بود؟', options:['مختومقلی فراغی','ابوالغازی بهادرخان','بردی کربابایف','دولت‌محمد آزادی'], correct:1, explain:'ابوالغازی بهادرخان، خان خیوه در سدهٔ ۱۷، این تاریخ‌نامه را به زبان چغتایی نوشت.' },
+      { q:'کدام غذا سنتاً در شن داغ صحرا پخته می‌شد؟', options:['گوتاپ','ایچلکلی','مانتی','پیشمه'], correct:1, explain:'ایچلکلی، پای گوشت و پیاز، نمونه‌ای از سازگاری آشپزی ترکمن با شرایط صحرایی است.' },
+      { q:'نخستین رمان مدرن ترکمنی، «گام قاطع»، اثر کیست؟', options:['بردی کربابایف','مختومقلی فراغی','کمینه','مُلانفس'], correct:0, explain:'بردی کربابایف نزدیک به دو دهه صرف نگارش «گام قاطع» کرد و جایزهٔ استالین را برایش گرفت.' },
+      { q:'صحرایی که بخش عمدهٔ ترکمنستان را می‌پوشاند، چه نام دارد؟', options:['کویر لوت','قره‌قوم','ربع‌الخالی','گبی'], correct:1, explain:'صحرای قره‌قوم بخش عمدهٔ خاک ترکمنستان را دربر می‌گیرد و بستر تاریخی زندگی عشایری این مردم بوده است.' }
+    ]
+  },
+
+  sources:{
+    categories:[
+      { icon:'link', title:'دانشنامه‌های عمومی', text:'ویکی‌پدیای انگلیسی و فارسی، برای اطلاعات پایه دربارهٔ تاریخ، جغرافیا و شخصیت‌های تاریخی. این محتوا سپس بازنویسی و خلاصه شده، نه کپی مستقیم.' },
+      { icon:'flag', title:'یونسکو (میراث ناملموس و میراث جهانی)', text:'فهرست‌های رسمی یونسکو برای تاریخ دقیق ثبت هر میراث فرهنگی ترکمن (قالی‌بافی، دوتار و بخشی، کوشتدپدی، الاباي، مرو باستان، کهنه‌گرگانج، نیسا و موارد مشابه).' },
+      { icon:'compass', title:'منابع سفر و میراث جهانی', text:'توصیف‌های عمومی از اماکنی مانند دروازهٔ دوزخ، یانگی‌قلعه، کوی‌تن‌داغ و آواز، برگرفته از منابع گردشگری و جغرافیایی عمومی.' },
+      { icon:'translate', title:'واژه‌نامهٔ اصیل پروژه', text:'واژه‌نامهٔ ترکمنی-فارسی سایت (۳۰۲ واژه) کاملاً دست‌ساز و اصیل است -نوشته‌شده بر پایهٔ دانش عمومی زبان‌شناسی ترکی برای همین پروژه- نه استخراج‌شده از دیتاست بیرونی؛ جزئیات در README آمده است.' },
+      { icon:'book', title:'دانش عمومی و ترکیب‌بندی مدل هوش مصنوعی', text:'بخش زیادی از متن -به‌ویژه ترجمهٔ ترکمنی، توصیف پوشاک، غذا و آداب و رسوم- بر پایهٔ دانش عمومی مدل هوش مصنوعی (Claude، ساختهٔ Anthropic) نوشته شده و باید همچون هر منبع ثانویه، با احتیاط و در صورت نیاز با بازبینی گویشوران بومی به کار رود.' }
+    ],
+    disclaimer:'این پروژه یک اثر دانشگاهی یا رسمی نیست. برای هر نوع استناد پژوهشی، آموزشی رسمی یا انتشار حرفه‌ای، حتماً به منابع اصلی و متخصصان بومی مراجعه کنید.'
   }
 },
 
@@ -299,15 +386,17 @@ tk: {
   dir:'ltr',
   tagline:'Türkmen medeniýetine açylan gapy',
   nav:{
-    dashboard:'Dashboard', history:'Taryh', warpeace:'Uruş we parahatçylyk', places:'Taryhy we tebigy ýerler', clothing:'Egin-eşik',
+    dashboard:'Dashboard', history:'Taryh', warpeace:'Uruş we parahatçylyk', places:'Taryhy we tebigy ýerler', tribes:'Tireler we haly gölleri', genealogy:'Oguz han şejeresi', clothing:'Egin-eşik',
     cuisine:'Milli tagamlar', arts:'Sungat, saz we dessurlar', language:'Dil', dictionary:'Sözlük',
-    people:'Meşhur şahslar', poets:'Şahyrlar we akyldarlar', books:'Meşhur kitaplar', influences:'Täsirler we miras'
+    people:'Meşhur şahslar', poets:'Şahyrlar we akyldarlar', books:'Meşhur kitaplar', influences:'Täsirler we miras',
+    quiz:'Medeni synag', sources:'Çeşmeler'
   },
   subtitle:{
     dashboard:'Taslamanyň umumy görnüşi', history:'Margiýanadan Garaşsyzlyga çenli', warpeace:'Harby däp we bitaraplyk syýasaty',
-    places:'Ýüpek ýoly şäherlerinden Dowzah derwezesine çenli', clothing:'Telpekden çyrpa çenli', cuisine:'Çölden şähere uzaýan saçak',
+    places:'Ýüpek ýoly şäherlerinden Dowzah derwezesine çenli', tribes:'Her tiräniň öz geometrik nyşany bar', genealogy:'Alty ogul, ýigrimi dört agtyk, bir umumy ata', clothing:'Telpekden çyrpa çenli', cuisine:'Çölden şähere uzaýan saçak',
     arts:'Dutar sesinden Nowruz dessuryna çenli', language:'Oguz dil maşgalasynyň bir şahasy', dictionary:'Pars ýazuwynda türkmen sözleri',
-    people:'Rowaýatdan taryha çenli', poets:'Türkmen medeniýetiniň sesi', books:'Dede Korkutdan häzirki zaman romanyna çenli', influences:'Serhetlerden geçen miras'
+    people:'Rowaýatdan taryha çenli', poets:'Türkmen medeniýetiniň sesi', books:'Dede Korkutdan häzirki zaman romanyna çenli', influences:'Serhetlerden geçen miras',
+    quiz:'Türkmen medeniýetini nä derejede bilýärsiňiz?', sources:'Bu taslamanyň çeşmeleri barada aç-açanlyk'
   },
   ui:{
     searchPlaceholder:'Ähli bölümlerde gözle…',
@@ -321,13 +410,22 @@ tk: {
     settingsTitle:'Görnüş sazlamalary', fontSizeLabel:'Şrift ululygy', contrastLabel:'Ýokary kontrast режimi',
     fontSmall:'Kiçi', fontMedium:'Orta', fontLarge:'Uly',
     contrastOn:'Açyk', contrastOff:'Öçük', settingsClose:'Ýapmak',
+    readerModeLabel:'Okaýyş режimi',
     dictNote:'Aýdylyş gollanmasy', dictSearchPlaceholder:'Söz gözle (türkmençe ýa-da parsça)…',
     globalResultsTitle:'Beýleki bölümlerde', noGlobalResults:'Beýleki bölümlerde netije tapylmady.',
-    extendedDictTitle:'Giň türkmen sözlügi', extendedDictIntro:'3.200-den gowrak türkmen sözi, türk dilindäki we (köplenç) iňlis dilindäki manysy bilen bilelikde, açyk çeşmeli Apertium taslamasyndan alyndy — bu taslama türki dilleriň arasynda maşyn terjimesi üçin ylmy taslamadyr. Bu maglumat GPLv3 ygtyýarnamasy bilen ýaýradylýar; jikme-jiklikler taslamanyň ygtyýarnama faýlynda bar.',
-    extendedDictPrompt:'3.200-den gowrak sözde gözlemek üçin sahypanyň ýokarsyndaky gözleg meýdanyna bir söz ýazyň.',
-    extendedDictNoResults:'Gözlegiňize laýyk söz tapylmady.',
-    extendedDictTooMany:'Netije ilkinji 80 sany bilen çäklendirildi; has takyk netije üçin sözi doly ýazyň.',
-    colTk:'Türkmençe', colTur:'Türkçe', colEn:'Iňlisçe', colPos:'Grammatik görnüşi'
+    viewByTopic:'Mowzuk boýunça', viewByAlphabet:'Elipbiý boýunça',
+    downloadCsv:'CSV göçürip al', downloadJson:'JSON göçürip al',
+    dictTotalWords:'söz', jumpToLetter:'Harpa git',
+    randomBtn:'Tötänleýin bir zat', copyLink:'Salgyny göçür', linkCopied:'Salgy göçürildi!',
+    reportIssue:'Bu mazmunda ýalňyşlyk bar diýip habar ber', resultsCount:'netije', breadcrumbHome:'Dashboard',
+    speakWord:'Aýdylyşyny diňle (emeli)', speakNotSupported:'Brauzeriňiz tekst okamagy goldamaýar.',
+    quoteOfDayLabel:'Şu günki setir', quoteOfDayTopics:'Sahypanyň özündäki bölümlerden saýlanan',
+    quizIntro:'Türkmen taryhy, dili, egin-eşigi, tagamlary we meşhur şahslary barada on bäş sowal. Netijäňiz şu brauzerde ýatda saklanýar.',
+    quizStart:'Synaga başla', quizNext:'Indiki sowal', quizFinish:'Synagy tamamla', quizRestart:'Ýene synan',
+    quizScoreLabel:'Netijäňiz', quizBestLabel:'Iň gowy netije', quizOutOf:'/',
+    quizCorrect:'Dogry!', quizWrong:'Dogry jogap:', quizQuestionLabel:'Sowal',
+    tribesIntro:'Türkmen halysy hiç haçan diňe bezeg bolmandyr; haly öýdi. Her halynyň ýüregi — "göl" — köpburçly nagyş bolup, gyzyl meýdanda tertipli hatarlarda gaýtalanýar; her uly tiräniň öz göli bardy.',
+    sourcesIntro:'Bu taslamanyň çeşmeleri barada aç-açanlyk: mazmun köp sanly umumy çeşmeden alnan bilim beriş häsiýetli gysgaça beýandyr, asyl ylmy barlag däl. Aşakda bu mazmuny taýýarlamakda ulanylan çeşme görnüşleri sanalýar.'
   },
 
   dashboard:{
@@ -349,6 +447,8 @@ tk: {
     history:'Margiýananyň bürünç asyr siwilizasiýasyndan Garaşsyz Türkmenistanyň döremegine çenli ýol.',
     warpeace:'Seljuk söweş meýdanlaryndan häzirki bitaraplyk syýasatyna çenli.',
     places:'Gadymy Merw, Köneürgenç, Nusaý, Aşgabat we Dowzah derwezesi.',
+    tribes:'Teke, ýomut, ärsary, saryk we salyr — her biri öz göli bilen.',
+    genealogy:'Oguz hanyň şejere agajy; 24 türk-türkmen tiresiniň umumy köki.',
     clothing:'Telpek, çyrpy we akyk daşly kümüş şaý-sepler.',
     cuisine:'Türkmen palawy, çekdirme, gutap we çöl gök çaýy.',
     arts:'Dutar we bagşylyk, kuştdepdi tans, Nowruz we toý dessurlary.',
@@ -357,7 +457,9 @@ tk: {
     people:'Rowaýatdaky Oguz handan resmi taryha çenli şahslar.',
     poets:'Türkmen dilini we kimligini şekillendiren şahyrlar.',
     books:'Dede Korkut dessanyndan ilkinji türkmen romanyna çenli.',
-    influences:'Ýüpek ýoly, umumy oguz mirasy we dünýä täsiri.'
+    influences:'Ýüpek ýoly, umumy oguz mirasy we dünýä täsiri.',
+    quiz:'Medeni bilimiňizi barlamak üçin on bäş sowal.',
+    sources:'Bu taslamany taýýarlamakda ulanylan çeşme görnüşleri.'
   },
 
   history:{
@@ -558,6 +660,74 @@ tk: {
       { icon:'flag', title:'Baýdak we nyşan', text:'Türkmenistanyň baýdagynda ýaşyl matanyň gyrasynda bäş sany haly "gölüni" (bäş uly tiräni aňladýan) özünde jemleýän gyzyl zolak, ýarym aý we bäş ýyldyz bar; döwlet tugrasynda bolsa bugdaý we pagta baldaklarynyň arasynda ahalteke aty şekillendirilip, ýurduň oba hojalyk-göçme kökleri aňladylýar.' },
       { icon:'flag', title:'Bitaraplyk — diplomatik kimlik hökmünde', text:'Garaşsyzlyk döwründe Türkmenistan harby bloklara goşulmagyň deregine hemişelik Bitaraplygy saýlap aldy; bu saýlaw häzir ýurduň halkara kimliginiň bir bölegi hasaplanýar.' }
     ]
+  },
+
+  tribes:{
+    intro:'Türkmen halysy hiç haçan diňe bezeg bolmandyr; haly öýdi. Her halynyň ýüregi — "göl" diýilýän köpburçly nagyş — gyzyl reňkli meýdanda tertipli hatarlarda gaýtalanýar, we her uly tiräniň öz göli bardy; tejribeli göz otagyň beýleki tarapyndan haly dokan tiräni tanap bilýärdi.',
+    items:[
+      { icon:'grid', name:'Teke', region:'Aşgabat, Mary we Ahal etraby', text:'Iň köp sanly türkmen tiresi; teke göli — gyzylymtyl-goňur reňkli meýdanda haç şekilli nagyşly sekizburçly medalýon. Teke halylary halkara bazarlarda köplenç "Buhara" ady bilen satylýar — gerçi Buhara diňe olaryň satylýan bazary bolupdyr, dokalan ýeri däl.' },
+      { icon:'grid', name:'Ýomut', region:'Hazar kenary we Eýranyň Türkmensährasy', text:'Eýran serhedine ýakyn ýaşaýan tire; ýomut gölleri käte pars gül-nagşyndan (palmet) alnan bolup, teke halylaryna garanda has dürli reňk toplumyna eýedir.' },
+      { icon:'grid', name:'Ärsary', region:'Amyderýanyň kenary, häzirki Owganystan we Özbegistan', text:'Häzir esasan Owganystanda we Özbegistanda ýaşaýan tire; ärsary halylary adatça has iri dokamaly we uly göllüdir, halkara bazarda köplenç "Owgan" ady bilen satylýar.' },
+      { icon:'grid', name:'Saryk', region:'Taryhy taýdan Merw etraby', text:'Taryhy taýdan Merw wahasynda ýaşan tire; köp türkmen halylary asimmetrik düwün bilen dokalan bolsa-da, saryk we ýomut halylarynyň käbiri simmetrik (türk) düwün bilen dokalypdyr.' },
+      { icon:'grid', name:'Salyr (Salor)', region:'Taryhy taýdan iň güýçli tire, soň gowşan', text:'Bir wagtlar türkmen tireleriniň iň güýçlüsi we iň gadymysy hasaplanypdyr; ýöne bu tiräniň syýasy taýdan gowşamagyndan soň, salyr göli beýleki tireler tarapyndan hem dokalyp başlandy — türkmen halysynda taryhy dogrudan-da "okap" bolýandygynyň aýdyň mysaly.' },
+      { icon:'flag', name:'Milli baýdakdaky bäş göl', region:'Türkmenistanyň milli nyşany', text:'Türkmenistanyň baýdagy we döwlet tugrasy uly türkmen tirelerine salgylanýan bäş sany haly gölüni bir hatarda görkezýär; bu nyşanly saýlaw halyny göçme aýal-gyzlaryň öý senedinden bir milletiň resmi nyşanyna çenli göterdi.' }
+    ]
+  },
+
+  genealogy:{
+    intro:'Oguz dessanyna we Abulgazy Bahadyr hanyň "Şejere-i Terakime" kitabyna görä, köp türkmeniň, Anadoly türkleriniň, azerbaýjanlaryň we beýleki türki halklaryň umumy ata-babasy bir adama baryp direýär: Oguz han. Onuň alty ogly, her oglunyň bolsa dört ogly bolupdyr; şu ýigrimi dört agtyk gadymy 24 oguz tiresiniň ata-babasy bolupdyr. Bu şejere rowaýat-mifологiki häsiýetli beýandyr, takyk taryhy resminama däl, ýöne asyrlar boýy Merkezi Aziýanyň, Eýranyň we Anadolynyň türki dilli halklarynyň tire kimligini şekillendiripdir.',
+    root:'Oguz han',
+    rootNote:'Oguz taýpalarynyň rowaýatdaky ata-babasy',
+    wings:[
+      {
+        name:'Bozok ("synan oklar")', meaning:'Uly şahasy; nyşany ok',
+        sons:[
+          { name:'Gün han (Gün)', tribes:['Gaýy','Baýat','Alka-öýli','Garga-öýli'] },
+          { name:'Aý han (Aý)', tribes:['Ýazyr','Döger','Dodurga','Ýaparly'] },
+          { name:'Ýyldyz han (Ýyldyz)', tribes:['Owşar','Kyzyk','Begdili','Garkyn'] }
+        ]
+      },
+      {
+        name:'Üçok ("üç ok")', meaning:'Kiçi şahasy; nyşany ýaý',
+        sons:[
+          { name:'Gök han (Gök)', tribes:['Baýyndyr','Peçenek','Çawuldur','Çepni'] },
+          { name:'Dag han (Dag)', tribes:['Salyr','Eýmur','Alaýuntly','Ýüregir'] },
+          { name:'Deňiz han (Deňiz)', tribes:['Igdir','Bügdüz','Ýywa','Kynyk'] }
+        ]
+      }
+    ],
+    note:'Bellik: bu tireleriň atlary dürli çeşmelerde (Abulgazy Bahadyr han, Reşideddin Fazlullah, Mahmyt Kaşgarly) biraz tapawutlanýar; ýokarda has köp ýaýran rowaýat berildi. "Salyr" (Salyr/Salor) şu şejeredäki taryhy türkmen tiresi bilen "Tireler we haly gölleri" bölüminde tanyşdyrylan tire aýnydyr; "Kynyk" bolsa Seljuk nesilşalygynyň gelip çykan tiresidir.'
+  },
+
+  quiz:{
+    questions:[
+      { q:'Türkmen milli şahyry Magtymguly Pyragy haýsy asyrda ýaşady?', options:['12-nji asyr','18-nji asyr','14-nji asyr','20-nji asyr'], correct:1, explain:'Magtymguly Pyragy takmynan 1724-1807-nji ýyllar aralygynda, esasan 18-nji asyrda ýaşady.' },
+      { q:'Türkmenistanyň resmi elipbiýi haýsy ýyldan latyn ýazuwyna gaýdyp geldi?', options:['1991','1993','2001','1924'], correct:1, explain:'Türkmenistan Garaşsyzlykdan iki ýyl soň, 1993-nji ýylda latyn elipbiýine gaýdyp geldi.' },
+      { q:'Türkmen medeniýeti bilen gadymdan bäri baglanyşykly haýsy at tohumy?', options:['Arap','Ahalteke','Friz','Kwarter hors'], correct:1, explain:'Türkmen çölünde ösdürilip ýetişdirilen ahalteke, dünýäniň iň gadymy arassa ganly at tohumlarynyň biridir.' },
+      { q:'Şu ýerleriň haýsy ÝUNESKO-nyň Bütindünýä mirasynyň sanawynda DÄL?', options:['Gadymy Merw','Köneürgenç','Nusaý','Dowzah derwezesi'], correct:3, explain:'Dowzah derwezesi ajaýyp tebigy ýerdir, ýöne Merw, Köneürgenç we Nusaýdan tapawutlylykda ÝUNESKO-nyň Bütindünýä mirasynyň sanawynda däldir.' },
+      { q:'Milli "telpek" başgaby haýsy haýwanyň derisinden ýasalýar?', options:['Geçi','Düýe','Garagul goýun','Towşan'], correct:2, explain:'Telpek garagul goýnunyň derisinden ýasalýar; ony kimdir biriniň kellesinden aýyrmak uly kemsitme hasaplanýar.' },
+      { q:'"Çekdirme" nähili tagam?', options:['Gowrulan dolma çörek','Çoýun gazanda taýýarlanýan et-tüwi tagamy','Süýji tagam görnüşi','Peýnir görnüşi'], correct:1, explain:'Çekdirme çoýun gazanda gatlak-gatlak taýýarlanýan et-tüwi tagamydyr.' },
+      { q:'Durmuşa çykan aýallaryň kellesinden aşak taşlaýan dabaraly eşigi näme diýilýär?', options:['Çyrpy','Balak','Dolak','Köýnek'], correct:0, explain:'Çyrpy — hiç haçan geýilmeýän bezeg ýeňleri arka tarapdan asylyp galýan uzyn dabaraly eşik.' },
+      { q:'Türkmen dili türk dilleriniň haýsy şahasyna degişli?', options:['Günbatar oguz', 'Garluk', 'Kыpçak', 'Sibir'], correct:0, explain:'Türkmen dili günbatar oguz şahasyna degişli — türk we azerbaýjan dilleri hem şol şahadandyr.' },
+      { q:'Çalyjylary "bagşy" diýlip atlandyrylýan meşhur iki simli saz guraly haýsy?', options:['Tar','Dutar','Kemança','Santur'], correct:1, explain:'Dutar tut agajyndan ýasalýar; ony ýasamak we çalyp aýdym aýtmak sungaty 2021-nji ýylda ÝUNESKO sanawyna girizildi.' },
+      { q:'Türkmenistan haýsy ýyldan BMG-den hemişelik Bitaraplyk derejesini aldy?', options:['1991','1995','2001','1981'], correct:1, explain:'BMG-niň Baş Assambleýasy 1995-nji ýylda Türkmenistanyň hemişelik Bitaraplygyny ykrar etdi.' },
+      { q:'Şu atlaryň haýsy taryhy uly türkmen tireleriniň biri DÄL?', options:['Teke','Ýomut','Ärsary','Hazara'], correct:3, explain:'Hazara aýry halk (esasan Owganystanda); uly türkmen tireleri bolsa teke, ýomut, ärsary, salyr we saryk.' },
+      { q:'Gadymy türk taýpalarynyň taryhyny ýazan "Şejere-i Terakime" kitabynyň awtory kim?', options:['Magtymguly Pyragy','Abulgazy Bahadyr han','Berdi Kerbabaýew','Döwletmämmet Azady'], correct:1, explain:'Abulgazy Bahadyr han, 17-nji asyryň Hywa hany, bu taryhy eseri çagataý dilinde ýazdy.' },
+      { q:'Haýsy tagam asyl görnüşinde çölüň gyzgyn çägesinde bişirilipdir?', options:['Gutap','Içlekli','Manty','Pişme'], correct:1, explain:'Içlekli, et-sogan pirogy, türkmen aşpezçiliginiň çöl şertine uýgunlaşan aýdyň mysalydyr.' },
+      { q:'Ilkinji häzirki zaman türkmen romany "Aýgytly ädim"-iň awtory kim?', options:['Berdi Kerbabaýew','Magtymguly Pyragy','Kemine','Mollanepes'], correct:0, explain:'Berdi Kerbabaýew "Aýgytly ädimi" ýazmaga ýigrimi ýyla golaý wagt sarp etdi we Stalin baýragyna eýe boldy.' },
+      { q:'Türkmenistanyň esasy böleginişi tutýan çöl haýsy?', options:['Lut çöli','Garagum','Rub al-Hali','Gobi'], correct:1, explain:'Garagum çölü Türkmenistanyň ýer meýdanynyň esasy bölegini tutýar we göçme durmuşyň taryhy giňişligi bolupdyr.' }
+    ]
+  },
+
+  sources:{
+    categories:[
+      { icon:'link', title:'Umumy ensiklopediýalar', text:'Iňlis we pars dilli Wikipediýa, taryh, geografiýa we taryhy şahslar barada esasy maglumat üçin. Bu mazmun soň täzeden ýazyldy we gysgaldyldy, göni göçürilmedi.' },
+      { icon:'flag', title:'ÝUNESKO (maddy däl we bütindünýä mirasy)', text:'Her türkmen medeni mirasynyň (halyçylyk, dutar-bagşylyk, kuştdepdi, alabaý, Gadymy Merw, Köneürgenç, Nusaý we ş.m.) takyk bellige alnan senesini bilmek üçin ÝUNESKO-nyň resmi sanawlary.' },
+      { icon:'compass', title:'Syýahat we bütindünýä miras çeşmeleri', text:'Dowzah derwezesi, Ýangykala, Köýtendag we Awaza ýaly ýerleriň umumy beýany syýahatçylyk we geografiýa çeşmelerinden alyndy.' },
+      { icon:'translate', title:'Taslamanyň asyl sözlügi', text:'Sahypanyň türkmençe-parsça sözlügi (302 söz) doly asyl we el bilen ýazylan; daşarky maglumat toplumyndan alynmady, şu taslama üçin umumy türki dilçilik bilimine esaslanyp ýazyldy. Jikme-jiklikler README-de bar.' },
+      { icon:'book', title:'Umumy bilim we emeli intellekt bilen düzülen', text:'Tekstiň uly bölegi — aýratyn-da türkmen terjimesi, egin-eşik, tagam we dessur beýanlary — emeli intellekt modeliniň (Claude, Anthropic tarapyndan ýasalan) umumy bilimine esaslanyp ýazyldy we islendik ikinji derejeli çeşme ýaly, ünsli garalmaly, zerur bolsa ene dilli adamlar bilen barlanmaly.' }
+    ],
+    disclaimer:'Bu taslama akademiki ýa-da resmi eser däl. Islendik ylmy salgylanma, resmi bilim ýa-da hünär neşiri üçin, hökman asyl çeşmelere we ýerli hünärmenlere ýüz tutuň.'
   }
 }
 };

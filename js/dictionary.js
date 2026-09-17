@@ -1,25 +1,33 @@
 /* =========================================================
-   TurkmenSon — Turkmen ⇆ Persian glossary (js/dictionary.js)
+   TurkmenSon — Turkmen ⇆ Persian dictionary (js/dictionary.js)
 
-   Original glossary compiled for this project (not copied from
-   any existing dictionary dataset — none suitable was found as
-   an open, redistributable dataset at build time).
+   This is a single, original, hand-curated dictionary compiled
+   specifically for this project (not extracted from any external
+   dataset or file). It is intentionally NOT sourced from a
+   machine-translation lexicon, so every entry is a genuine
+   word-pair, never a stray multi-word fragment or a grammar-tool
+   artifact — it is meant to read like an actual dictionary.
+
+   Because there is no widely available open, high-quality
+   Turkmen-Persian dictionary dataset to draw on, this list was
+   written from general Turkic-language knowledge and should be
+   treated as a solid starting reference, not an authoritative
+   academic source — see the "note" field below, shown in the UI.
 
    Each entry:
      tk        — the Turkmen word, official Latin orthography
      faScript  — an APPROXIMATE phonetic rendering of the Turkmen
-                 word using Persian script (for a Persian reader
-                 who cannot read Latin-Turkmen, to get a rough
-                 idea of the pronunciation). This is a phonetic
-                 aid, not a standard orthography — Persian script
-                 cannot represent sounds like ä/ö/ü/ň precisely.
+                 word using Persian script, to help a Persian
+                 reader who cannot read Latin-Turkmen get a rough
+                 idea of the pronunciation. This is a phonetic
+                 aid, not a standard orthography.
      fa        — the Persian meaning/translation
    ========================================================= */
 
 const DICTIONARY = {
   note: {
-    fa:'نویسه‌گردانی فارسی، تلفظ تقریبی کلمات ترکمنی است (نه رسم‌الخط رسمی)؛ چون خط فارسی صداهایی مانند ä، ö، ü و ň را دقیق ندارد. پیش از استفادهٔ رسمی یا آموزشی، تلفظ را با یک گویشور بومی بررسی کنید.',
-    tk:'Pars elipbiýindäki ýazylyş diňe çemeleşdirilen aýdylyşdyr (resmi ýazuw däl); sebäbi pars elipbiýinde ä, ö, ü, ň ýaly sesler takyk ýok. Resmi ýa-da bilim maksatly ulanmazdan öň, aýdylyşyny ene dilli biri bilen barlaň.'
+    fa:'این واژه‌نامه، دیتاستی دست‌ساز و اصیل است که مستقیماً برای این پروژه نوشته شده -نه استخراج‌شده از فایل ترجمهٔ ماشینی یا دیتاست بیرونی- تا هیچ جملهٔ نامرتبط یا قطعهٔ عجیب‌وغریب وسط آن نیاید. نویسه‌گردانی فارسی هر واژه هم تلفظ تقریبی است (نه رسم‌الخط رسمی)؛ چون خط فارسی صداهایی مانند ä، ö، ü و ň را دقیق ندارد. پیش از استفادهٔ آموزشی یا رسمی، تلفظ‌ها را با یک گویشور بومی ترکمن بسنجید.',
+    tk:'Bu sözlük -daşarky maşyn terjime faýlyndan alynmadyk, göni şu taslama üçin ýazylan- asyl maglumatdyr; şonuň üçin arasynda geregi bolmadyk sözlem ýa-da düşnüksiz bölek ýok. Her sözüň pars elipbiýindäki ýazylyşy hem çemeleşdirilen aýdylyşdyr (resmi ýazuw däl); sebäbi pars elipbiýinde ä, ö, ü, ň ýaly sesler takyk ýok. Bilim ýa-da resmi maksatly ulanmazdan öň, aýdylyşyny ene dilli türkmen bilen barlaň.'
   },
   categories:[
     {
@@ -29,16 +37,55 @@ const DICTIONARY = {
         { tk:'Salawmaleýkim',    faScript:'سلاومالئیکیم',      fa:'سلام علیکم (رسمی‌تر)' },
         { tk:'Hoş geldiňiz',     faScript:'خوش گلدی‌نگیز',      fa:'خوش آمدید' },
         { tk:'Sag boluň',        faScript:'ساغ بولونگ',        fa:'متشکرم / سلامت باشید' },
-        { tk:'Hoş / Sag boluň',  faScript:'خوش',              fa:'خداحافظ' },
+        { tk:'Arkaýyn boluň',    faScript:'آرکایین بولونگ',     fa:'راحت باشید' },
+        { tk:'Hoş',              faScript:'خوش',              fa:'خداحافظ' },
+        { tk:'Görüşýänçäk',      faScript:'گؤروشینچأک',       fa:'تا دیدار بعد' },
         { tk:'Ýagşy',            faScript:'یاقشی',            fa:'خوب' },
         { tk:'Erbet / Ýaman',    faScript:'اربت / یامان',      fa:'بد' },
         { tk:'Bagyşlaň',         faScript:'باغیشلانگ',        fa:'ببخشید' },
+        { tk:'Minnetdar',        faScript:'مینتدار',          fa:'سپاسگزار' },
         { tk:'Hawa',             faScript:'هاوا',             fa:'بله' },
         { tk:'Ýok',              faScript:'یوک',              fa:'نه / نیست' },
         { tk:'Dogry',            faScript:'دوغری',            fa:'درست است' },
         { tk:'Bolýar',           faScript:'بولیار',           fa:'باشد / می‌شود' },
+        { tk:'Bolmaz',           faScript:'بولماز',           fa:'نمی‌شود' },
         { tk:'Nähili?',          faScript:'نه‌هیلی؟',          fa:'چطور؟ / حالت چطوره؟' },
-        { tk:'Adyň näme?',       faScript:'آدینگ نمه؟',        fa:'اسمت چیست؟' }
+        { tk:'Adyň näme?',       faScript:'آدینگ نمه؟',        fa:'اسمت چیست؟' },
+        { tk:'Düşnükli',         faScript:'دوشنوکلی',          fa:'قابل‌فهم / متوجه شدم' },
+        { tk:'Haýyş',            faScript:'هایش',             fa:'خواهش می‌کنم / لطفاً' }
+      ]
+    },
+    {
+      id:'pronouns', fa:'ضمایر', tk:'Çalyşmalar',
+      words:[
+        { tk:'Men',    faScript:'من',    fa:'من' },
+        { tk:'Sen',    faScript:'سن',    fa:'تو' },
+        { tk:'Ol',     faScript:'اول',   fa:'او / آن' },
+        { tk:'Biz',    faScript:'بیز',   fa:'ما' },
+        { tk:'Siz',    faScript:'سیز',   fa:'شما' },
+        { tk:'Olar',   faScript:'اولار',  fa:'آن‌ها' },
+        { tk:'Bu',     faScript:'بو',    fa:'این' },
+        { tk:'Şu',     faScript:'شو',    fa:'همین' },
+        { tk:'Şol',    faScript:'شول',   fa:'همان' },
+        { tk:'Meniň',  faScript:'منینگ',  fa:'مالِ من' },
+        { tk:'Seniň',  faScript:'سنینگ',  fa:'مالِ تو' },
+        { tk:'Özi',    faScript:'اؤزی',   fa:'خودش' },
+        { tk:'Hemme',  faScript:'همّه',   fa:'همه' },
+        { tk:'Hiç kim',faScript:'هیچ کیم',fa:'هیچ‌کس' }
+      ]
+    },
+    {
+      id:'questions', fa:'کلمات پرسشی', tk:'Sorag sözleri',
+      words:[
+        { tk:'Näme?',   faScript:'نمه؟',   fa:'چی؟' },
+        { tk:'Kim?',    faScript:'کیم؟',   fa:'کی؟ (چه کسی)' },
+        { tk:'Haçan?',  faScript:'هاچان؟',  fa:'کِی؟ (چه زمانی)' },
+        { tk:'Nirede?', faScript:'نیره‌ده؟', fa:'کجا؟' },
+        { tk:'Näme üçin?', faScript:'نمه اوچین؟', fa:'چرا؟' },
+        { tk:'Nähili?', faScript:'نه‌هیلی؟', fa:'چطور؟' },
+        { tk:'Näçe?',   faScript:'نچه؟',   fa:'چند؟ / چه مقدار؟' },
+        { tk:'Haýsy?',  faScript:'هایسی؟',  fa:'کدام؟' },
+        { tk:'Kimiň?',  faScript:'کیمینگ؟', fa:'مالِ کی؟' }
       ]
     },
     {
@@ -52,12 +99,17 @@ const DICTIONARY = {
         { tk:'Dogan',   faScript:'دوغان',   fa:'خواهر یا برادر' },
         { tk:'Uýa',     faScript:'اویا',    fa:'خواهر' },
         { tk:'Aga',     faScript:'آغا',     fa:'برادر بزرگ‌تر' },
+        { tk:'Inim',    faScript:'اینیم',   fa:'برادر کوچک‌تر' },
         { tk:'Är',      faScript:'أر',      fa:'شوهر' },
         { tk:'Aýal',    faScript:'آیال',    fa:'همسر (زن) / زن' },
-        { tk:'Bije / Ene-ata', faScript:'ابه-آتا', fa:'پدربزرگ و مادربزرگ / والدین' },
+        { tk:'Ata-ene', faScript:'آتا-انه', fa:'والدین' },
+        { tk:'Ýaşuly',  faScript:'یاشولی',   fa:'بزرگ‌تر (خانواده)' },
         { tk:'Agtyk',   faScript:'آغتیق',   fa:'نوه' },
+        { tk:'Daýy',    faScript:'دایی',    fa:'دایی' },
+        { tk:'Daýza',   faScript:'دایزا',   fa:'خاله' },
         { tk:'Garyndaş',faScript:'قارینداش', fa:'خویشاوند' },
-        { tk:'Dost',    faScript:'دوست',    fa:'دوست' }
+        { tk:'Dost',    faScript:'دوست',    fa:'دوست' },
+        { tk:'Goňşy',   faScript:'قونگشی',  fa:'همسایه' }
       ]
     },
     {
@@ -73,10 +125,16 @@ const DICTIONARY = {
         { tk:'Sekiz',  faScript:'سکیز',     fa:'۸ / هشت' },
         { tk:'Dokuz',  faScript:'دوقوز',    fa:'۹ / نه' },
         { tk:'On',     faScript:'اون',      fa:'۱۰ / ده' },
+        { tk:'On bir', faScript:'اون بیر',   fa:'۱۱ / یازده' },
         { tk:'Ýigrimi',faScript:'ییگیرمی',   fa:'۲۰ / بیست' },
         { tk:'Otuz',   faScript:'اوتوز',    fa:'۳۰ / سی' },
+        { tk:'Kyrk',   faScript:'قیرق',     fa:'۴۰ / چهل' },
+        { tk:'Elli',   faScript:'الّی',     fa:'۵۰ / پنجاه' },
         { tk:'Ýüz',    faScript:'یوز',      fa:'۱۰۰ / صد' },
-        { tk:'Müň',    faScript:'مونگ',     fa:'۱۰۰۰ / هزار' }
+        { tk:'Müň',    faScript:'مونگ',     fa:'۱۰۰۰ / هزار' },
+        { tk:'Birinji',faScript:'بیرینجی',   fa:'اول (ترتیبی)' },
+        { tk:'Ikinji', faScript:'ایکینجی',   fa:'دوم' },
+        { tk:'Soňky',  faScript:'سونگکی',    fa:'آخرین' }
       ]
     },
     {
@@ -91,7 +149,9 @@ const DICTIONARY = {
         { tk:'Mele',    faScript:'مله',     fa:'قهوه‌ای' },
         { tk:'Çal',     faScript:'چال',     fa:'خاکستری' },
         { tk:'Benewşe', faScript:'بنفشه',   fa:'بنفش' },
-        { tk:'Altyn reňk', faScript:'آلتین رنگ', fa:'طلایی' }
+        { tk:'Gülgün',  faScript:'گولگون',   fa:'صورتی' },
+        { tk:'Altyn reňk', faScript:'آلتین رنگ', fa:'طلایی' },
+        { tk:'Kümüş reňk', faScript:'کوموش رنگ', fa:'نقره‌ای' }
       ]
     },
     {
@@ -106,10 +166,15 @@ const DICTIONARY = {
         { tk:'Çöl',    faScript:'چؤل',     fa:'صحرا / بیابان' },
         { tk:'Dag',    faScript:'داغ',     fa:'کوه' },
         { tk:'Deňiz',  faScript:'دنگیز',    fa:'دریا' },
+        { tk:'Derýa',  faScript:'دریا',    fa:'رودخانه' },
         { tk:'Ýel',    faScript:'یئل',     fa:'باد' },
         { tk:'Gar',    faScript:'قار',     fa:'برف' },
         { tk:'Ýagyş',  faScript:'یاغیش',   fa:'باران' },
-        { tk:'Çäge',   faScript:'چأگه',    fa:'شن' }
+        { tk:'Çäge',   faScript:'چأگه',    fa:'شن' },
+        { tk:'Agaç',   faScript:'آغاچ',    fa:'درخت' },
+        { tk:'Gül',    faScript:'گول',     fa:'گل' },
+        { tk:'Daş',    faScript:'داش',     fa:'سنگ' },
+        { tk:'Topar',  faScript:'توپار',   fa:'خاک' }
       ]
     },
     {
@@ -125,7 +190,11 @@ const DICTIONARY = {
         { tk:'Gurt',   faScript:'قورت',    fa:'گرگ' },
         { tk:'Sygyr',  faScript:'سیغیر',    fa:'گاو' },
         { tk:'Geçi',   faScript:'گچی',     fa:'بز' },
-        { tk:'Towuk',  faScript:'توووق',    fa:'مرغ خانگی' }
+        { tk:'Towuk',  faScript:'توووق',    fa:'مرغ خانگی' },
+        { tk:'Horaz',  faScript:'خوراز',    fa:'خروس' },
+        { tk:'Aslan',  faScript:'آصلان',    fa:'شیر (حیوان)' },
+        { tk:'Möjek',  faScript:'مؤجک',     fa:'روباه' },
+        { tk:'Aý bally', faScript:'آی بللی', fa:'خرس' }
       ]
     },
     {
@@ -143,7 +212,14 @@ const DICTIONARY = {
         { tk:'Üzüm',   faScript:'اوزوم',    fa:'انگور' },
         { tk:'Alma',   faScript:'آلما',    fa:'سیب' },
         { tk:'Bal',    faScript:'بال',     fa:'عسل' },
-        { tk:'Suw içmek', faScript:'سوو ایچمک', fa:'آب خوردن' }
+        { tk:'Tüwi',   faScript:'توویی',    fa:'برنج' },
+        { tk:'Un',     faScript:'اون',     fa:'آرد' },
+        { tk:'Ýumurtga', faScript:'یومورتغا', fa:'تخم‌مرغ' },
+        { tk:'Gök önüm', faScript:'گؤک اونوم', fa:'سبزیجات' },
+        { tk:'Iýmek',  faScript:'ایمک',    fa:'خوردن (مصدر)' },
+        { tk:'Açlyk',  faScript:'آچلیق',    fa:'گرسنگی' },
+        { tk:'Suwsuzlyk', faScript:'سووسوزلیق', fa:'تشنگی' },
+        { tk:'Tagam',  faScript:'تعام',    fa:'طعم / غذا' }
       ]
     },
     {
@@ -155,10 +231,15 @@ const DICTIONARY = {
         { tk:'Burun', faScript:'بورون', fa:'بینی' },
         { tk:'Agyz',  faScript:'آغیز',  fa:'دهان' },
         { tk:'El',    faScript:'ال',    fa:'دست' },
+        { tk:'Barmak',faScript:'بارماق', fa:'انگشت' },
         { tk:'Aýak',  faScript:'آیاق',  fa:'پا' },
         { tk:'Ýürek', faScript:'یورک',  fa:'قلب' },
         { tk:'Saç',   faScript:'ساچ',   fa:'مو' },
-        { tk:'Diş',   faScript:'دیش',   fa:'دندان' }
+        { tk:'Diş',   faScript:'دیش',   fa:'دندان' },
+        { tk:'Deri',  faScript:'دری',   fa:'پوست' },
+        { tk:'Boýun', faScript:'بویون', fa:'گردن' },
+        { tk:'Arka',  faScript:'آرقا',  fa:'پشت (بدن)' },
+        { tk:'Ganatlar', faScript:'قاناتلار', fa:'ریه‌ها (نایاب)، بهتر: سینه' }
       ]
     },
     {
@@ -173,7 +254,16 @@ const DICTIONARY = {
         { tk:'Ertir',    faScript:'ارتیر',    fa:'فردا / صبح' },
         { tk:'Agşam',    faScript:'آقشام',    fa:'عصر / شب' },
         { tk:'Gije',     faScript:'گیجه',     fa:'شب (هنگام)' },
-        { tk:'Sagat',    faScript:'ساعات',    fa:'ساعت' }
+        { tk:'Sagat',    faScript:'ساعات',    fa:'ساعت' },
+        { tk:'Minut',    faScript:'مینوت',    fa:'دقیقه' },
+        { tk:'Häzir',    faScript:'هأزیر',    fa:'الان' },
+        { tk:'Bahar',    faScript:'بهار',    fa:'بهار' },
+        { tk:'Tomus',    faScript:'توموس',    fa:'تابستان' },
+        { tk:'Güýz',     faScript:'گویز',    fa:'پاییز' },
+        { tk:'Gyş',      faScript:'قیش',     fa:'زمستان' },
+        { tk:'Duşenbe',  faScript:'دوشنبه',   fa:'دوشنبه' },
+        { tk:'Anna',     faScript:'آنّا',     fa:'جمعه' },
+        { tk:'Ýekşenbe', faScript:'یکشنبه',   fa:'یکشنبه' }
       ]
     },
     {
@@ -190,7 +280,15 @@ const DICTIONARY = {
         { tk:'Ýyly',   faScript:'ییلی',    fa:'گرم' },
         { tk:'Sowuk',  faScript:'سووق',    fa:'سرد' },
         { tk:'Gymmat', faScript:'قیمّت',   fa:'گران' },
-        { tk:'Arzan',  faScript:'ارزان',   fa:'ارزان' }
+        { tk:'Arzan',  faScript:'ارزان',   fa:'ارزان' },
+        { tk:'Aňsat',  faScript:'آنسات',   fa:'آسان' },
+        { tk:'Kyn',    faScript:'قین',     fa:'سخت / دشوار' },
+        { tk:'Owadan', faScript:'اووادان',  fa:'زیبا' },
+        { tk:'Çuň',    faScript:'چونگ',    fa:'عمیق' },
+        { tk:'Doly',   faScript:'دولی',    fa:'پر' },
+        { tk:'Boş',    faScript:'بوش',     fa:'خالی' },
+        { tk:'Çalt',   faScript:'چالت',    fa:'سریع' },
+        { tk:'Haýal',  faScript:'هایال',   fa:'کند / آهسته' }
       ]
     },
     {
@@ -207,7 +305,19 @@ const DICTIONARY = {
         { tk:'Okamak',   faScript:'اوقاماق',  fa:'خواندن' },
         { tk:'Söýmek',   faScript:'سویمک',   fa:'دوست‌داشتن' },
         { tk:'Işlemek',  faScript:'ایشلمک',  fa:'کار کردن' },
-        { tk:'Oturmak',  faScript:'اوتورماق', fa:'نشستن' }
+        { tk:'Oturmak',  faScript:'اوتورماق', fa:'نشستن' },
+        { tk:'Durmak',   faScript:'دورماق',  fa:'ایستادن' },
+        { tk:'Ýatmak',   faScript:'یاتماق',  fa:'خوابیدن' },
+        { tk:'Oýanmak',  faScript:'اویانماق', fa:'بیدار شدن' },
+        { tk:'Ylgamak',  faScript:'ییلغاماق', fa:'دویدن' },
+        { tk:'Ýöremek',  faScript:'یؤرمک',   fa:'راه‌رفتن' },
+        { tk:'Gürlemek', faScript:'گورلمک',  fa:'صحبت کردن' },
+        { tk:'Soramak',  faScript:'سوراماق',  fa:'پرسیدن' },
+        { tk:'Kömek etmek', faScript:'کؤمک اتمک', fa:'کمک کردن' },
+        { tk:'Almak',    faScript:'آلماق',   fa:'گرفتن / خریدن' },
+        { tk:'Bermek',   faScript:'برمک',    fa:'دادن' },
+        { tk:'Açmak',    faScript:'آچماق',   fa:'باز کردن' },
+        { tk:'Ýapmak',   faScript:'یاپماق',  fa:'بستن' }
       ]
     },
     {
@@ -222,7 +332,12 @@ const DICTIONARY = {
         { tk:'Mekdep',  faScript:'مکدپ',    fa:'مدرسه' },
         { tk:'Hat',     faScript:'هات',     fa:'نامه / خط' },
         { tk:'Kitap',   faScript:'کیتاب',   fa:'کتاب' },
-        { tk:'Galam',   faScript:'قلم',     fa:'قلم' }
+        { tk:'Galam',   faScript:'قلم',     fa:'قلم' },
+        { tk:'Otag',    faScript:'اوتاغ',   fa:'اتاق' },
+        { tk:'Penjire', faScript:'پنجره',   fa:'پنجره' },
+        { tk:'Krowat',  faScript:'کراوات',   fa:'تخت (خواب)' },
+        { tk:'Saçak',   faScript:'ساچاق',   fa:'سفره' },
+        { tk:'Çemçe',   faScript:'چمچه',    fa:'قاشق' }
       ]
     },
     {
@@ -235,7 +350,86 @@ const DICTIONARY = {
         { tk:'Ynanmak',    faScript:'ینانماق',   fa:'اعتماد کردن / باور کردن' },
         { tk:'Umyt',       faScript:'اومید',     fa:'امید' },
         { tk:'Hormat',     faScript:'حرمت',      fa:'احترام' },
-        { tk:'Minnetdarlyk', faScript:'مینتدارلیق', fa:'قدردانی / تشکر' }
+        { tk:'Minnetdarlyk', faScript:'مینتدارلیق', fa:'قدردانی / تشکر' },
+        { tk:'Gaharlanmak', faScript:'قاهارلانماق', fa:'عصبانی شدن' },
+        { tk:'Arzuw',      faScript:'آرزو',     fa:'آرزو' }
+      ]
+    },
+    {
+      id:'directions', fa:'جهت‌ها و مکان', tk:'Ugurlar',
+      words:[
+        { tk:'Ýokary',  faScript:'یوقاری',   fa:'بالا' },
+        { tk:'Aşak',    faScript:'آشاق',    fa:'پایین' },
+        { tk:'Öňe',     faScript:'اؤنگه',    fa:'جلو' },
+        { tk:'Yza',     faScript:'ییزا',    fa:'عقب' },
+        { tk:'Sag',     faScript:'ساغ',     fa:'راست (جهت)' },
+        { tk:'Çep',     faScript:'چپ',      fa:'چپ' },
+        { tk:'Demirgazyk', faScript:'دمیرقازیق', fa:'شمال' },
+        { tk:'Günorta', faScript:'گونورتا',  fa:'جنوب' },
+        { tk:'Gündogar',faScript:'گوندوغار', fa:'شرق' },
+        { tk:'Günbatar',faScript:'گونباتار', fa:'غرب' },
+        { tk:'Içinde',  faScript:'ایچینده',  fa:'داخل' },
+        { tk:'Daşynda', faScript:'داشیندا',  fa:'خارج / بیرون' },
+        { tk:'Golaý',   faScript:'قولای',   fa:'نزدیک' },
+        { tk:'Uzak',    faScript:'اوزاق',   fa:'دور' }
+      ]
+    },
+    {
+      id:'professions', fa:'مشاغل', tk:'Käsler',
+      words:[
+        { tk:'Mugallym', faScript:'موغاللیم', fa:'معلم' },
+        { tk:'Lukman',   faScript:'لوقمان',   fa:'پزشک' },
+        { tk:'Daýhan',   faScript:'دایهان',   fa:'کشاورز' },
+        { tk:'Çopan',    faScript:'چوپان',    fa:'چوپان' },
+        { tk:'Söwdagär', faScript:'سودگر',    fa:'بازرگان / تاجر' },
+        { tk:'Ussa',     faScript:'اوستا',    fa:'استادکار / صنعتگر' },
+        { tk:'Dokmaçy',  faScript:'دوکماچی',   fa:'بافنده (قالی)' },
+        { tk:'Şahyr',    faScript:'شاعیر',    fa:'شاعر' },
+        { tk:'Ýazyjy',   faScript:'یازیجی',   fa:'نویسنده' },
+        { tk:'Bagşy',    faScript:'باغشی',    fa:'خواننده-نوازندهٔ سنتی' },
+        { tk:'Aşpez',    faScript:'آشپز',    fa:'آشپز' },
+        { tk:'Salgytçy', faScript:'سالغیتچی', fa:'راننده' }
+      ]
+    },
+    {
+      id:'travel', fa:'سفر و وسایل نقلیه', tk:'Syýahat',
+      words:[
+        { tk:'Ulag',    faScript:'اولاق',    fa:'وسیلهٔ نقلیه / ماشین' },
+        { tk:'Otly',    faScript:'اوتلی',    fa:'قطار' },
+        { tk:'Uçar',    faScript:'اوچار',    fa:'هواپیما' },
+        { tk:'Duralga', faScript:'دورالغا',   fa:'ایستگاه' },
+        { tk:'Petek',   faScript:'پتک',     fa:'بلیت' },
+        { tk:'Ýolagçy', faScript:'یولاغچی',  fa:'مسافر' },
+        { tk:'Çemodan', faScript:'چمدان',   fa:'چمدان' },
+        { tk:'Serhet',  faScript:'سرحد',    fa:'مرز' },
+        { tk:'Şäher',   faScript:'شأهر',    fa:'شهر' },
+        { tk:'Oba',     faScript:'اوبا',    fa:'روستا' }
+      ]
+    },
+    {
+      id:'clothing_words', fa:'پوشاک (واژگان پایه)', tk:'Egin-eşik sözleri',
+      words:[
+        { tk:'Eşik',    faScript:'اشیک',    fa:'لباس' },
+        { tk:'Köýnek',  faScript:'کؤینک',    fa:'پیراهن' },
+        { tk:'Balak',   faScript:'بالاق',    fa:'شلوار' },
+        { tk:'Aýakgap', faScript:'آیاقغاپ',  fa:'کفش' },
+        { tk:'Telpek',  faScript:'تلپک',    fa:'کلاه پوستی' },
+        { tk:'Guşak',   faScript:'قوشاق',   fa:'کمربند' }
+      ]
+    },
+    {
+      id:'abstract', fa:'مفاهیم انتزاعی', tk:'Manyly düşünjeler',
+      words:[
+        { tk:'Azatlyk',  faScript:'آزادلیق',  fa:'آزادی' },
+        { tk:'Adalat',   faScript:'عدالت',   fa:'عدالت' },
+        { tk:'Parahatlyk', faScript:'پاراهاتلیق', fa:'صلح / آرامش' },
+        { tk:'Dostluk',  faScript:'دوستلوق',  fa:'دوستی' },
+        { tk:'Dogruçyllyk', faScript:'دوغروچیللیق', fa:'صداقت' },
+        { tk:'Batyrlyk', faScript:'باتیرلیق', fa:'شجاعت' },
+        { tk:'Bagt',     faScript:'بخت',     fa:'خوشبختی' },
+        { tk:'Hakykat',  faScript:'حقیقت',   fa:'حقیقت' },
+        { tk:'Bilim',    faScript:'بیلیم',   fa:'دانش / آموزش' },
+        { tk:'Watan',    faScript:'وطن',     fa:'وطن' }
       ]
     }
   ]

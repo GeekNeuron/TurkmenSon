@@ -72,7 +72,27 @@ const ICONS = {
 
   contrast: `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.3" stroke="currentColor" stroke-width="1.6"/><path d="M12 3.7V20.3C16 20.3 19 16.6 19 12C19 7.4 16 3.7 12 3.7Z" fill="currentColor"/></svg>`,
 
-  textSize: `<svg viewBox="0 0 24 24" fill="none"><path d="M4 18L8 6L12 18M5.3 14H10.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 18V9.5H19M16.5 9.5V18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  textSize: `<svg viewBox="0 0 24 24" fill="none"><path d="M4 18L8 6L12 18M5.3 14H10.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 18V9.5H19M16.5 9.5V18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+
+  copy: `<svg viewBox="0 0 24 24" fill="none"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M15 9V6C15 4.9 14.1 4 13 4H6C4.9 4 4 4.9 4 6V13C4 14.1 4.9 15 6 15H9" stroke="currentColor" stroke-width="1.5"/></svg>`,
+
+  shuffle: `<svg viewBox="0 0 24 24" fill="none"><path d="M4 6H7.5L15 17.5H20M15 6H20M4 17.5H7.5L9.5 14.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 3.5L20.5 6L17.5 8.5M17.5 15L20.5 17.5L17.5 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+
+  volume: `<svg viewBox="0 0 24 24" fill="none"><path d="M4 9.5V14.5H7.5L12.5 18.5V5.5L7.5 9.5H4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 9.2C16.8 10 17.2 10.9 17.2 12C17.2 13.1 16.8 14 16 14.8M18.5 6.7C20 8.1 20.8 9.9 20.8 12C20.8 14.1 20 15.9 18.5 17.3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>`,
+
+  download: `<svg viewBox="0 0 24 24" fill="none"><path d="M12 4V15M12 15L8 11M12 15L16 11" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 16V18C4.5 19.1 5.4 20 6.5 20H17.5C18.6 20 19.5 19.1 19.5 18V16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+
+  mail: `<svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5.5" width="17" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4.5 7L12 12.5L19.5 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+
+  check: `<svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5L9.5 17.5L19.5 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+
+  x: `<svg viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`,
+
+  trophy: `<svg viewBox="0 0 24 24" fill="none"><path d="M7 4H17V9C17 12 14.8 14 12 14C9.2 14 7 12 7 9V4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 5.5H4.5C4.5 8 5.5 9.5 7.5 9.8M17 5.5H19.5C19.5 8 18.5 9.5 16.5 9.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 14V17.5M9 20H15M9.5 20C9.5 18.5 10 17.5 12 17.5C14 17.5 14.5 18.5 14.5 20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+
+  grid: `<svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/></svg>`,
+
+  tree: `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="4.5" r="2.2" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="12" r="2.2" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="12" r="2.2" stroke="currentColor" stroke-width="1.5"/><circle cx="4" cy="19.5" r="1.9" stroke="currentColor" stroke-width="1.4"/><circle cx="9" cy="19.5" r="1.9" stroke="currentColor" stroke-width="1.4"/><circle cx="15" cy="19.5" r="1.9" stroke="currentColor" stroke-width="1.4"/><circle cx="20" cy="19.5" r="1.9" stroke="currentColor" stroke-width="1.4"/><path d="M12 6.7V9M6 14.2V16M18 14.2V16M6 9L12 9L18 9M4 17.6V16M9 17.6V16M6 16H9M15 17.6V16M20 17.6V16M15 16H20" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`
 };
 
 function iconMarkup(name){
