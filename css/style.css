@@ -72,9 +72,13 @@ html[data-contrast="true"] .hero{ box-shadow:none; border:2px solid var(--ink); 
 :root{
   --primary:#9C2B2E;        /* madder-root carpet red   */
   --primary-dim:#7C2225;
+  --primary-rgb:156,43,46;
   --secondary:#C08A28;      /* desert ochre / brass      */
+  --secondary-rgb:192,138,40;
   --accent:#2E6E62;         /* oxidised silver / teal    */
+  --accent-rgb:46,110,98;
   --bg:#F4EDE1;              /* raw wool cream            */
+  --bg-rgb:244,237,225;
   --surface:#FFFCF6;
   --surface-2:#EAE0CE;
   --ink:#2A1D15;
@@ -97,9 +101,13 @@ html[data-contrast="true"] .hero{ box-shadow:none; border:2px solid var(--ink); 
 [data-theme="dark"]{
   --primary:#D9636A;
   --primary-dim:#B84A50;
+  --primary-rgb:217,99,106;
   --secondary:#E0AC52;
+  --secondary-rgb:224,172,82;
   --accent:#59B3A0;
+  --accent-rgb:89,179,160;
   --bg:#181109;
+  --bg-rgb:24,17,9;
   --surface:#221810;
   --surface-2:#2C2015;
   --ink:#F3E9DA;
@@ -220,7 +228,7 @@ input:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   height:var(--topbar-h); flex:none;
   display:flex; align-items:center; gap:14px;
   padding:0 26px; border-bottom:1px solid var(--line);
-  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  background:rgba(var(--bg-rgb),.88);
   backdrop-filter:blur(10px);
   position:sticky; top:0; z-index:20;
 }
@@ -237,7 +245,7 @@ input:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   border-radius:999px; padding:8px 14px; width:min(280px,32vw);
   transition:border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease), width var(--dur-2) var(--ease);
 }
-.search-box:focus-within{ border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+.search-box:focus-within{ border-color:var(--accent); box-shadow:0 0 0 3px rgba(var(--accent-rgb),.22); }
 .search-box .icon{ color:var(--ink-soft); width:17px; height:17px; }
 .search-box input{ border:none; background:none; width:100%; font-size:.85rem; }
 .search-box input::placeholder{ color:var(--ink-soft); }
@@ -325,7 +333,7 @@ input:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   transition:transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
 }
 .stat-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-lift); border-color:var(--accent); }
-.stat-icon{ width:38px; height:38px; border-radius:11px; background:color-mix(in srgb, var(--accent) 16%, transparent); color:var(--accent); display:flex; align-items:center; justify-content:center; }
+.stat-icon{ width:38px; height:38px; border-radius:11px; background:rgba(var(--accent-rgb),.16); color:var(--accent); display:flex; align-items:center; justify-content:center; }
 .stat-card .stat-label{ font-size:.76rem; color:var(--ink-soft); }
 .stat-card .stat-value{ font-size:1rem; font-weight:700; line-height:1.5; }
 
@@ -343,7 +351,7 @@ input:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   transition:transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease);
 }
 .explore-card:hover{ transform:translateY(-5px); box-shadow:var(--shadow-lift); }
-.explore-card .icon-wrap{ width:46px; height:46px; border-radius:13px; background:color-mix(in srgb, var(--primary) 13%, transparent); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+.explore-card .icon-wrap{ width:46px; height:46px; border-radius:13px; background:rgba(var(--primary-rgb),.13); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
 .explore-card h3{ font-size:1.02rem; font-weight:700; margin-bottom:6px; }
 .explore-card p{ font-size:.83rem; color:var(--ink-soft); line-height:1.8; }
 .explore-card .go{ position:absolute; inset-inline-end:18px; top:20px; color:var(--ink-soft); width:16px; height:16px; opacity:0; transition:opacity var(--dur-1) var(--ease), transform var(--dur-1) var(--ease); }
@@ -379,7 +387,7 @@ input:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   background:var(--surface); border:3px solid var(--primary);
 }
 [dir="rtl"] .timeline-item::before{ inset-inline-start:auto; inset-inline-end:-26px; }
-.timeline-item .year{ display:inline-block; font-weight:800; color:var(--primary); font-size:.82rem; background:color-mix(in srgb, var(--primary) 12%, transparent); padding:3px 11px; border-radius:999px; margin-bottom:8px; }
+.timeline-item .year{ display:inline-block; font-weight:800; color:var(--primary); font-size:.82rem; background:rgba(var(--primary-rgb),.12); padding:3px 11px; border-radius:999px; margin-bottom:8px; }
 .timeline-item h3{ font-size:1.02rem; font-weight:700; margin-bottom:6px; }
 .timeline-item p{ font-size:.9rem; color:var(--ink-soft); line-height:1.9; max-width:72ch; }
 
@@ -539,33 +547,215 @@ input:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 }
 
 /* =========================================================
-   Extended (Apertium-derived) dictionary
+   Dictionary toolbar: topic/alphabet view toggle + export
    ========================================================= */
+.dict-total{ font-size:.76rem; color:var(--ink-soft); margin-top:-6px; margin-bottom:16px; }
 .dict-divider{ height:1px; background:var(--line); margin:36px 0 6px; }
-.dict-extended-head{ margin-top:4px; }
-.dict-extended-intro{ font-size:.83rem; color:var(--ink-soft); line-height:1.9; max-width:78ch; margin-top:6px; }
-.dict-ext-table{
-  display:flex; flex-direction:column; gap:5px; margin-top:14px;
-  max-height:560px; overflow-y:auto; border:1px solid var(--line); border-radius:var(--radius-m); padding:8px;
+.dict-toolbar{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; margin-bottom:20px; }
+.view-toggle{ display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.view-toggle-btn{
+  font-size:.82rem; font-weight:700; padding:8px 16px; color:var(--ink-soft); background:var(--surface);
+  border-inline-end:1px solid var(--line); transition:background var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
 }
-.dict-ext-row{
-  display:grid; grid-template-columns: .9fr .9fr 1.2fr .7fr; gap:10px; align-items:center;
-  padding:8px 10px; border-radius:var(--radius-s); font-size:.85rem;
-}
-.dict-ext-row:not(.dict-ext-head):hover{ background:var(--surface-2); }
-.dict-ext-head{
-  font-size:.72rem; font-weight:800; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.03em;
-  position:sticky; top:-8px; background:var(--surface); padding-block:6px; border-bottom:1px solid var(--line); z-index:2;
-}
-.dict-ext-tk{ font-weight:800; color:var(--primary); direction:ltr; text-align:start; }
-.dict-ext-pos{ font-size:.72rem; color:var(--accent); font-style:italic; direction:ltr; }
-.dict-ext-note{ font-size:.78rem; color:var(--ink-soft); margin-top:10px; text-align:center; }
+.view-toggle-btn:last-child{ border-inline-end:none; }
+.view-toggle-btn.active{ background:var(--primary); color:#fff; }
+.dict-export{ display:flex; gap:8px; }
 
-@media (max-width:640px){
-  .dict-ext-row{ grid-template-columns: 1fr 1fr; grid-template-areas:"tk tur" "en pos"; row-gap:3px; }
-  .dict-ext-row.dict-ext-head{ display:none; }
-  .dict-ext-row span:nth-child(1){ grid-area:tk; }
-  .dict-ext-row span:nth-child(2){ grid-area:tur; }
-  .dict-ext-row span:nth-child(3){ grid-area:en; font-size:.8rem; }
-  .dict-ext-row span:nth-child(4){ grid-area:pos; }
+.alpha-jumpbar{
+  display:flex; flex-wrap:wrap; gap:6px; margin-bottom:22px; padding:12px; background:var(--surface);
+  border:1px solid var(--line); border-radius:var(--radius-m); position:sticky; top:calc(var(--topbar-h) + 8px); z-index:5;
+}
+.alpha-jump{
+  width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:.82rem; color:var(--accent); background:var(--surface-2); text-decoration:none;
+  transition:background var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+.alpha-jump:hover{ background:var(--primary); color:#fff; }
+
+/* =========================================================
+   Reading progress bar
+   ========================================================= */
+.reading-progress{
+  position:fixed; top:0; inset-inline-start:0; height:3px; width:0%;
+  background:linear-gradient(90deg, var(--primary), var(--secondary));
+  z-index:100; transition:width 80ms linear;
+}
+
+/* =========================================================
+   Breadcrumb
+   ========================================================= */
+.breadcrumb{ font-size:.74rem; color:var(--ink-soft); margin-bottom:4px; display:flex; align-items:center; gap:6px; }
+.breadcrumb a{ color:var(--accent); text-decoration:none; }
+.breadcrumb a:hover{ text-decoration:underline; }
+.breadcrumb .bc-sep{ opacity:.6; }
+@media (max-width:900px){ .breadcrumb{ display:none; } }
+
+/* =========================================================
+   Toast
+   ========================================================= */
+.toast{
+  position:fixed; bottom:26px; left:50%; transform:translate(-50%, 12px);
+  background:var(--ink); color:var(--bg); padding:11px 20px; border-radius:999px;
+  font-size:.84rem; font-weight:600; box-shadow:var(--shadow-lift);
+  opacity:0; pointer-events:none; transition:opacity var(--dur-2) var(--ease), transform var(--dur-2) var(--ease);
+  z-index:200; max-width:88vw; text-align:center;
+}
+.toast.show{ opacity:1; transform:translate(-50%, 0); }
+
+/* =========================================================
+   Card tools (copy link / report), attached to cards
+   ========================================================= */
+.item-card, .timeline-item{ position:relative; }
+.card-tools{
+  position:absolute; inset-inline-end:14px; top:14px; display:flex; gap:4px;
+  opacity:0; transition:opacity var(--dur-1) var(--ease);
+}
+.item-card:hover .card-tools, .timeline-item:hover .card-tools{ opacity:1; }
+.ct-btn{
+  width:28px; height:28px; border-radius:50%; background:var(--surface-2); color:var(--ink-soft);
+  display:flex; align-items:center; justify-content:center; transition:background var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+.ct-btn .icon{ width:14px; height:14px; }
+.ct-btn:hover{ background:var(--accent); color:#fff; }
+@media (max-width:900px){ .card-tools{ opacity:1; } }
+
+/* =========================================================
+   Result count badge in section headers
+   ========================================================= */
+.result-badge{
+  font-size:.68rem; font-weight:700; color:var(--accent); background:rgba(var(--accent-rgb),.14);
+  padding:3px 10px; border-radius:999px; margin-inline-start:10px; vertical-align:middle;
+}
+
+/* =========================================================
+   Quote of the day (dashboard)
+   ========================================================= */
+.quote-of-day{
+  background:var(--surface); border:1px dashed var(--line); border-radius:var(--radius-l);
+  padding:22px 26px; margin-bottom:30px; position:relative;
+}
+.qd-label{ display:flex; align-items:center; gap:8px; font-size:.76rem; font-weight:800; color:var(--secondary); text-transform:uppercase; letter-spacing:.04em; margin-bottom:10px; }
+.qd-text{ font-size:.98rem; line-height:1.95; color:var(--ink); max-width:74ch; }
+.qd-source{ display:inline-block; margin-top:12px; font-size:.82rem; font-weight:700; color:var(--accent); text-decoration:none; }
+.qd-source:hover{ text-decoration:underline; }
+
+/* =========================================================
+   Speech / speak buttons
+   ========================================================= */
+.dict-speak, .alpha-speak{
+  width:26px; height:26px; border-radius:50%; background:var(--surface-2); color:var(--accent); flex:none;
+  display:flex; align-items:center; justify-content:center; transition:background var(--dur-1) var(--ease);
+}
+.dict-speak .icon, .alpha-speak .icon{ width:13px; height:13px; }
+.dict-speak:hover, .alpha-speak:hover{ background:var(--accent); color:#fff; }
+.alpha-speak{ position:absolute; top:8px; inset-inline-end:8px; }
+.alpha-chip{ position:relative; }
+
+/* =========================================================
+   Export buttons
+   ========================================================= */
+.dict-export{ display:flex; gap:8px; }
+.btn-mini{
+  display:inline-flex; align-items:center; gap:6px; font-size:.76rem; font-weight:700;
+  padding:7px 13px; border-radius:999px; background:var(--surface-2); color:var(--ink-soft);
+  transition:background var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+.btn-mini .icon{ width:14px; height:14px; }
+.btn-mini:hover{ background:var(--accent); color:#fff; }
+
+/* =========================================================
+   Quiz
+   ========================================================= */
+.quiz-card{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-l);
+  padding:28px; max-width:640px; margin:0 auto;
+}
+.quiz-progress-label{ font-size:.78rem; color:var(--ink-soft); font-weight:700; margin-bottom:8px; }
+.quiz-progress-bar{ height:6px; border-radius:999px; background:var(--surface-2); overflow:hidden; margin-bottom:20px; }
+.quiz-progress-fill{ height:100%; background:linear-gradient(90deg, var(--primary), var(--secondary)); transition:width var(--dur-2) var(--ease); }
+.quiz-question{ font-size:1.08rem; font-weight:800; line-height:1.7; margin-bottom:18px; }
+.quiz-options{ display:flex; flex-direction:column; gap:10px; }
+.quiz-option{
+  text-align:start; padding:13px 16px; border-radius:var(--radius-m); border:1.5px solid var(--line);
+  background:var(--surface); font-size:.9rem; transition:border-color var(--dur-1) var(--ease), background var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+}
+.quiz-option:not(:disabled):hover{ border-color:var(--accent); transform:translateY(-1px); }
+.quiz-option.correct{ border-color:var(--accent); background:rgba(var(--accent-rgb),.14); font-weight:700; }
+.quiz-option.wrong{ border-color:var(--primary); background:rgba(var(--primary-rgb),.12); }
+.quiz-feedback{ display:flex; align-items:center; gap:8px; margin-top:18px; font-weight:800; font-size:.9rem; }
+.quiz-feedback.ok{ color:var(--accent); }
+.quiz-feedback.bad{ color:var(--primary); }
+.quiz-explain{ font-size:.86rem; color:var(--ink-soft); line-height:1.85; margin-top:8px; }
+.quiz-card .btn{ margin-top:20px; }
+.quiz-result{ text-align:center; padding:40px 28px; }
+.quiz-trophy{ width:52px; height:52px; color:var(--secondary); margin:0 auto 14px; }
+.quiz-score{ font-size:1.7rem; font-weight:900; color:var(--primary); }
+.quiz-best{ font-size:.86rem; color:var(--ink-soft); margin-top:6px; margin-bottom:22px; }
+
+/* =========================================================
+   Reader mode — wider line-height, narrower measure, no
+   distracting sidebar, larger base text for long-form reading.
+   ========================================================= */
+html[data-reader-mode="true"] .content{ max-width:760px; }
+html[data-reader-mode="true"] .sidebar{ display:none; }
+html[data-reader-mode="true"] .item-card p,
+html[data-reader-mode="true"] .timeline-item p,
+html[data-reader-mode="true"] .section-head p{ font-size:1rem; line-height:2.05; }
+html[data-reader-mode="true"] .card-grid,
+html[data-reader-mode="true"] .explore-grid{ grid-template-columns:1fr; }
+
+/* =========================================================
+   Print styles
+   ========================================================= */
+@media print{
+  .sidebar, .topbar, .fab-top, .overlay, .settings-overlay, .toast, .reading-progress{ display:none !important; }
+  .content{ max-width:100%; padding:0; }
+  .item-card, .timeline-item, .stat-card{ break-inside:avoid; box-shadow:none !important; border:1px solid #ccc !important; }
+  body{ background:#fff; color:#000; }
+  .card-tools{ display:none !important; }
+}
+
+/* =========================================================
+   Oghuz Khan genealogy tree
+   ========================================================= */
+.oz-tree-wrap{ overflow-x:auto; padding-bottom:10px; }
+.oz-tree{ min-width:920px; display:flex; flex-direction:column; align-items:center; }
+.oz-root-row{ margin-bottom:28px; position:relative; }
+.oz-node{
+  border-radius:var(--radius-m); padding:10px 16px; font-weight:700; font-size:.86rem;
+  text-align:center; white-space:nowrap; position:relative;
+}
+.oz-root{
+  background:var(--primary); color:#fff; font-size:1.05rem; padding:16px 30px; border-radius:var(--radius-l);
+  display:flex; flex-direction:column; gap:4px; box-shadow:var(--shadow-lift);
+}
+.oz-root-note{ font-size:.68rem; font-weight:500; opacity:.85; }
+.oz-root-row::after{
+  content:''; position:absolute; bottom:-28px; left:50%; transform:translateX(-50%);
+  width:2px; height:28px; background:var(--line);
+}
+.oz-wings-row{ display:flex; gap:60px; position:relative; }
+.oz-wings-row::before{
+  content:''; position:absolute; top:-1px; left:50%; transform:translateX(-50%);
+  width:calc(100% - 260px); max-width:640px; height:2px; background:var(--line);
+}
+.oz-wing{ display:flex; flex-direction:column; align-items:center; position:relative; padding-top:26px; }
+.oz-wing::before{ content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:2px; height:26px; background:var(--line); }
+.oz-wing-label{ text-align:center; margin-bottom:20px; }
+.oz-wing-name{ font-weight:800; color:var(--primary); font-size:.95rem; }
+.oz-wing-meaning{ font-size:.72rem; color:var(--ink-soft); margin-top:2px; }
+.oz-sons{ display:flex; gap:22px; position:relative; }
+.oz-son-branch{ display:flex; flex-direction:column; align-items:center; position:relative; padding-top:20px; }
+.oz-son-branch::before{ content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:2px; height:20px; background:var(--line); }
+.oz-son{ background:var(--secondary); color:#241804; margin-bottom:16px; }
+.oz-tribes{ display:flex; flex-direction:column; gap:8px; position:relative; padding-top:4px; }
+.oz-tribes::before{ content:''; position:absolute; top:-16px; left:50%; transform:translateX(-50%); width:2px; height:16px; background:var(--line); }
+.oz-tribe{
+  background:var(--surface); border:1.5px solid var(--line); color:var(--ink); font-weight:600; font-size:.8rem;
+  transition:border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+}
+.oz-tribe:hover{ border-color:var(--accent); transform:translateY(-2px); }
+
+@media (max-width:900px){
+  .oz-tree{ min-width:760px; }
 }
