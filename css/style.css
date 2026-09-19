@@ -133,7 +133,7 @@ body{
 }
 img,svg{ display:block; max-width:100%; }
 ul{ margin:0; padding:0; list-style:none; }
-a{ color:inherit; }
+a{ color:inherit; text-decoration:none; }
 button,input{ font-family:inherit; color:inherit; }
 button{ background:none; border:none; cursor:pointer; }
 h1,h2,h3,h4,p{ margin:0; }
@@ -201,20 +201,21 @@ input:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .brand-text strong{ font-size:1.2rem; letter-spacing:.2px; }
 .brand-text small{ color:var(--ink-soft); font-size:.72rem; }
 
-.nav{ display:flex; flex-direction:column; gap:4px; overflow-y:auto; flex:1; }
+.nav{ display:flex; flex-direction:column; gap:3px; overflow-y:auto; flex:1; }
 .nav-item{
   display:flex; align-items:center; gap:12px;
-  padding:11px 12px; border-radius:var(--radius-m);
-  color:var(--ink-soft); font-size:.92rem; font-weight:500;
-  cursor:pointer; position:relative;
-  transition:background var(--dur-1) var(--ease), color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+  padding:11px 14px; border-radius:var(--radius-m);
+  color:var(--ink-soft); font-size:.9rem; font-weight:600; line-height:1.3;
+  cursor:pointer; position:relative; letter-spacing:.01em;
+  transition:background var(--dur-1) var(--ease), color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease), padding-inline-start var(--dur-1) var(--ease);
 }
-.nav-item .icon{ color:currentColor; opacity:.85; }
-.nav-item:hover{ background:var(--surface-2); color:var(--ink); transform:translateX(0); }
-.nav-item.active{ background:var(--primary); color:#fff; }
+.nav-item span:last-child{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.nav-item .icon{ color:currentColor; opacity:.75; flex:none; }
+.nav-item:hover{ background:var(--surface-2); color:var(--ink); }
+.nav-item.active{ background:var(--primary); color:#fff; font-weight:700; box-shadow:var(--shadow); }
 .nav-item.active .icon{ opacity:1; }
-[dir="rtl"] .nav-item:hover{ transform:translateX(-2px); }
-[dir="ltr"] .nav-item:hover{ transform:translateX(2px); }
+[dir="rtl"] .nav-item:hover{ padding-inline-start:18px; }
+[dir="ltr"] .nav-item:hover{ padding-inline-start:18px; }
 
 .sidebar-footer{ padding-top:14px; }
 .mini-pattern{ color:var(--line); height:14px; overflow:hidden; margin-bottom:10px; opacity:.9; }
@@ -571,6 +572,21 @@ input:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   transition:background var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
 }
 .alpha-jump:hover{ background:var(--primary); color:#fff; }
+
+/* =========================================================
+   Extended (SIL/Webonary-sourced) dictionary cards
+   ========================================================= */
+.dict-ext-head{ margin-top:8px; }
+.dict-ext-intro{ font-size:.83rem; color:var(--ink-soft); line-height:1.9; max-width:80ch; margin-top:6px; }
+.ext-cards{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; margin-top:16px; }
+.ext-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-m); padding:16px; }
+.ext-card-head{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
+.ext-tk{ font-weight:800; color:var(--primary); direction:ltr; }
+.ext-phon{ font-size:.76rem; color:var(--accent); direction:ltr; }
+.ext-pos{ font-size:.68rem; font-weight:700; color:var(--ink-soft); background:var(--surface-2); padding:2px 8px; border-radius:999px; direction:ltr; }
+.ext-en{ font-size:.86rem; color:var(--ink); line-height:1.75; }
+.ext-example{ font-size:.8rem; color:var(--ink-soft); margin-top:8px; padding-top:8px; border-top:1px dashed var(--line); line-height:1.8; }
+.ext-example em{ font-style:normal; color:var(--ink); direction:ltr; unicode-bidi:isolate; }
 
 /* =========================================================
    Reading progress bar
