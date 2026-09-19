@@ -1,6 +1,6 @@
 # TurkmenSon
 
-پروژه **TurkmenSon** یک وب‌سایت/داشبورد متن‌باز و دوزبانه (فارسی و ترکمنی) دربارهٔ فرهنگ، تاریخ، پوشاک، غذا، زبان و میراث ادبی مردم ترکمن است. پروژه با **HTML + CSS + جاوااسکریپت خالص** ساخته شده؛ بدون build step، فریم‌ورک یا وابستگی npm، و به‌صورت **PWA** قابل نصب و کارکردن آفلاین است.
+**TurkmenSon** یک وب‌سایت/داشبورد متن‌باز و دوزبانه (فارسی و ترکمنی) دربارهٔ فرهنگ، تاریخ، پوشاک، غذا، زبان و میراث ادبی مردم ترکمن است. پروژه با **HTML + CSS + جاوااسکریپت خالص** ساخته شده؛ بدون build step، فریم‌ورک یا وابستگی npm، و به‌صورت **PWA** قابل نصب و کارکردن آفلاین است.
 
 TurkmenSon is a free, open, bilingual (Persian / Turkmen) reference site covering Turkmen history, traditional dress, cuisine, language, notable figures, poets, and cultural influences. It is plain HTML/CSS/JS — no build step, no framework, no npm dependency — and installs as a PWA with offline support.
 
