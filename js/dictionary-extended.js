@@ -19,13 +19,17 @@
 
    Source pages included in this batch (full dictionary has 7,247
    Turkmen headwords across ~30 letters and many pages per letter;
-   this is a first, verified slice — five first-pages, roughly
-   letters A, B, D, G, M):
+   this is a first, verified slice — first-pages of nine letters:
+   A, B, D, E, G, H, K, M, S):
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=a
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=b
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=d
+     https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=e
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=g
+     https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=h
+     https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=k
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=m
+     https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=s
 
    Format: each row is
      { tk: 'headword', phon: 'phonetic or empty', pos: 'part of speech',
@@ -161,5 +165,109 @@ const DICTIONARY_EXTENDED = [
   { tk:'mahmal', phon:'', pos:'n', en:'1. velvet, plush material | 2. good, beautiful, fine', ex:{ tk:'Baý adamlar mahmaldan düşek tikýärler.', en:'Rich people make blankets from velvet.' } },
   { tk:'mahrum', phon:'mahru:m', pos:'adj', en:'lacking in, devoid of, deprived of', ex:{ tk:'mahrum etmek', en:'to deprive of' } },
   { tk:'mahsus', phon:'mahsu:s', pos:'adj', en:'characteristic of, inherent in', ex:{ tk:'türkmen diline mahsus bolan aýratynlyklar', en:'the peculiarities characteristic of the Turkmen language' } },
-  { tk:'makala', phon:'maka:la', pos:'n', en:'article, entry', ex:{ tk:'gazet makalasy', en:'newspaper article' } }
+  { tk:'makala', phon:'maka:la', pos:'n', en:'article, entry', ex:{ tk:'gazet makalasy', en:'newspaper article' } },
+
+  { tk:'e-poçta', phon:'', pos:'n', en:'email address', ex:null },
+  { tk:'ebedi', phon:'ebedi:', pos:'adj', en:'1. eternal, for ever, everlasting | 2. permanent', ex:{ tk:'ebedi ýaşamak', en:'to live for ever' } },
+  { tk:'ebedileşdirmek', phon:'', pos:'vt', en:'to immortalise, make immortal', ex:{ tk:'Türkmen atlarynyň keşbini ýadygärliklerde ebedileşdirdik diýip, hormatly Prezidentimiz Gurbanguly Berdimuhamedow aýtdy.', en:'"We have immortalised the image of Turkmen horses in monuments," said President Gurbanguly Berdimuhamedov.' } },
+  { tk:'ebedilik', phon:'ebedi:lik', pos:'n', en:'eternity', ex:null },
+  { tk:'ebşir', phon:'', pos:'n', en:'(ebşir tutmak = to hold strongly)', ex:null },
+  { tk:'ebşitlemek', phon:'', pos:'v', en:'to hold strongly', ex:null },
+  { tk:'eçilmek', phon:'', pos:'v', en:'to yield, provide', ex:null },
+  { tk:'eda', phon:'eda:', pos:'n', en:'1. tact | 2. help, support', ex:{ tk:'eda bilen gürlemek', en:'to speak with tact' } },
+  { tk:'edara', phon:'eda:ra', pos:'n', en:'office', ex:{ tk:'döwlet edarasy', en:'state office' } },
+  { tk:'edebi', phon:'edebi:', pos:'adj', en:'literary', ex:{ tk:'edebi miras', en:'literary heritage' } },
+  { tk:'edebiýat', phon:'edebiýa:t', pos:'n', en:'literature', ex:{ tk:'çeper edebiýat', en:'fiction' } },
+  { tk:'edebiýatçy', phon:'edebiýa:tçy', pos:'n', en:'specialist in the study of literature, literary critic', ex:null },
+  { tk:'eden-etdi', phon:'', pos:'n', en:'self-will, wilfulness, arbitrariness', ex:null },
+  { tk:'edenli', phon:'', pos:'adj', en:'mighty, strong, capable, able, skilful', ex:{ tk:'edenli ýigit', en:'capable man' } },
+  { tk:'edep', phon:'', pos:'n', en:'1. upbringing, breeding, background | 2. ethics', ex:{ tk:'çagalara edep öwretmek', en:'to teach children upbringing' } },
+  { tk:'edepli', phon:'', pos:'adj', en:'well-bred, "cultured", ethical', ex:null },
+  { tk:'edepsiz', phon:'', pos:'adj', en:'ill-bred, lacking manners', ex:null },
+  { tk:'edermen', phon:'', pos:'adj', en:'brave, courageous, valiant, gallant', ex:null },
+  { tk:'edermenlik', phon:'', pos:'n', en:"bravery, courage, valour", ex:{ tk:'edermenlik görkezmek', en:"to show one's courage" } },
+  { tk:'edil', phon:'', pos:'adv', en:'1. just, exactly, the same | 2. exactly, on the dot, sharp', ex:{ tk:'Ol edil kakasy ýaly.', en:'He is just like his father.' } },
+  { tk:'edilmek', phon:'', pos:'v', en:'to be done, be made', ex:null },
+  { tk:'edinmek', phon:'', pos:'v', en:'1. to acquire, obtain, buy, get | 2. to make (for oneself)', ex:{ tk:'Men özüme täze kompýuter edindim.', en:'I got a new computer for myself.' } },
+  { tk:'efir', phon:'efi:r', pos:'n', en:'broadcast, on the web', ex:{ tk:'Häzir efire gidip dur.', en:'Currently being broadcast.' } },
+  { tk:'egdirmek', phon:'', pos:'v caus', en:'subdue', ex:{ tk:'boýun egdirmek', en:'to subjugate, subdue' } },
+  { tk:'eger', phon:'', pos:'conj', en:'if', ex:{ tk:'Eger-de bu şeýle bolsa, biziň gatnaşygymyz kesiler.', en:'If it is like this, then our relations will cut off.' } },
+
+  { tk:'habar', phon:'', pos:'n', en:'1. news, information, intelligence, message, report | 2. inside/intimate knowledge', ex:{ tk:'Onuň habary bar.', en:'He is in touch (with the situation).' } },
+  { tk:'habarçy', phon:'', pos:'n', en:'1. correspondent, journalist, reporter | 2. messenger, courier | 3. informant, informer', ex:null },
+  { tk:'habardar', phon:'habarda:r', pos:'adj', en:'1. notified, informed, advised | 2. competent, knowledgeable | 3. careful, cautious', ex:{ tk:'Habardar boluň!', en:'Take care! Be careful!' } },
+  { tk:'habarlaşmak', phon:'', pos:'v', en:'to touch base, exchange news, get together for a chat', ex:{ tk:'Işden soň habarlaşaly.', en:"Let's touch base after work." } },
+  { tk:'habarnama', phon:'', pos:'n', en:'report', ex:null },
+  { tk:'haç', phon:'', pos:'n', en:'cross', ex:{ tk:'gyzyl haç', en:'red cross' } },
+  { tk:'haç (2)', phon:'haj', pos:'n', en:'Hajj, the Muslim pilgrimage to Mecca', ex:null },
+  { tk:'haçan', phon:'', pos:'adv', en:'when, whenever', ex:{ tk:'Sen haçan geljek?', en:'When will you come?' } },
+  { tk:'haçja', phon:'', pos:'n', en:'pole, cane', ex:null },
+  { tk:'haçly', phon:'', pos:'adj', en:'crossed, with a cross', ex:{ tk:'haçly ýöriş', en:'the Crusades' } },
+  { tk:'haçparaz', phon:'', pos:'n', en:'Christian', ex:null },
+  { tk:'haçparazlyk', phon:'', pos:'n', en:'Christianity', ex:null },
+  { tk:'hadys', phon:'hady:s', pos:'n', en:'a legend about the Prophet Mohammed', ex:null },
+  { tk:'hadysa', phon:'ha:dy:sa', pos:'n', en:'1. event, case, incident, accident, adventure | 2. phenomenon, occurrence', ex:{ tk:'tebigy hadysalar', en:'natural phenomenon' } },
+  { tk:'hajat', phon:'ha:jat', pos:'n', en:'need, necessity, requirement', ex:{ tk:'Hajaty ýok!', en:"There's no need!" } },
+  { tk:'hajathana', phon:'ha:jatha:na', pos:'n', en:'lavatory, toilet, loo (Brit); restroom, bathroom (Amer)', ex:null },
+  { tk:'hajy', phon:'', pos:'n', en:'hajji, a Muslim male who has completed the pilgrimage to Mecca', ex:null },
+  { tk:'hažžyk', phon:'', pos:'n', en:'lizard, gecko', ex:null },
+  { tk:'hak', phon:'', pos:'n/adj', en:'1. truth, veracity | 2. true, right, correct | 3. sake, benefit | 4. right, prerogative | 5. pay, salary, wage | 6. share, part, portion', ex:{ tk:'Gowy işleseň, gowy hak alarsyň.', en:'If you work hard, you will be paid well.' } },
+  { tk:'hakda', phon:'', pos:'post', en:'about, concerning, regarding', ex:null },
+  { tk:'haklamak', phon:'', pos:'v', en:'1. to justify, warrant, deserve, vindicate | 2. to fulfil, carry out, undertake', ex:null },
+  { tk:'haklaşmak', phon:'', pos:'v', en:'1. to require a reckoning, pay back | 2. to take revenge', ex:null },
+  { tk:'hakyda', phon:'haky:da', pos:'n', en:'memory, recollection, remembrance', ex:{ tk:'hakyda gelmek', en:'to remember' } },
+  { tk:'hakykat', phon:'haky:kat', pos:'n', en:'1. truth, veracity | 2. reality, actuality', ex:{ tk:'hakykaty aýtmak', en:'to tell the truth' } },
+  { tk:'hakykatçy', phon:'haky:katçy', pos:'adj', en:'truthful, upright, straightforward', ex:null },
+
+  { tk:'ka/kä', phon:'', pos:'sfx', en:'while...', ex:{ tk:'Hindistandan Stambula gaýdyp gelýärkä...', en:'...while he was returning from India to Istanbul...' } },
+  { tk:'kabel', phon:'', pos:'n', en:'cable', ex:{ tk:'Telefon işlänok, kabeli üzülipdir.', en:'The telephone does not work, its cable has been cut.' } },
+  { tk:'kabinet', phon:'', pos:'n', en:'1. office, study, consulting-room, surgery | 2. Cabinet Office', ex:null },
+  { tk:'kabul edilmek', phon:'kabu:l edilmek', pos:'v', en:'to be accepted, received', ex:{ tk:'Men demokratik partiýanyň agzalygyna kabul edildim.', en:'I was accepted into membership of the Democratic Party.' } },
+  { tk:'kabul etmek', phon:'kabu:l etmek', pos:'v', en:'1. to accept, admit, welcome | 2. to receive, welcome', ex:{ tk:'Siziň teklibiňizi kabul edýärin.', en:'I accept your offer.' } },
+  { tk:'kabulhana', phon:'kabu:lha:na', pos:'n', en:'reception, anteroom', ex:null },
+  { tk:'kada', phon:'ka:da', pos:'n', en:'1. rule, law, regulation, norm | 2. custom, tradition, rules of etiquette | 3. routine procedure', ex:{ tk:'Ýol hereketiniň kadalaryny berjaý etmeklik biziň borjumyz.', en:'It is our duty to obey the traffic laws.' } },
+  { tk:'kada-kanun', phon:'ka:da-ka:nu:n', pos:'n', en:'rules, laws', ex:null },
+  { tk:'kadalaşdyrmak', phon:'ka:dalaşdyrmak', pos:'v caus', en:'to standardise, normalise', ex:{ tk:'Bazarda harytlaryň bahasy kadalaşdyrylýar.', en:'The price of goods are standardised in the market-place.' } },
+  { tk:'kadaly', phon:'ka:daly', pos:'adj', en:'1. normal, normative | 2. regular, even', ex:{ tk:'Syrkawyň ýürek urşy kadaly.', en:"The patient's heart is beating normally." } },
+  { tk:'kafedra', phon:'', pos:'n', en:'department (academic)', ex:null },
+  { tk:'kagyz', phon:'ka:gyz', pos:'n', en:'1. paper, sheet of paper | 2. paper, document', ex:null },
+  { tk:'kak', phon:'', pos:'n', en:'dried fruit', ex:{ tk:'gawun kaky', en:'dried melon' } },
+  { tk:'kaka', phon:'ka:ka', pos:'n', en:'father', ex:{ tk:'öweý kaka', en:'stepfather' } },
+  { tk:'kaklyşmak', phon:'', pos:'v', en:'to meet; see', ex:null },
+  { tk:'kakmaç', phon:'', pos:'n', en:'kakmach — meat cut into small pieces and fried, to preserve it', ex:null },
+  { tk:'kakmak', phon:'', pos:'v', en:'1. to drive in, hammer in | 2. to knock, rap | 3. to shake off, shake out | 4. to shake | 5. to slap, bang | 6. to beat | 7. to wave, flap', ex:{ tk:'gapyny kakmak', en:'to knock at the door' } },
+  { tk:'kalkulýator', phon:'', pos:'n', en:'calculator', ex:null },
+  { tk:'kalp', phon:'', pos:'n', en:'heart, soul, inner being, spirit', ex:{ tk:'kalby päk', en:'frank, candid, sincere' } },
+  { tk:'kamera', phon:'', pos:'n', en:'1. camera | 2. inner tube | 3. cell, storage room, chamber', ex:{ tk:'türme kamerasy', en:'prison cell' } },
+  { tk:'kanagat', phon:'kana:gat', pos:'n', en:'1. patience, endurance | 2. satisfaction, pleasure', ex:{ tk:'kanagat etmek', en:'to have patience' } },
+  { tk:'kanagatlandyrmak', phon:'kana:gatlandyrmak', pos:'v caus', en:'1. to comply with, satisfy, fulfil | 2. to make content, satisfy', ex:null },
+  { tk:'kanagatlanmak', phon:'kana:gatlanmak', pos:'v', en:'to be content, satisfied, pleased', ex:null },
+  { tk:'kanagatly', phon:'kana:gatly', pos:'adj', en:'1. patient | 2. satisfactory | 3. content, happy with one\u2019s lot', ex:null },
+  { tk:'kanalizasiýa', phon:"kanali'zasiýa", pos:'n', en:'sewerage, drainage', ex:{ tk:'Biziň şäherimizde kanalizasiýa gowy işleýär.', en:'The sewerage system is working well in our town.' } },
+
+  { tk:'saba', phon:'saba:', pos:'n', en:'early morning', ex:{ tk:'saba şemaly', en:'morning wind' } },
+  { tk:'sabyn', phon:'sa:byn', pos:'n', en:'soap', ex:{ tk:'kir sabyny', en:'laundry soap' } },
+  { tk:'sabyr', phon:'', pos:'n', en:'patience, endurance', ex:{ tk:'sabyr etmek', en:'to have patience, show patience' } },
+  { tk:'sabyr-takat', phon:'sabyr-ta:kat', pos:'adv', en:'patient endurance', ex:null },
+  { tk:'sabyrly', phon:'', pos:'adj', en:'patient', ex:{ tk:'sabyrly bolmak', en:'to be patient' } },
+  { tk:'sabyrlylyk', phon:'', pos:'n', en:'patience, endurance', ex:{ tk:'sabyrlylyk bilen', en:'patiently, with patience' } },
+  { tk:'sabyrsyz', phon:'', pos:'adj', en:'impatient', ex:{ tk:'sabyrsyz çaga', en:'impatient child' } },
+  { tk:'sabyrsyzlyk', phon:'', pos:'n', en:'impatience', ex:{ tk:'sabyrsyzlyk etmek', en:'to show impatience' } },
+  { tk:'saç', phon:'', pos:'n', en:'hair', ex:{ tk:'saç almak', en:'to cut hair' } },
+  { tk:'saç (2)', phon:'sa:ç', pos:'n', en:'frying pan', ex:null },
+  { tk:'saçak', phon:'', pos:'n', en:'1. tablecloth, bread-storage cloth | 2. present', ex:{ tk:'Goý siziň saçagyňyzyň berekedi egsilmesin!', en:'May your table always be full of food!' } },
+  { tk:'saçakçy', phon:'', pos:'n', en:'cockroach, black-beetle', ex:null },
+  { tk:'saçbag', phon:'saçba:g', pos:'n', en:'braid', ex:null },
+  { tk:'saçly', phon:'', pos:'n', en:'1. hairy | 2. Saçly (a woman\u2019s name)', ex:null },
+  { tk:'saçmak', phon:'', pos:'v', en:'to give out, spread; to shine', ex:{ tk:'Gün nuruny saçyp dur.', en:'The sun is shining brightly.' } },
+  { tk:'sada', phon:'sa:da', pos:'adj', en:'simple, not complicated, easy; humble, naive, simple-hearted, open-hearted, artless', ex:{ tk:'sada adamlar', en:'ordinary people' } },
+  { tk:'sadaka', phon:'', pos:'n', en:'offering, gift, sacrifice', ex:{ tk:'sadaka bermek', en:'to give a gift, offer a sacrifice' } },
+  { tk:'sadalaşdyrmak', phon:'sa:dalaşdyrmak', pos:'v caus', en:'to simplify', ex:{ tk:'meseläni sadalaşdyrmak', en:'to simplify a problem' } },
+  { tk:'sadalaşmak', phon:'', pos:'v', en:'to be simplified', ex:null },
+  { tk:'sadalyk', phon:'sa:dalyk', pos:'n', en:'simplicity, naiveness, naivety', ex:null },
+  { tk:'sadap', phon:'', pos:'n', en:'1. mother-of-pearl, nacre | 2. pearl button', ex:{ tk:'sadap ýaly ak dişler', en:'white teeth as mother-of-pearl' } },
+  { tk:'sadyk', phon:'sady:k', pos:'adj', en:'faithful, true', ex:null },
+  { tk:'sag', phon:'', pos:'adj', en:'healthy', ex:{ tk:'Janyňyz sagmy?', en:'How are you? (lit. Is your health good?)' } },
+  { tk:'sag (2)', phon:'', pos:'adj', en:'right (direction)', ex:{ tk:'sag el', en:'right hand' } },
+  { tk:'sag-aman', phon:'sag-ama:n', pos:'adv', en:'safe and sound, healthy', ex:{ tk:'sag-aman gelmek', en:'to arrive safe and sound' } }
 ];

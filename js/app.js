@@ -206,6 +206,7 @@
   document.addEventListener('click', (e)=>{
     if(!el.langDropdown.contains(e.target)) closeLangMenu();
     if(!document.getElementById('searchBox').contains(e.target)) hideGlobalResults();
+    if(!document.getElementById('searchBox').contains(e.target) && !mobileSearchBtn.contains(e.target)) closeMobileSearch();
   });
 
   /* ---------------------------------------------------------
@@ -230,6 +231,22 @@
     el.app.classList.contains('sidebar-open') ? closeSidebar() : openSidebar();
   });
   el.overlay.addEventListener('click', closeSidebar);
+
+  /* ---------------------------------------------------------
+     Mobile search toggle (search box is hidden inline on small
+     screens; this reveals it as a floating bar under the topbar)
+     --------------------------------------------------------- */
+  const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+  function openMobileSearch(){
+    el.app.classList.add('search-open');
+    setTimeout(()=> el.searchInput.focus(), 50);
+  }
+  function closeMobileSearch(){
+    el.app.classList.remove('search-open');
+  }
+  mobileSearchBtn.addEventListener('click', ()=>{
+    el.app.classList.contains('search-open') ? closeMobileSearch() : openMobileSearch();
+  });
 
   /* ---------------------------------------------------------
      Navigation + deep-link query ("#section?q=term")
@@ -286,6 +303,7 @@
   window.addEventListener('hashchange', ()=>{
     localStorage.setItem('ts-last-route', parseHash().route);
     applyHash();
+    closeMobileSearch();
   });
 
   /* ---------------------------------------------------------
@@ -786,7 +804,7 @@
       group.words.push(w);
     });
 
-    const jumpBar = `<div class="alpha-jumpbar">${groups.map(g => `<a href="#dict-letter-${g.letter}" class="alpha-jump">${g.letter}</a>`).join('')}</div>`;
+    const jumpBar = `<div class="alpha-jumpbar">${groups.map(g => `<button type="button" class="alpha-jump" data-jump="dict-letter-${g.letter}">${g.letter}</button>`).join('')}</div>`;
     const body = groups.map(g => `
       <h3 class="subheading dict-cat-heading" id="dict-letter-${g.letter}">${g.letter}</h3>
       <div class="dict-table">${g.words.map(w => dictWordRow(d, w)).join('')}</div>
@@ -1015,6 +1033,16 @@
       const jsonBtn = document.getElementById('exportJsonBtn');
       if(csvBtn) csvBtn.addEventListener('click', ()=> exportDictionary('csv'));
       if(jsonBtn) jsonBtn.addEventListener('click', ()=> exportDictionary('json'));
+      // Alphabet jump buttons scroll to the target heading in-page —
+      // deliberately NOT real #hash links, so they never trigger the
+      // SPA router (which would otherwise treat "dict-letter-A" as an
+      // unknown route and bounce the user back to the dashboard).
+      el.content.querySelectorAll('.alpha-jump[data-jump]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const target = document.getElementById(btn.dataset.jump);
+          if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+        });
+      });
     }
 
     // quiz-specific wiring
