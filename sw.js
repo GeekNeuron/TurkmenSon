@@ -15,6 +15,7 @@ const APP_SHELL = [
   'js/icons.js',
   'js/data.js',
   'js/dictionary.js',
+  'js/dictionary-extended.js',
   'js/app.js',
   'manifest.json',
   'fonts/Vazirmatn-Regular.woff2',

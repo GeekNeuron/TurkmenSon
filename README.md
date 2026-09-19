@@ -1,6 +1,6 @@
 # TurkmenSon
 
-پروژه **TurkmenSon** یک وب‌سایت/داشبورد متن‌باز و دوزبانه (فارسی و ترکمنی) دربارهٔ فرهنگ، تاریخ، پوشاک، غذا، زبان و میراث ادبی مردم ترکمن است. پروژه با **HTML + CSS + جاوااسکریپت خالص** ساخته شده؛ بدون build step، فریم‌ورک یا وابستگی npm، و به‌صورت **PWA** قابل نصب و کارکردن آفلاین است.
+**TurkmenSon** یک وب‌سایت/داشبورد متن‌باز و دوزبانه (فارسی و ترکمنی) دربارهٔ فرهنگ، تاریخ، پوشاک، غذا، زبان و میراث ادبی مردم ترکمن است. پروژه با **HTML + CSS + جاوااسکریپت خالص** ساخته شده؛ بدون build step، فریم‌ورک یا وابستگی npm، و به‌صورت **PWA** قابل نصب و کارکردن آفلاین است.
 
 TurkmenSon is a free, open, bilingual (Persian / Turkmen) reference site covering Turkmen history, traditional dress, cuisine, language, notable figures, poets, and cultural influences. It is plain HTML/CSS/JS — no build step, no framework, no npm dependency — and installs as a PWA with offline support.
 
@@ -43,9 +43,14 @@ The palette is drawn from real Turkmen material culture — madder-root carpet r
 
 ## 📖 دربارهٔ واژه‌نامه | About the dictionary
 
-واژه‌نامهٔ این پروژه (`js/dictionary.js`) یک دیتاست **کاملاً دست‌ساز و اصیل** است؛ هیچ بخشی از آن از فایل‌های ترجمهٔ ماشینی یا دیتاست بیرونی استخراج نشده، دقیقاً به همین دلیل که چنین استخراج‌هایی گاه قطعات نامرتبط یا جمله‌های عجیب وسط واژه‌ها تولید می‌کنند. ۳۰۲ واژه در ۲۰ دستهٔ موضوعی (احوال‌پرسی، ضمایر، خانواده، اعداد، افعال، مشاغل، سفر، مفاهیم انتزاعی و…) با تلفظ تقریبی به خط فارسی. چون هیچ دیتاست باز و باکیفیت ترکمنی-فارسی در این حجم پیدا نشد، این فهرست از دانش عمومی زبان‌شناسی ترکی نوشته شده -نه یک منبع دانشگاهی- و پیش از استفادهٔ رسمی باید با یک گویشور بومی بررسی شود.
+این پروژه از **دو منبع مجزا و شفاف** برای واژه‌نامه استفاده می‌کند:
 
-The dictionary is a fully original, hand-written dataset — not extracted from any machine-translation file — specifically to avoid stray fragments or mistranslated entries. 302 words across 20 thematic categories, with topic and alphabetical browsing plus CSV/JSON export.
+1. **واژه‌نامهٔ فارسی-ترکمنی (`js/dictionary.js`)** — کاملاً دست‌ساز، ۳۰۲ واژه در ۲۰ دستهٔ موضوعی، با تلفظ تقریبی به خط فارسی. برای اینکه هیچ‌وقت قطعهٔ نامرتبط یا جملهٔ عجیب وسطش نیاید، این فهرست از صفر برای همین پروژه نوشته شده -نه استخراج‌شده از فایل بیرونی.
+
+2. **واژه‌نامهٔ گستردهٔ ترکمنی-انگلیسی (`js/dictionary-extended.js`, در حال تکمیل)** — گزیده‌ای **تأییدشده، صفحه‌به‌صفحه** از دیکشنری دانشگاهی [Türkmençe-iňlisçe sözlük](https://www.webonary.org/turkmen/) که در دانشگاه دولتی ترکمن به نام مختومقلی گردآوری و توسط SIL International روی Webonary منتشر شده؛ مجوز **CC BY-NC-SA 4.0**. هر مدخل مستقیماً از یک URL مشخص گرفته شده (لیست کامل در بالای فایل)، بدون هیچ تکمیل یا حدس از دانش عمومی. نسخهٔ فعلی فقط حروف **A، B، D، G، M** (۱۲۴ مدخل، با مثال جمله) را پوشش می‌دهد؛ ادامهٔ حروف در به‌روزرسانی‌های بعدی، به همین روش تکه‌به‌تکه و قابل‌رهگیری، اضافه خواهد شد.
+
+The dictionary has two clearly separate sources: an original hand-written Persian-Turkmen glossary (302 words), and a growing, page-by-page verified extract of the SIL/Webonary academic Turkmen-English dictionary (CC BY-NC-SA 4.0) — currently letters A, B, D, G, M with full example sentences, each entry traceable to an exact source URL.
+
 
 ---
 
