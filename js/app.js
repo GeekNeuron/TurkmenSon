@@ -349,6 +349,9 @@
     DICTIONARY.categories.forEach(cat=>{
       cat.words.forEach(w=> idx.push({ section:'dictionary', label: d.nav.dictionary, title: w.tk + ' — ' + w.fa, icon:'translate' }));
     });
+    DICTIONARY_EXTENDED.forEach(e=>{
+      idx.push({ section:'dictionary', label: d.nav.dictionary, title: e.tk + ' — ' + e.en, icon:'translate' });
+    });
     return idx;
   }
 
@@ -792,6 +795,37 @@
     return jumpBar + body;
   }
 
+  function renderExtendedDictionary(d, q){
+    let html = `
+      <div class="dict-ext-head reveal">
+        <h3 class="subheading"><span class="icon" data-icon="link"></span>${d.ui.extTitle}</h3>
+        <p class="dict-ext-intro">${d.ui.extIntro}</p>
+      </div>`;
+    if(!q){
+      html += `<div class="empty-state reveal"><span class="icon" data-icon="search"></span><p>${d.ui.extPrompt}</p></div>`;
+      return html;
+    }
+    const results = DICTIONARY_EXTENDED.filter(e =>
+      looseMatch(e.tk, q) || e.en.toLowerCase().includes(q) || (e.ex && (e.ex.tk.toLowerCase().includes(q) || e.ex.en.toLowerCase().includes(q)))
+    );
+    if(!results.length){
+      html += `<div class="empty-state reveal"><span class="icon" data-icon="search"></span><p>${d.ui.extNoResults}</p></div>`;
+      return html;
+    }
+    html += `<div class="ext-cards">` + results.map(e => `
+      <div class="ext-card reveal">
+        <div class="ext-card-head">
+          <button class="dict-speak" data-speak="${e.tk}" aria-label="${d.ui.speakWord}"><span class="icon" data-icon="volume"></span></button>
+          <span class="ext-tk">${e.tk}</span>
+          ${e.phon ? `<span class="ext-phon">[${e.phon}]</span>` : ''}
+          <span class="ext-pos">${e.pos}</span>
+        </div>
+        <p class="ext-en">${e.en}</p>
+        ${e.ex ? `<p class="ext-example"><strong>${d.ui.extExampleLabel}</strong> <em>${e.ex.tk}</em> — ${e.ex.en}</p>` : ''}
+      </div>`).join('') + `</div>`;
+    return html;
+  }
+
   function renderDictionary(d){
     const q = state.query;
     const matchWord = (w) => !q || looseMatch(w.tk, q) || looseMatch(w.fa, q) || w.faScript.includes(q);
@@ -815,7 +849,9 @@
       `<p class="dict-total">${total} ${d.ui.dictTotalWords}</p>` +
       (q ? '' : `<div class="dict-note reveal"><span class="icon" data-icon="info"></span><p>${note}</p></div>`) +
       toolbar +
-      body;
+      body +
+      `<div class="dict-divider"></div>` +
+      renderExtendedDictionary(d, q);
   }
 
   function renderPeopleLike(d, key, iconName){

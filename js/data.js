@@ -64,6 +64,11 @@ fa: {
     viewByTopic:'بر اساس موضوع', viewByAlphabet:'بر اساس الفبا',
     downloadCsv:'دانلود CSV', downloadJson:'دانلود JSON',
     dictTotalWords:'واژه', jumpToLetter:'پرش به حرف',
+    extTitle:'واژه‌نامهٔ گستردهٔ ترکمنی-انگلیسی (در حال تکمیل)',
+    extIntro:'این بخش گزیده‌ای تأییدشده از دیکشنری دانشگاهی «ترکمنی-انگلیسی» SIL/Webonary است (مجوز CC BY-NC-SA 4.0)؛ در حال حاضر فقط حروف A، B، D، G و M (۱۲۴ مدخل، با مثال جمله) استخراج شده و در نسخه‌های بعدی تکمیل می‌شود.',
+    extPrompt:'برای جست‌وجو در این واژه‌نامه، عبارتی تایپ کنید (فعلاً فقط حروف A، B، D، G، M پوشش داده شده).',
+    extNoResults:'در بخش استخراج‌شده (A، B، D، G، M) نتیجه‌ای یافت نشد.',
+    extExampleLabel:'مثال:',
     randomBtn:'موردی تصادفی', copyLink:'کپی لینک', linkCopied:'لینک کپی شد!',
     reportIssue:'گزارش خطا در این محتوا', resultsCount:'نتیجه', breadcrumbHome:'داشبورد',
     speakWord:'شنیدن تلفظ (مصنوعی)', speakNotSupported:'مرورگر شما از خواندن متن پشتیبانی نمی‌کند.',
@@ -372,7 +377,7 @@ fa: {
       { icon:'link', title:'دانشنامه‌های عمومی', text:'ویکی‌پدیای انگلیسی و فارسی، برای اطلاعات پایه دربارهٔ تاریخ، جغرافیا و شخصیت‌های تاریخی. این محتوا سپس بازنویسی و خلاصه شده، نه کپی مستقیم.' },
       { icon:'flag', title:'یونسکو (میراث ناملموس و میراث جهانی)', text:'فهرست‌های رسمی یونسکو برای تاریخ دقیق ثبت هر میراث فرهنگی ترکمن (قالی‌بافی، دوتار و بخشی، کوشتدپدی، الاباي، مرو باستان، کهنه‌گرگانج، نیسا و موارد مشابه).' },
       { icon:'compass', title:'منابع سفر و میراث جهانی', text:'توصیف‌های عمومی از اماکنی مانند دروازهٔ دوزخ، یانگی‌قلعه، کوی‌تن‌داغ و آواز، برگرفته از منابع گردشگری و جغرافیایی عمومی.' },
-      { icon:'translate', title:'واژه‌نامهٔ اصیل پروژه', text:'واژه‌نامهٔ ترکمنی-فارسی سایت (۳۰۲ واژه) کاملاً دست‌ساز و اصیل است -نوشته‌شده بر پایهٔ دانش عمومی زبان‌شناسی ترکی برای همین پروژه- نه استخراج‌شده از دیتاست بیرونی؛ جزئیات در README آمده است.' },
+      { icon:'translate', title:'واژه‌نامه‌ها', text:'واژه‌نامهٔ فارسی-ترکمنی سایت (۳۰۲ واژه) کاملاً دست‌ساز و اصیل است. واژه‌نامهٔ گستردهٔ ترکمنی-انگلیسی، گزیده‌ای تأییدشده و صفحه‌به‌صفحه از دیکشنری دانشگاهی SIL/Webonary (مجوز CC BY-NC-SA 4.0) است؛ جزئیات و لینک‌های دقیق منابع در README آمده است.' },
       { icon:'book', title:'دانش عمومی و ترکیب‌بندی مدل هوش مصنوعی', text:'بخش زیادی از متن -به‌ویژه ترجمهٔ ترکمنی، توصیف پوشاک، غذا و آداب و رسوم- بر پایهٔ دانش عمومی مدل هوش مصنوعی (Claude، ساختهٔ Anthropic) نوشته شده و باید همچون هر منبع ثانویه، با احتیاط و در صورت نیاز با بازبینی گویشوران بومی به کار رود.' }
     ],
     disclaimer:'این پروژه یک اثر دانشگاهی یا رسمی نیست. برای هر نوع استناد پژوهشی، آموزشی رسمی یا انتشار حرفه‌ای، حتماً به منابع اصلی و متخصصان بومی مراجعه کنید.'
@@ -416,6 +421,11 @@ tk: {
     viewByTopic:'Mowzuk boýunça', viewByAlphabet:'Elipbiý boýunça',
     downloadCsv:'CSV göçürip al', downloadJson:'JSON göçürip al',
     dictTotalWords:'söz', jumpToLetter:'Harpa git',
+    extTitle:'Giň türkmen-iňlis sözlügi (dowam edýär)',
+    extIntro:'Bu bölüm SIL/Webonary-niň akademiki "türkmen-iňlis" sözlüginden (CC BY-NC-SA 4.0 ygtyýarnamasy) barlanan bir bölegidir; häzirlikçe diňe A, B, D, G we M harplary (mysal sözlemli 124 ýazgy) alnyp, indiki wersiýalarda dowam etdiriler.',
+    extPrompt:'Bu sözlükde gözlemek üçin bir zat ýazyň (häzirlikçe diňe A, B, D, G, M harplary bar).',
+    extNoResults:'Alnan bölekde (A, B, D, G, M) netije tapylmady.',
+    extExampleLabel:'Mysal:',
     randomBtn:'Tötänleýin bir zat', copyLink:'Salgyny göçür', linkCopied:'Salgy göçürildi!',
     reportIssue:'Bu mazmunda ýalňyşlyk bar diýip habar ber', resultsCount:'netije', breadcrumbHome:'Dashboard',
     speakWord:'Aýdylyşyny diňle (emeli)', speakNotSupported:'Brauzeriňiz tekst okamagy goldamaýar.',
@@ -724,7 +734,7 @@ tk: {
       { icon:'link', title:'Umumy ensiklopediýalar', text:'Iňlis we pars dilli Wikipediýa, taryh, geografiýa we taryhy şahslar barada esasy maglumat üçin. Bu mazmun soň täzeden ýazyldy we gysgaldyldy, göni göçürilmedi.' },
       { icon:'flag', title:'ÝUNESKO (maddy däl we bütindünýä mirasy)', text:'Her türkmen medeni mirasynyň (halyçylyk, dutar-bagşylyk, kuştdepdi, alabaý, Gadymy Merw, Köneürgenç, Nusaý we ş.m.) takyk bellige alnan senesini bilmek üçin ÝUNESKO-nyň resmi sanawlary.' },
       { icon:'compass', title:'Syýahat we bütindünýä miras çeşmeleri', text:'Dowzah derwezesi, Ýangykala, Köýtendag we Awaza ýaly ýerleriň umumy beýany syýahatçylyk we geografiýa çeşmelerinden alyndy.' },
-      { icon:'translate', title:'Taslamanyň asyl sözlügi', text:'Sahypanyň türkmençe-parsça sözlügi (302 söz) doly asyl we el bilen ýazylan; daşarky maglumat toplumyndan alynmady, şu taslama üçin umumy türki dilçilik bilimine esaslanyp ýazyldy. Jikme-jiklikler README-de bar.' },
+      { icon:'translate', title:'Sözlükler', text:'Sahypanyň parsça-türkmençe sözlügi (302 söz) doly asyl we el bilen ýazylan. Giň türkmen-iňlis sözlügi bolsa, SIL/Webonary akademiki sözlüginden (CC BY-NC-SA 4.0) sahypama-sahypa barlanyp alnan bölekdir; takyk çeşme salgylary README-de bar.' },
       { icon:'book', title:'Umumy bilim we emeli intellekt bilen düzülen', text:'Tekstiň uly bölegi — aýratyn-da türkmen terjimesi, egin-eşik, tagam we dessur beýanlary — emeli intellekt modeliniň (Claude, Anthropic tarapyndan ýasalan) umumy bilimine esaslanyp ýazyldy we islendik ikinji derejeli çeşme ýaly, ünsli garalmaly, zerur bolsa ene dilli adamlar bilen barlanmaly.' }
     ],
     disclaimer:'Bu taslama akademiki ýa-da resmi eser däl. Islendik ylmy salgylanma, resmi bilim ýa-da hünär neşiri üçin, hökman asyl çeşmelere we ýerli hünärmenlere ýüz tutuň.'
