@@ -64,7 +64,8 @@ html[data-contrast="true"] .dropdown-trigger{
 }
 html[data-contrast="true"] .hero{ box-shadow:none; border:2px solid var(--ink); }
 
-
+/* =========================================================
+   TurkmenSon — design tokens
    Palette drawn from Turkmen carpet wool (madder red), desert
    sand, and oxidised silver/turquoise jewellery — not a generic
    SaaS palette.
@@ -591,7 +592,12 @@ input:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .dict-ext-head{ margin-top:8px; }
 .dict-ext-intro{ font-size:.83rem; color:var(--ink-soft); line-height:1.9; max-width:80ch; margin-top:6px; }
 .ext-cards{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; margin-top:16px; }
-.ext-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-m); padding:16px; direction:ltr; text-align:start; unicode-bidi:isolate; }
+.ext-card{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-m); padding:16px;
+  direction:ltr; text-align:start; unicode-bidi:isolate;
+  transition:transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
+}
+.ext-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-lift); border-color:var(--secondary); }
 .ext-card-head{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px; direction:ltr; }
 .ext-tk{ font-weight:800; color:var(--primary); }
 .ext-phon{ font-size:.76rem; color:var(--accent); }
