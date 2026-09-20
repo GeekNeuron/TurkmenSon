@@ -19,16 +19,20 @@
 
    Source pages included in this batch (full dictionary has 7,247
    Turkmen headwords across ~30 letters and many pages per letter;
-   this is a first, verified slice — first-pages of nine letters:
-   A, B, D, E, G, H, K, M, S):
+   this is a first, verified slice — letters A, B, D, E, F, G, H,
+   J (p.1/6), K, L (p.1/2), M, N (p.1/6), S):
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=a
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=b
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=d
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=e
+     https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=f
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=g
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=h
+     https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=j
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=k
+     https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=l
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=m
+     https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=n
      https://www.webonary.org/turkmen/browse/browse-vernacular-english/?key=tk-TM&letter=s
 
    Format: each row is
@@ -269,5 +273,108 @@ const DICTIONARY_EXTENDED = [
   { tk:'sadyk', phon:'sady:k', pos:'adj', en:'faithful, true', ex:null },
   { tk:'sag', phon:'', pos:'adj', en:'healthy', ex:{ tk:'Janyňyz sagmy?', en:'How are you? (lit. Is your health good?)' } },
   { tk:'sag (2)', phon:'', pos:'adj', en:'right (direction)', ex:{ tk:'sag el', en:'right hand' } },
-  { tk:'sag-aman', phon:'sag-ama:n', pos:'adv', en:'safe and sound, healthy', ex:{ tk:'sag-aman gelmek', en:'to arrive safe and sound' } }
+  { tk:'sag-aman', phon:'sag-ama:n', pos:'adv', en:'safe and sound, healthy', ex:{ tk:'sag-aman gelmek', en:'to arrive safe and sound' } },
+
+  { tk:'fabrik', phon:'', pos:'n', en:'(textile) mill, plant, factory', ex:{ tk:'fabrikde işlemek', en:'to work at a textile mill' } },
+  { tk:'fakt', phon:'', pos:'n', en:'fact', ex:{ tk:'gyzykly faktlar', en:'interesting facts' } },
+  { tk:'faktor', phon:"'faktor", pos:'n', en:'factor', ex:{ tk:'aýgytlaýjy faktor', en:'decisive factor' } },
+  { tk:'familiýa', phon:"fa'miliýa", pos:'n', en:'surname', ex:null },
+  { tk:'farş', phon:'', pos:'n', en:'mince, ground meat, diced meat', ex:null },
+  { tk:'faýl', phon:'', pos:'n', en:'file', ex:{ tk:'Ses faýllaryny akdyr.', en:'Stream audio files.' } },
+  { tk:'ferma', phon:"'ferma", pos:'n', en:'farm', ex:{ tk:'süýt fermasy', en:'milk farm' } },
+  { tk:'fermer', phon:"'fermer", pos:'n', en:'farmer', ex:null },
+  { tk:'fewral', phon:"few'ral", pos:'n', en:'February', ex:null },
+  { tk:'filial', phon:"fili'al", pos:'n', en:'branch, subsidiary, affiliate', ex:{ tk:'institutyň filialy', en:'branch of an institute' } },
+  { tk:'film', phon:'', pos:'n', en:'film, movie, (motion) picture', ex:{ tk:'reňkli film', en:'film in colour' } },
+  { tk:'firma', phon:"'firma", pos:'n', en:'firm, company', ex:{ tk:'daşary ýurt firmalary', en:'foreign firms' } },
+  { tk:'fiziki', phon:'', pos:'adj', en:'physical', ex:{ tk:'fiziki güýç', en:'physical strength' } },
+  { tk:'flot', phon:'', pos:'n', en:'fleet', ex:{ tk:'harby-deňiz floty', en:'the Navy' } },
+  { tk:'fonar', phon:'', pos:'n', en:'torch, lamp', ex:{ tk:'proýeksiýon fonar', en:'projector' } },
+  { tk:'fond', phon:'', pos:'n', en:'fund', ex:{ tk:'döwlet fondy', en:'state fund' } },
+  { tk:'fontan', phon:"fon'tan", pos:'n', en:'fountain', ex:{ tk:'nebit fontany', en:'gusher (oil fountain)' } },
+  { tk:'forma', phon:"'forma", pos:'n', en:'1. shape, form | 2. uniform | 3. form (document) | 4. mould, pattern', ex:{ tk:'mekdep formasy', en:'school uniform' } },
+  { tk:'fotoapparat', phon:"fotoappa'rat", pos:'n', en:'camera', ex:null },
+  { tk:'fransuz', phon:'', pos:'n', en:'French (person)', ex:{ tk:'fransuz dili', en:'French language' } },
+  { tk:'fundament', phon:"fun'dament", pos:'n', en:'foundation', ex:null },
+  { tk:'furgon', phon:"fur'gon", pos:'n', en:'wagon, van', ex:null },
+  { tk:'futbol', phon:"fut'bol", pos:'n', en:'football, soccer', ex:{ tk:'futbol oýnamak', en:'to play football' } },
+  { tk:'futbolçy', phon:'', pos:'n', en:'footballer, football player', ex:null },
+
+  { tk:'jabjynmak', phon:'', pos:'v', en:'to snarl (at), bark, yelp', ex:{ tk:'Güjük jabjyndy.', en:'The puppy yelped.' } },
+  { tk:'jady', phon:'ja:dy', pos:'n', en:'chanting, witchcraft, sorcery', ex:{ tk:'Ol bir bakyşda meni jadylady.', en:'She bewitched me with one look.' } },
+  { tk:'jadygöý', phon:'ja:dygö:y', pos:'adj/n', en:'1. bewitching, spellbinding | 2. sorcerer, wizard', ex:{ tk:'Meniň jigim jadygöýli kinodan gorkýar.', en:'My little brother is frightened of films about witchcraft.' } },
+  { tk:'jahan', phon:'', pos:'n', en:'world, universe', ex:{ tk:'Jahan ýagtylýar.', en:'Dawn is breaking.' } },
+  { tk:'jahankeşde', phon:'', pos:'n', en:'traveller, tourist', ex:{ tk:'Magtymguly jahankeşde adam bolupdyr.', en:'Magtymguly was a traveller.' } },
+  { tk:'jahankeşdelik', phon:'', pos:'n', en:'1. tourism | 2. travelling, touring', ex:null },
+  { tk:'jahyl', phon:'ja:hy:l', pos:'n', en:'1. young man, youth, without experience | 2. wild, prone to vices (of young men)', ex:{ tk:'Meniň oglum jahyl çykyp, öýlendiribermeli.', en:'My son has reached manhood and should now get married off.' } },
+  { tk:'jahyllyk', phon:'ja:hy:llyk', pos:'n', en:'1. youth, time when one is young | 2. wildness, being prone to vices', ex:{ tk:'Onuň jahyllyk ýyllary örän agyr geçdi.', en:'He had many difficulties in his youth.' } },
+  { tk:'jalbar', phon:'', pos:'n', en:'trousers (Brit); pants, slacks (Amer)', ex:{ tk:'Daýym maňa jalbar satyn aldy.', en:'My uncle bought me some trousers.' } },
+  { tk:'jam', phon:'ja:m', pos:'n', en:'bowl, dish', ex:{ tk:'bir jam süýt', en:'a bowl of milk' } },
+  { tk:'jan', phon:'ja:n', pos:'n/adj', en:'1. soul, spirit, heart | 2. person, human being | 3. dear, beloved | 4. life | 5. like one\u2019s own', ex:{ tk:'Ol meniň jan ýaly doganym.', en:'He is like a real brother to me.' } },
+  { tk:'jan-ten', phon:'ja:n-ten', pos:'n', en:'heart and soul, body and soul', ex:{ tk:'Biz her bir işe jan-tenden ýapyşýarys.', en:'We put our heart and soul into each of our tasks.' } },
+  { tk:'janawar', phon:'', pos:'adj/n', en:'1. poor thing (of animal) | 2. animal, beast', ex:{ tk:'At janawar suwsap gidipdir.', en:'The poor horse was so thirsty.' } },
+  { tk:'jandar', phon:'ja:nda:r', pos:'n', en:'living being, creature, animal', ex:{ tk:'Öýde jandar ýokdy.', en:'There was not a living soul in the house.' } },
+  { tk:'janhowul', phon:'ja:nhowul', pos:'n', en:'agony, suffering, death pangs', ex:{ tk:'Ol janhowluna näme edýänini bilenokdy.', en:'In his agony he does not know what he is doing.' } },
+  { tk:'janköýer', phon:'ja:nköýer', pos:'adj/n', en:'1. faithful, devoted, loyal, trustworthy | 2. fan', ex:{ tk:'Geçen saparky duşuşykda futbol janköýerleri uruşdylar.', en:'In the previous football match there was fighting between the fans.' } },
+  { tk:'janlanmak', phon:'ja:nlanmak', pos:'v', en:'to become animated, come alive, revive', ex:{ tk:'Tebigat janlandy.', en:'Nature has come alive.' } },
+  { tk:'janly', phon:'ja:nly', pos:'adj/n', en:'1. active, alive, living, animate | 2. grazing animals, sheep and goats', ex:{ tk:'Ýaz paslynda janly-jandarlar köpelýärler.', en:'In spring living beings multiply.' } },
+  { tk:'janpena', phon:'ja:npena', pos:'n', en:'bodyguard', ex:{ tk:'Onuň kakasy Prezidentiň janpenasy bolup işleýär.', en:'Her father works as a bodyguard to the President.' } },
+  { tk:'jansyz', phon:'ja:nsyz', pos:'adj/n', en:'1. dead, lifeless, inanimate | 2. lethargically, slowly | 3. spy', ex:{ tk:'jansyz göwre', en:'dead body, corpse' } },
+  { tk:'jaň', phon:'', pos:'n', en:'1. bell | 2. sound/ring of a bell | 3. ring, telephone call', ex:{ tk:'Jaň kakyldy.', en:'The bell rang.' } },
+  { tk:'jaňlaşmak', phon:'', pos:'v', en:'to call each other, telephone one another', ex:{ tk:'Jaňlaşyp bilersiňiz.', en:'You can give us a call.' } },
+  { tk:'jar', phon:'', pos:'n', en:'gully, ravine', ex:{ tk:'Çölde uly jar emele gelipdir.', en:'A large ravine appeared in the desert.' } },
+  { tk:'jar (2)', phon:'', pos:'n', en:'news, report, message, announcement', ex:{ tk:'jar çekmek / jar etmek', en:'to announce, cry out' } },
+  { tk:'jarçy', phon:'', pos:'n', en:'messenger, town crier, herald', ex:{ tk:'Jarçy Atabaýyň toýuny dumly-duşa jar etdi.', en:"The herald announced Atabay's wedding in all directions." } },
+
+  { tk:'labyr', phon:'', pos:'n', en:'anchor', ex:{ tk:'labyr taşlamak', en:'to drop anchor' } },
+  { tk:'labyz', phon:'', pos:'n', en:'1. tone, timbre, intonation | 2. melody', ex:{ tk:'Onuň labzy nähili?', en:'What is its tone like?' } },
+  { tk:'laçyn', phon:'la:çyn', pos:'n', en:'1. falcon | 2. aeroplane | 3. Laçyn (a girl\u2019s name)', ex:{ tk:'Laçyn meşhur aýdymçy gyz.', en:'Lachyn is a well-known singer.' } },
+  { tk:'lager', phon:"'lager", pos:'n', en:'camp', ex:{ tk:'meýdanda lager gurmak', en:'to camp in a field' } },
+  { tk:'lagnat', phon:'', pos:'n', en:'curse, damnation', ex:{ tk:'Meni kösäniň üçin saňa lagnat bolsun!', en:'I curse you because you made me suffer!' } },
+  { tk:'lagyrdy', phon:'', pos:'n', en:'noise, loud talk', ex:{ tk:'Bir lagyrdy eşidildi.', en:'A noise has been heard.' } },
+  { tk:'lak', phon:'', pos:'adj/n', en:'1. rotten, bad | 2. nail polish', ex:{ tk:'lak ýumurtga', en:'rotten egg' } },
+  { tk:'lakam', phon:'', pos:'n', en:'1. pseudonym, pen-name, alias | 2. nickname', ex:{ tk:'onuň il arasyndaky lakamy', en:'his nickname among the general populace' } },
+  { tk:'lakgy', phon:'', pos:'n', en:'babbler, chatter-box, prattler', ex:{ tk:'Onuň ogly gaty lakgy.', en:'His son is a babbler.' } },
+  { tk:'lakgyldy', phon:'', pos:'adj', en:'chatter, twaddle', ex:{ tk:'ugursyz lakgyldy', en:'pointless nonsense' } },
+  { tk:'lampa', phon:"'lampa", pos:'n', en:'lamp, bulb', ex:{ tk:'elektrik lampasy', en:'electric bulb' } },
+  { tk:'lap', phon:'la:p', pos:'adv', en:'exaggeration', ex:{ tk:'Ol lap aýdýar.', en:'He exaggerates.' } },
+  { tk:'lapykeç', phon:'', pos:'adj', en:'discouraged', ex:{ tk:'Lapykeç galagoply gygyryşýardylar.', en:'The discouraged shouted worriedly at each other.' } },
+  { tk:'larýok', phon:'', pos:'n', en:'stall', ex:{ tk:'gök önüm larýogy', en:'vegetable stall' } },
+  { tk:'latyn', phon:"'latyn", pos:'adj', en:'Latin', ex:{ tk:'latyn elipbiýi', en:'Latin alphabet' } },
+  { tk:'latynlaşdyrmak', phon:'', pos:'v caus', en:'to latinise, romanise', ex:{ tk:'latynlaşdyrylan türkmen elipbiýi', en:'romanised Turkmen alphabet' } },
+  { tk:'lawaş', phon:'', pos:'n', en:'large tortilla made in the Middle Eastern way', ex:null },
+  { tk:'laý', phon:'la:ý', pos:'n', en:'costume, one pair (of clothes)', ex:{ tk:'Kakam biziň her birimize bir laý köýnek alyp berdi.', en:'My father bought one set of clothes for each of us.' } },
+  { tk:'laý (2)', phon:'la:ý', pos:'n', en:'1. clay | 2. mud, muddy', ex:{ tk:'Suw laý bolupdyr.', en:'The water has become muddy.' } },
+  { tk:'laýyk', phon:'la:ýyk', pos:'adj', en:'1. fitting, appropriate | 2. that fits | 3. proper, suitable | 4. worthy | 5. necessary', ex:{ tk:'laýyk gelmek', en:'to fit' } },
+  { tk:'lebiz', phon:'', pos:'n', en:'oath, promise', ex:{ tk:'lebziňde durmak', en:"to keep one's word" } },
+  { tk:'legen', phon:'', pos:'n', en:'basin, wash-tub', ex:{ tk:'Men legene suw guýdum.', en:'I poured water into a basin.' } },
+  { tk:'leglek', phon:'', pos:'n', en:'stork', ex:null },
+  { tk:'leksiýa', phon:"'leksiýa", pos:'n', en:'lecture', ex:{ tk:'leksiýa okamak', en:'to give a lecture' } },
+  { tk:'lenç', phon:'', pos:'adv', en:'stamp (lenç etmek = to tread, trample, stamp on, crush; to speak coarsely)', ex:null },
+
+  { tk:'naçar', phon:'na:ça:r', pos:'n/adj', en:'1. woman | 2. female', ex:null },
+  { tk:'nadan', phon:'na:da:n', pos:'adj', en:'1. uneducated, ignorant | 2. coarse, uncultured, stupid', ex:{ tk:'hat-sowatsyz nadan galmak', en:'to remain illiterate and uneducated' } },
+  { tk:'nadanlyk', phon:'na:da:nlyk', pos:'n', en:'1. ignorance | 2. stupidity, foolishness', ex:{ tk:'Nadanlyk bize täze ylmy açyşlary özleşdirmäge päsgel berýär.', en:'Ignorance gets in the way of us making new scientific discoveries.' } },
+  { tk:'nagan', phon:'', pos:'n', en:'revolver', ex:{ tk:'Meňli hanyň ýassygynyň aşagynda nagany bar ekeni.', en:'Mengli Khan had a revolver under his cushion.' } },
+  { tk:'nagara', phon:'', pos:'n', en:'nagara (a large drum, music)', ex:{ tk:'nagara kakmak', en:'to play the nagara' } },
+  { tk:'nagaraçy', phon:'', pos:'n', en:'nagara player', ex:{ tk:'Öňki döwürde nagaraçylar uruş başlandygyny yglan edipdirler.', en:'In old times nagara players announced the start of a war.' } },
+  { tk:'nagma', phon:'', pos:'n', en:'song', ex:{ tk:'ýürek nagmasy', en:'a song from the heart' } },
+  { tk:'nagraly', phon:'', pos:'adj', en:'scared', ex:null },
+  { tk:'nagt', phon:'', pos:'adj', en:'1. available, on hand | 2. immediate', ex:{ tk:'nagt pul bilen tölemek', en:'to pay in cash' } },
+  { tk:'nagyş', phon:'', pos:'n', en:'pattern, design', ex:{ tk:'milli nagyş', en:'national design' } },
+  { tk:'nagyşly', phon:'', pos:'adj', en:'1. patterned, decorated, ornamented | 2. embroidered', ex:{ tk:'nagyşly köýnek', en:'embroidered dress' } },
+  { tk:'nah', phon:'', pos:'adj', en:'cotton (thread/cloth)', ex:{ tk:'Öňki döwürde nah mata gymmat bolupdyr.', en:'In olden times cotton cloth was expensive.' } },
+  { tk:'nahal', phon:'', pos:'n', en:'sapling, young tree, young plant', ex:{ tk:'Atam mellege on düýp nar nahalyny ekdi.', en:'My grandfather planted ten pomegranate saplings in his plot of land.' } },
+  { tk:'nahar', phon:'', pos:'n', en:'cooked food, meal, dish', ex:{ tk:'Her gün iki wagtyna gyzgyn nahar iýmeli.', en:'One should eat a hot meal twice a day.' } },
+  { tk:'naharhana', phon:'naharha:na', pos:'n', en:'1. café, small restaurant | 2. cafeteria, dining hall', ex:{ tk:'talyplaryň naharhanasy', en:'student refectory' } },
+  { tk:'naharlamak', phon:'', pos:'v', en:'to feed', ex:{ tk:'Bu ýerde oňat naharlaýarlar.', en:'They feed you well here.' } },
+  { tk:'naharlanmak', phon:'', pos:'v', en:'1. to be fed | 2. to have a meal, eat', ex:{ tk:'restoranda naharlanmak', en:'to have a meal in the restaurant' } },
+  { tk:'nakleýka', phon:'', pos:'n', en:'sticker, self-adhesive label', ex:null },
+  { tk:'nakyl', phon:'', pos:'n', en:'proverb, saying', ex:{ tk:'Temany nakyllar boýunça düşündirmek täsirli bolýar.', en:'It is powerful to explain an idea using proverbs.' } },
+  { tk:'nakys', phon:'', pos:'adj', en:'frivolous, a waste of time', ex:{ tk:'Goýsana, nakys gürrüňini!', en:'Stop your frivolous talk!' } },
+  { tk:'nala', phon:'na:la', pos:'n', en:'1. protest, complaint, lament | 2. groan, moan', ex:{ tk:'nala çekmek', en:'to moan, groan, complain' } },
+  { tk:'nalaç', phon:'na:la:ç', pos:'adj', en:'forced, reluctant, unwilling, involuntary', ex:{ tk:'Ol eden günäsini nalaç boýun aldy.', en:'He was forced to admit his guilt.' } },
+  { tk:'nalamak', phon:'na:lamak', pos:'v', en:'1. to moan or groan from pain or grief | 2. to complain or protest', ex:{ tk:'Ol durmuşyndan ah çekip, nalamaga başlady.', en:'Moaning about his life, he started to groan.' } },
+  { tk:'nalyş', phon:'na:lyş', pos:'n/v', en:'1. wail, lament | 2. to wail, to lament', ex:{ tk:'Hudaýdan perzent diläp nalyş çekdiler.', en:'They prayed and asked God for a child and lamented.' } },
+  { tk:'nama', phon:'na:ma', pos:'n', en:'letter, written agreement, contract', ex:{ tk:'nama ýollamak', en:'to send a letter' } }
 ];
